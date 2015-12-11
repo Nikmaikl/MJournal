@@ -9,9 +9,6 @@
 import Foundation
 
 class Time {
-    private static var weekDay = Time.getComponent(NSCalendarUnit.Weekday)
-    private static var hour = Time.getComponent(NSCalendarUnit.Hour)
-    private static var minute = Time.getComponent(NSCalendarUnit.Minute)
     
     static func getDay() -> Int {
         return getComponent(NSCalendarUnit.Weekday)

@@ -22,9 +22,9 @@ class TimetableParser {
         for (i, subj) in subjects.enumerate() {
             let end = subj["End"] as! String
             let endTime = end.characters.split{$0 == ":"}.map(String.init)
-            if Int(endTime[0]) > Time.hour {
-                complition(subj: SheduleParser.shedule[Time.weekDay][i] as! String,
-                    nextSubj: SheduleParser.shedule[Time.weekDay][i+1] as! String)
+            if Int(endTime[0]) > Time.getHour() {
+                complition(subj: SheduleParser.shedule[Time.getDay()][i] as! String,
+                    nextSubj: SheduleParser.shedule[Time.getDay()][i+1] as! String)
                 return ""
             }
         }
