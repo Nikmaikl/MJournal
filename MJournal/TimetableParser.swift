@@ -1,0 +1,34 @@
+//
+//  TimetableParser.swift
+//  MJournal
+//
+//  Created by Michael on 06.12.15.
+//  Copyright © 2015 Ocode. All rights reserved.
+//
+
+import Foundation
+
+class TimetableParser {
+    static var timetable = TimetableParser.getTimetable()
+    
+    private class func getTimetable() -> NSMutableDictionary {
+        let file = NSMutableDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("Timetable", ofType: "plist")!)!
+
+        return file
+    }
+    
+    static func getCurrentSubject(complition: (subj: String, nextSubj: String) -> Void) -> String {
+        let subjects = TimetableParser.timetable["Regular"] as! NSArray
+        for (i, subj) in subjects.enumerate() {
+            let end = subj["End"] as! String
+            let endTime = end.characters.split{$0 == ":"}.map(String.init)
+            if Int(endTime[0]) > Time.hour {
+                complition(subj: SheduleParser.shedule[Time.weekDay][i] as! String,
+                    nextSubj: SheduleParser.shedule[Time.weekDay][i+1] as! String)
+                return ""
+            }
+        }
+        
+        return "Нет урока"
+    }
+}

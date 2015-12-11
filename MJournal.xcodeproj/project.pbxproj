@@ -1,0 +1,906 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE23CCAD1C14A67500A94F1D /* Timetable.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE23CCAC1C14A67500A94F1D /* Timetable.plist */; };
+		CE23CCAF1C14A85D00A94F1D /* TimetableParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23CCAE1C14A85D00A94F1D /* TimetableParser.swift */; };
+		CE2BB6811C16257E00778FC8 /* Shedule.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE3DF4241C1320F1004B9D42 /* Shedule.plist */; };
+		CE2BB6821C16258000778FC8 /* Timetable.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE23CCAC1C14A67500A94F1D /* Timetable.plist */; };
+		CE2BB6831C16258300778FC8 /* Rooms.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE7926E21C14B1A200CCB672 /* Rooms.plist */; };
+		CE3DF4251C1320F1004B9D42 /* Shedule.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE3DF4241C1320F1004B9D42 /* Shedule.plist */; };
+		CE3DF4271C132409004B9D42 /* SheduleParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3DF4261C132409004B9D42 /* SheduleParser.swift */; };
+		CE3DF42B1C1327AF004B9D42 /* DaySheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3DF42A1C1327AF004B9D42 /* DaySheduleViewController.swift */; };
+		CE43E3181C10D45C006F1D95 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE43E3171C10D45C006F1D95 /* AppDelegate.swift */; };
+		CE43E31D1C10D45C006F1D95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE43E31B1C10D45C006F1D95 /* Main.storyboard */; };
+		CE43E31F1C10D45C006F1D95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE43E31E1C10D45C006F1D95 /* Assets.xcassets */; };
+		CE43E3221C10D45C006F1D95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE43E3201C10D45C006F1D95 /* LaunchScreen.storyboard */; };
+		CE7926E31C14B1A200CCB672 /* Rooms.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE7926E21C14B1A200CCB672 /* Rooms.plist */; };
+		CE7926EB1C14B40C00CCB672 /* RoomParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7926EA1C14B40C00CCB672 /* RoomParser.swift */; };
+		CE7926F21C14C82700CCB672 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7926F11C14C82700CCB672 /* Color.swift */; };
+		CE9D57331C14CA21009B4025 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9D57321C14CA21009B4025 /* NotificationCenter.framework */; };
+		CE9D57361C14CA21009B4025 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D57351C14CA21009B4025 /* TodayViewController.swift */; };
+		CE9D57391C14CA21009B4025 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE9D57371C14CA21009B4025 /* MainInterface.storyboard */; };
+		CE9D573D1C14CA21009B4025 /* MJournalToday.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CE9D57301C14CA21009B4025 /* MJournalToday.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CE9D57441C14CAF7009B4025 /* Shedule.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE3DF4241C1320F1004B9D42 /* Shedule.plist */; };
+		CE9D57451C14CAFA009B4025 /* Timetable.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE23CCAC1C14A67500A94F1D /* Timetable.plist */; };
+		CE9D57461C14CAFC009B4025 /* Rooms.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE7926E21C14B1A200CCB672 /* Rooms.plist */; };
+		CE9D57481C14CB38009B4025 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D57471C14CB38009B4025 /* Time.swift */; };
+		CE9D57491C14CB38009B4025 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D57471C14CB38009B4025 /* Time.swift */; };
+		CE9D574A1C14CD93009B4025 /* TimetableParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23CCAE1C14A85D00A94F1D /* TimetableParser.swift */; };
+		CE9D574B1C14CD96009B4025 /* RoomParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7926EA1C14B40C00CCB672 /* RoomParser.swift */; };
+		CE9D574C1C14CD99009B4025 /* SheduleParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3DF4261C132409004B9D42 /* SheduleParser.swift */; };
+		CEBD70A11C15EF7B0076E708 /* WeekDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE427F61C11FC91008637C2 /* WeekDays.swift */; };
+		CEBD70A81C15FB4E0076E708 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEBD70A61C15FB4E0076E708 /* Interface.storyboard */; };
+		CEBD70AA1C15FB4E0076E708 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEBD70A91C15FB4E0076E708 /* Assets.xcassets */; };
+		CEBD70B11C15FB4E0076E708 /* MJournalWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CEBD70B01C15FB4E0076E708 /* MJournalWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CEBD70B61C15FB4E0076E708 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBD70B51C15FB4E0076E708 /* InterfaceController.swift */; };
+		CEBD70B81C15FB4E0076E708 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBD70B71C15FB4E0076E708 /* ExtensionDelegate.swift */; };
+		CEBD70BA1C15FB4E0076E708 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBD70B91C15FB4E0076E708 /* GlanceController.swift */; };
+		CEBD70BC1C15FB4E0076E708 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBD70BB1C15FB4E0076E708 /* ComplicationController.swift */; };
+		CEBD70BE1C15FB4E0076E708 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEBD70BD1C15FB4E0076E708 /* Assets.xcassets */; };
+		CEBD70C21C15FB4E0076E708 /* MJournalWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = CEBD70A41C15FB4E0076E708 /* MJournalWatch.app */; };
+		CEBD70CD1C161A5F0076E708 /* WeekDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE427F61C11FC91008637C2 /* WeekDays.swift */; };
+		CEBD70CF1C1620F50076E708 /* DayInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBD70CE1C1620F50076E708 /* DayInterfaceController.swift */; };
+		CEBD70D01C1622570076E708 /* SheduleParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3DF4261C132409004B9D42 /* SheduleParser.swift */; };
+		CEBD70D11C1622590076E708 /* TimetableParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23CCAE1C14A85D00A94F1D /* TimetableParser.swift */; };
+		CEBD70D21C16225C0076E708 /* RoomParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7926EA1C14B40C00CCB672 /* RoomParser.swift */; };
+		CEBD70D31C1622610076E708 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9D57471C14CB38009B4025 /* Time.swift */; };
+		CEBF44C31C12246B00598EF3 /* DayCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBF44C21C12246B00598EF3 /* DayCellView.swift */; };
+		CEE427F41C11EFD3008637C2 /* WeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE427F31C11EFD3008637C2 /* WeekViewController.swift */; };
+		CEE427F71C11FC91008637C2 /* WeekDays.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE427F61C11FC91008637C2 /* WeekDays.swift */; };
+		CEE427F91C11FF88008637C2 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE427F81C11FF88008637C2 /* DayCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CE9D573B1C14CA21009B4025 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE43E30C1C10D45C006F1D95 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE9D572F1C14CA21009B4025;
+			remoteInfo = MJournalToday;
+		};
+		CEBD70B21C15FB4E0076E708 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE43E30C1C10D45C006F1D95 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CEBD70AF1C15FB4E0076E708;
+			remoteInfo = "MJournalWatch Extension";
+		};
+		CEBD70C01C15FB4E0076E708 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE43E30C1C10D45C006F1D95 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CEBD70A31C15FB4E0076E708;
+			remoteInfo = MJournalWatch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CE9D57411C14CA21009B4025 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CE9D573D1C14CA21009B4025 /* MJournalToday.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEBD70C61C15FB4E0076E708 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CEBD70B11C15FB4E0076E708 /* MJournalWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEBD70CA1C15FB4E0076E708 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				CEBD70C21C15FB4E0076E708 /* MJournalWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		CE23CCAC1C14A67500A94F1D /* Timetable.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Timetable.plist; sourceTree = "<group>"; };
+		CE23CCAE1C14A85D00A94F1D /* TimetableParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableParser.swift; sourceTree = "<group>"; };
+		CE3DF4241C1320F1004B9D42 /* Shedule.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Shedule.plist; sourceTree = "<group>"; };
+		CE3DF4261C132409004B9D42 /* SheduleParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SheduleParser.swift; sourceTree = "<group>"; };
+		CE3DF42A1C1327AF004B9D42 /* DaySheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaySheduleViewController.swift; sourceTree = "<group>"; };
+		CE43E3141C10D45C006F1D95 /* MJournal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MJournal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE43E3171C10D45C006F1D95 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CE43E31C1C10D45C006F1D95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CE43E31E1C10D45C006F1D95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CE43E3211C10D45C006F1D95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CE43E3231C10D45C006F1D95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE7926E21C14B1A200CCB672 /* Rooms.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Rooms.plist; sourceTree = "<group>"; };
+		CE7926EA1C14B40C00CCB672 /* RoomParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomParser.swift; sourceTree = "<group>"; };
+		CE7926F11C14C82700CCB672 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		CE9D57301C14CA21009B4025 /* MJournalToday.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MJournalToday.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE9D57321C14CA21009B4025 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		CE9D57351C14CA21009B4025 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		CE9D57381C14CA21009B4025 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		CE9D573A1C14CA21009B4025 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE9D57421C14CA46009B4025 /* MJournalToday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MJournalToday.entitlements; sourceTree = "<group>"; };
+		CE9D57431C14CA76009B4025 /* MJournal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MJournal.entitlements; sourceTree = "<group>"; };
+		CE9D57471C14CB38009B4025 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
+		CEBD70A41C15FB4E0076E708 /* MJournalWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MJournalWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEBD70A71C15FB4E0076E708 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		CEBD70A91C15FB4E0076E708 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CEBD70AB1C15FB4E0076E708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEBD70B01C15FB4E0076E708 /* MJournalWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "MJournalWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEBD70B51C15FB4E0076E708 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		CEBD70B71C15FB4E0076E708 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		CEBD70B91C15FB4E0076E708 /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
+		CEBD70BB1C15FB4E0076E708 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		CEBD70BD1C15FB4E0076E708 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CEBD70BF1C15FB4E0076E708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEBD70CE1C1620F50076E708 /* DayInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayInterfaceController.swift; sourceTree = "<group>"; };
+		CEBF44C21C12246B00598EF3 /* DayCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCellView.swift; sourceTree = "<group>"; };
+		CEE427F31C11EFD3008637C2 /* WeekViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekViewController.swift; sourceTree = "<group>"; };
+		CEE427F61C11FC91008637C2 /* WeekDays.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekDays.swift; sourceTree = "<group>"; };
+		CEE427F81C11FF88008637C2 /* DayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CE43E3111C10D45C006F1D95 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE9D572D1C14CA21009B4025 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE9D57331C14CA21009B4025 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEBD70AD1C15FB4E0076E708 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CE43E30B1C10D45C006F1D95 = {
+			isa = PBXGroup;
+			children = (
+				CE43E3161C10D45C006F1D95 /* MJournal */,
+				CE9D57341C14CA21009B4025 /* MJournalToday */,
+				CEBD70A51C15FB4E0076E708 /* MJournalWatch */,
+				CEBD70B41C15FB4E0076E708 /* MJournalWatch Extension */,
+				CE9D57311C14CA21009B4025 /* Frameworks */,
+				CE43E3151C10D45C006F1D95 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CE43E3151C10D45C006F1D95 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE43E3141C10D45C006F1D95 /* MJournal.app */,
+				CE9D57301C14CA21009B4025 /* MJournalToday.appex */,
+				CEBD70A41C15FB4E0076E708 /* MJournalWatch.app */,
+				CEBD70B01C15FB4E0076E708 /* MJournalWatch Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CE43E3161C10D45C006F1D95 /* MJournal */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D57431C14CA76009B4025 /* MJournal.entitlements */,
+				CEE427F51C11FC76008637C2 /* Model */,
+				CEBD70CC1C160A620076E708 /* ViewControllers+Cells */,
+				CE43E31B1C10D45C006F1D95 /* Main.storyboard */,
+				CE43E31E1C10D45C006F1D95 /* Assets.xcassets */,
+				CE43E3201C10D45C006F1D95 /* LaunchScreen.storyboard */,
+				CE7926E41C14B32200CCB672 /* Resources */,
+				CE7926E71C14B3B000CCB672 /* Supporting Files */,
+			);
+			path = MJournal;
+			sourceTree = "<group>";
+		};
+		CE7926E41C14B32200CCB672 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CE7926E51C14B33E00CCB672 /* Info */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		CE7926E51C14B33E00CCB672 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				CE3DF4241C1320F1004B9D42 /* Shedule.plist */,
+				CE23CCAC1C14A67500A94F1D /* Timetable.plist */,
+				CE7926E21C14B1A200CCB672 /* Rooms.plist */,
+			);
+			name = Info;
+			sourceTree = "<group>";
+		};
+		CE7926E61C14B36800CCB672 /* Parses */ = {
+			isa = PBXGroup;
+			children = (
+				CE3DF4261C132409004B9D42 /* SheduleParser.swift */,
+				CE23CCAE1C14A85D00A94F1D /* TimetableParser.swift */,
+				CE7926EA1C14B40C00CCB672 /* RoomParser.swift */,
+			);
+			name = Parses;
+			sourceTree = "<group>";
+		};
+		CE7926E71C14B3B000CCB672 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CE43E3231C10D45C006F1D95 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CE7926F01C14C81B00CCB672 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CEBD70CB1C16090C0076E708 /* Extensions */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		CE9D572B1C14C9E1009B4025 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				CE43E3171C10D45C006F1D95 /* AppDelegate.swift */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		CE9D57311C14CA21009B4025 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D57321C14CA21009B4025 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CE9D57341C14CA21009B4025 /* MJournalToday */ = {
+			isa = PBXGroup;
+			children = (
+				CE9D57421C14CA46009B4025 /* MJournalToday.entitlements */,
+				CE9D57351C14CA21009B4025 /* TodayViewController.swift */,
+				CE9D57371C14CA21009B4025 /* MainInterface.storyboard */,
+				CE9D573A1C14CA21009B4025 /* Info.plist */,
+			);
+			path = MJournalToday;
+			sourceTree = "<group>";
+		};
+		CEBD70A51C15FB4E0076E708 /* MJournalWatch */ = {
+			isa = PBXGroup;
+			children = (
+				CEBD70A61C15FB4E0076E708 /* Interface.storyboard */,
+				CEBD70A91C15FB4E0076E708 /* Assets.xcassets */,
+				CEBD70AB1C15FB4E0076E708 /* Info.plist */,
+			);
+			path = MJournalWatch;
+			sourceTree = "<group>";
+		};
+		CEBD70B41C15FB4E0076E708 /* MJournalWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CEBD70B51C15FB4E0076E708 /* InterfaceController.swift */,
+				CEBD70CE1C1620F50076E708 /* DayInterfaceController.swift */,
+				CEBD70B71C15FB4E0076E708 /* ExtensionDelegate.swift */,
+				CEBD70B91C15FB4E0076E708 /* GlanceController.swift */,
+				CEBD70BB1C15FB4E0076E708 /* ComplicationController.swift */,
+				CEBD70BD1C15FB4E0076E708 /* Assets.xcassets */,
+				CEBD70BF1C15FB4E0076E708 /* Info.plist */,
+			);
+			path = "MJournalWatch Extension";
+			sourceTree = "<group>";
+		};
+		CEBD70CB1C16090C0076E708 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CE7926F11C14C82700CCB672 /* Color.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		CEBD70CC1C160A620076E708 /* ViewControllers+Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CEE427F31C11EFD3008637C2 /* WeekViewController.swift */,
+				CE3DF42A1C1327AF004B9D42 /* DaySheduleViewController.swift */,
+				CEE427F81C11FF88008637C2 /* DayCell.swift */,
+				CEBF44C21C12246B00598EF3 /* DayCellView.swift */,
+			);
+			name = "ViewControllers+Cells";
+			sourceTree = "<group>";
+		};
+		CEE427F51C11FC76008637C2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE7926F01C14C81B00CCB672 /* Common */,
+				CE9D572B1C14C9E1009B4025 /* Core */,
+				CE7926E61C14B36800CCB672 /* Parses */,
+				CEE427F61C11FC91008637C2 /* WeekDays.swift */,
+				CE9D57471C14CB38009B4025 /* Time.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CE43E3131C10D45C006F1D95 /* MJournal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE43E3261C10D45C006F1D95 /* Build configuration list for PBXNativeTarget "MJournal" */;
+			buildPhases = (
+				CE43E3101C10D45C006F1D95 /* Sources */,
+				CE43E3111C10D45C006F1D95 /* Frameworks */,
+				CE43E3121C10D45C006F1D95 /* Resources */,
+				CE9D57411C14CA21009B4025 /* Embed App Extensions */,
+				CEBD70CA1C15FB4E0076E708 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE9D573C1C14CA21009B4025 /* PBXTargetDependency */,
+				CEBD70C11C15FB4E0076E708 /* PBXTargetDependency */,
+			);
+			name = MJournal;
+			productName = MJournal;
+			productReference = CE43E3141C10D45C006F1D95 /* MJournal.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CE9D572F1C14CA21009B4025 /* MJournalToday */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE9D573E1C14CA21009B4025 /* Build configuration list for PBXNativeTarget "MJournalToday" */;
+			buildPhases = (
+				CE9D572C1C14CA21009B4025 /* Sources */,
+				CE9D572D1C14CA21009B4025 /* Frameworks */,
+				CE9D572E1C14CA21009B4025 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MJournalToday;
+			productName = MJournalToday;
+			productReference = CE9D57301C14CA21009B4025 /* MJournalToday.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		CEBD70A31C15FB4E0076E708 /* MJournalWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEBD70C71C15FB4E0076E708 /* Build configuration list for PBXNativeTarget "MJournalWatch" */;
+			buildPhases = (
+				CEBD70A21C15FB4E0076E708 /* Resources */,
+				CEBD70C61C15FB4E0076E708 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CEBD70B31C15FB4E0076E708 /* PBXTargetDependency */,
+			);
+			name = MJournalWatch;
+			productName = MJournalWatch;
+			productReference = CEBD70A41C15FB4E0076E708 /* MJournalWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		CEBD70AF1C15FB4E0076E708 /* MJournalWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CEBD70C31C15FB4E0076E708 /* Build configuration list for PBXNativeTarget "MJournalWatch Extension" */;
+			buildPhases = (
+				CEBD70AC1C15FB4E0076E708 /* Sources */,
+				CEBD70AD1C15FB4E0076E708 /* Frameworks */,
+				CEBD70AE1C15FB4E0076E708 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MJournalWatch Extension";
+			productName = "MJournalWatch Extension";
+			productReference = CEBD70B01C15FB4E0076E708 /* MJournalWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CE43E30C1C10D45C006F1D95 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = Ocode;
+				TargetAttributes = {
+					CE43E3131C10D45C006F1D95 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 3PU2FE6BA7;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					CE9D572F1C14CA21009B4025 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 3PU2FE6BA7;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					CEBD70A31C15FB4E0076E708 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 3PU2FE6BA7;
+					};
+					CEBD70AF1C15FB4E0076E708 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 3PU2FE6BA7;
+					};
+				};
+			};
+			buildConfigurationList = CE43E30F1C10D45C006F1D95 /* Build configuration list for PBXProject "MJournal" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CE43E30B1C10D45C006F1D95;
+			productRefGroup = CE43E3151C10D45C006F1D95 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CE43E3131C10D45C006F1D95 /* MJournal */,
+				CE9D572F1C14CA21009B4025 /* MJournalToday */,
+				CEBD70A31C15FB4E0076E708 /* MJournalWatch */,
+				CEBD70AF1C15FB4E0076E708 /* MJournalWatch Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CE43E3121C10D45C006F1D95 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE43E3221C10D45C006F1D95 /* LaunchScreen.storyboard in Resources */,
+				CE23CCAD1C14A67500A94F1D /* Timetable.plist in Resources */,
+				CE43E31F1C10D45C006F1D95 /* Assets.xcassets in Resources */,
+				CE3DF4251C1320F1004B9D42 /* Shedule.plist in Resources */,
+				CE43E31D1C10D45C006F1D95 /* Main.storyboard in Resources */,
+				CE7926E31C14B1A200CCB672 /* Rooms.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE9D572E1C14CA21009B4025 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE9D57391C14CA21009B4025 /* MainInterface.storyboard in Resources */,
+				CE9D57461C14CAFC009B4025 /* Rooms.plist in Resources */,
+				CE9D57441C14CAF7009B4025 /* Shedule.plist in Resources */,
+				CE9D57451C14CAFA009B4025 /* Timetable.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEBD70A21C15FB4E0076E708 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEBD70AA1C15FB4E0076E708 /* Assets.xcassets in Resources */,
+				CEBD70A81C15FB4E0076E708 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEBD70AE1C15FB4E0076E708 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEBD70BE1C15FB4E0076E708 /* Assets.xcassets in Resources */,
+				CE2BB6831C16258300778FC8 /* Rooms.plist in Resources */,
+				CE2BB6811C16257E00778FC8 /* Shedule.plist in Resources */,
+				CE2BB6821C16258000778FC8 /* Timetable.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CE43E3101C10D45C006F1D95 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE3DF42B1C1327AF004B9D42 /* DaySheduleViewController.swift in Sources */,
+				CE43E3181C10D45C006F1D95 /* AppDelegate.swift in Sources */,
+				CE9D57481C14CB38009B4025 /* Time.swift in Sources */,
+				CEE427F91C11FF88008637C2 /* DayCell.swift in Sources */,
+				CE7926F21C14C82700CCB672 /* Color.swift in Sources */,
+				CEE427F71C11FC91008637C2 /* WeekDays.swift in Sources */,
+				CE23CCAF1C14A85D00A94F1D /* TimetableParser.swift in Sources */,
+				CEE427F41C11EFD3008637C2 /* WeekViewController.swift in Sources */,
+				CEBF44C31C12246B00598EF3 /* DayCellView.swift in Sources */,
+				CE3DF4271C132409004B9D42 /* SheduleParser.swift in Sources */,
+				CE7926EB1C14B40C00CCB672 /* RoomParser.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE9D572C1C14CA21009B4025 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEBD70A11C15EF7B0076E708 /* WeekDays.swift in Sources */,
+				CE9D57491C14CB38009B4025 /* Time.swift in Sources */,
+				CE9D574B1C14CD96009B4025 /* RoomParser.swift in Sources */,
+				CE9D57361C14CA21009B4025 /* TodayViewController.swift in Sources */,
+				CE9D574A1C14CD93009B4025 /* TimetableParser.swift in Sources */,
+				CE9D574C1C14CD99009B4025 /* SheduleParser.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CEBD70AC1C15FB4E0076E708 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEBD70CF1C1620F50076E708 /* DayInterfaceController.swift in Sources */,
+				CEBD70B81C15FB4E0076E708 /* ExtensionDelegate.swift in Sources */,
+				CEBD70D31C1622610076E708 /* Time.swift in Sources */,
+				CEBD70BC1C15FB4E0076E708 /* ComplicationController.swift in Sources */,
+				CEBD70CD1C161A5F0076E708 /* WeekDays.swift in Sources */,
+				CEBD70D11C1622590076E708 /* TimetableParser.swift in Sources */,
+				CEBD70B61C15FB4E0076E708 /* InterfaceController.swift in Sources */,
+				CEBD70BA1C15FB4E0076E708 /* GlanceController.swift in Sources */,
+				CEBD70D01C1622570076E708 /* SheduleParser.swift in Sources */,
+				CEBD70D21C16225C0076E708 /* RoomParser.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CE9D573C1C14CA21009B4025 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE9D572F1C14CA21009B4025 /* MJournalToday */;
+			targetProxy = CE9D573B1C14CA21009B4025 /* PBXContainerItemProxy */;
+		};
+		CEBD70B31C15FB4E0076E708 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CEBD70AF1C15FB4E0076E708 /* MJournalWatch Extension */;
+			targetProxy = CEBD70B21C15FB4E0076E708 /* PBXContainerItemProxy */;
+		};
+		CEBD70C11C15FB4E0076E708 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CEBD70A31C15FB4E0076E708 /* MJournalWatch */;
+			targetProxy = CEBD70C01C15FB4E0076E708 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CE43E31B1C10D45C006F1D95 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE43E31C1C10D45C006F1D95 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CE43E3201C10D45C006F1D95 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE43E3211C10D45C006F1D95 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		CE9D57371C14CA21009B4025 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE9D57381C14CA21009B4025 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		CEBD70A61C15FB4E0076E708 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CEBD70A71C15FB4E0076E708 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CE43E3241C10D45C006F1D95 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CE43E3251C10D45C006F1D95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CE43E3271C10D45C006F1D95 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MJournal/MJournal.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = MJournal/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mike.MJournal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		CE43E3281C10D45C006F1D95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MJournal/MJournal.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = MJournal/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mike.MJournal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		CE9D573F1C14CA21009B4025 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MJournalToday/MJournalToday.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = MJournalToday/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mike.MJournal.MJournalToday;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		CE9D57401C14CA21009B4025 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MJournalToday/MJournalToday.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = MJournalToday/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mike.MJournal.MJournalToday;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		CEBD70C41C15FB4E0076E708 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "MJournalWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mike.MJournal.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		CEBD70C51C15FB4E0076E708 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "MJournalWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mike.MJournal.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		CEBD70C81C15FB4E0076E708 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = MJournalWatch_Extension;
+				INFOPLIST_FILE = MJournalWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mike.MJournal.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		CEBD70C91C15FB4E0076E708 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = MJournalWatch_Extension;
+				INFOPLIST_FILE = MJournalWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mike.MJournal.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CE43E30F1C10D45C006F1D95 /* Build configuration list for PBXProject "MJournal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE43E3241C10D45C006F1D95 /* Debug */,
+				CE43E3251C10D45C006F1D95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE43E3261C10D45C006F1D95 /* Build configuration list for PBXNativeTarget "MJournal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE43E3271C10D45C006F1D95 /* Debug */,
+				CE43E3281C10D45C006F1D95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE9D573E1C14CA21009B4025 /* Build configuration list for PBXNativeTarget "MJournalToday" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE9D573F1C14CA21009B4025 /* Debug */,
+				CE9D57401C14CA21009B4025 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEBD70C31C15FB4E0076E708 /* Build configuration list for PBXNativeTarget "MJournalWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEBD70C41C15FB4E0076E708 /* Debug */,
+				CEBD70C51C15FB4E0076E708 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CEBD70C71C15FB4E0076E708 /* Build configuration list for PBXNativeTarget "MJournalWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CEBD70C81C15FB4E0076E708 /* Debug */,
+				CEBD70C91C15FB4E0076E708 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CE43E30C1C10D45C006F1D95 /* Project object */;
+}

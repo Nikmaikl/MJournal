@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<array>
+		<string>География</string>
+		<string>История</string>
+		<string>Информатика</string>
+		<string>История</string>
+		<string>Англ. язык</string>
+		<string>Англ.-амер.литер.</string>
+	</array>
+	<array>
+		<string>Физкультура</string>
+		<string>Англ. язык</string>
+		<string>Рус. язык</string>
+		<string>Рус. язык</string>
+		<string>Математика</string>
+		<string>ПУР</string>
+	</array>
+	<array>
+		<string>Математика</string>
+		<string>Англ. язык</string>
+		<string>Рус. литература</string>
+		<string>Рус. литература</string>
+		<string>Франц. язык</string>
+		<string>Англ. язык</string>
+	</array>
+	<array>
+		<string>Физика</string>
+		<string>Математика</string>
+		<string>Англ. язык</string>
+		<string>Химия</string>
+		<string>История</string>
+		<string>Биология</string>
+		<string>Физкультура</string>
+	</array>
+	<array>
+		<string>Англ. язык</string>
+		<string>История</string>
+		<string>ОБЖ</string>
+		<string>Рус. язык</string>
+		<string>Обществознание</string>
+		<string>Математика</string>
+	</array>
+	<array>
+		<string>Франц. язык</string>
+		<string>Обществознание</string>
+		<string>Философия</string>
+		<string>Физкультура</string>
+		<string>Рус. литература</string>
+		<string>Физика</string>
+	</array>
+</array>
+</plist>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Философия</key>
+	<integer>220</integer>
+	<key>Обществознание</key>
+	<integer>0</integer>
+	<key>ОБЖ</key>
+	<integer>0</integer>
+	<key>Биология</key>
+	<integer>208</integer>
+	<key>Химия</key>
+	<integer>210</integer>
+	<key>Физика</key>
+	<integer>308</integer>
+	<key>Франц. язык</key>
+	<integer>215</integer>
+	<key>Рус. литература</key>
+	<integer>0</integer>
+	<key>ПУР</key>
+	<integer>0</integer>
+	<key>Математика</key>
+	<integer>0</integer>
+	<key>Рус. язык</key>
+	<integer>315</integer>
+	<key>Физкультура</key>
+	<integer>0</integer>
+	<key>Англ.-амер.литер.</key>
+	<integer>0</integer>
+	<key>Англ. язык</key>
+	<integer>306</integer>
+	<key>Информатика</key>
+	<integer>302</integer>
+	<key>История</key>
+	<integer>217</integer>
+	<key>География</key>
+	<integer>216</integer>
+</dict>
+</plist>
