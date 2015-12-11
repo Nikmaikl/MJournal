@@ -11,7 +11,11 @@ import UIKit
 class DayCellView: UIView {
     
     var colorForBezel: UIColor! = UIColor.whiteColor()
-    var colorForFill: UIColor! = UIColor.whiteColor()
+    var colorForFill: UIColor! = UIColor.whiteColor() {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
     
     override func drawRect(rect: CGRect) {
         let lineWidth = rect.width/84.0
