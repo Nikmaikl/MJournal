@@ -30,7 +30,7 @@ class WeekCollectionViewController: UICollectionViewController {
         let width = (min(screenSize.height, screenSize.width) - defaultSpace * 3) / numberOfItemsPerSmallerSide
         
         let layout = collectionView!.collectionViewLayout as? UICollectionViewFlowLayout
-        layout?.itemSize = CGSize(width: width, height: 144)
+        layout?.itemSize = CGSize(width: width, height: width)
         layout?.minimumLineSpacing = defaultSpace
         layout?.minimumInteritemSpacing = defaultSpace
         
@@ -45,7 +45,7 @@ class WeekCollectionViewController: UICollectionViewController {
     
     func highlightCurrentDay() {
         let currentCell = collectionView?.cellForItemAtIndexPath(currentDayIndex) as? DayCell
-        currentCell?.mainView.colorForFill = UIColor.getColorForCell(withRow: currentDayIndex.row, alpha: 0.08)
+        currentCell?.mainView.colorForFill = UIColor.getColorForCell(withRow: currentDayIndex.row, alpha: 0.06)
     }
     
     // MARK: - Navigation
@@ -54,6 +54,11 @@ class WeekCollectionViewController: UICollectionViewController {
         if let moreInfo = segue.destinationViewController as? DaySheduleViewController {
             moreInfo.dayNumber = self.dayNumber
             moreInfo.colorForBar = self.colorForCell
+            if dayNumber == currentDayIndex.row {
+                moreInfo.title = NSLocalizedString("Today", comment: "Today")
+            } else {
+                moreInfo.title = NSLocalizedString(WeekDays.days[dayNumber], comment: "Day")
+            }
         }
     }
 
@@ -92,8 +97,10 @@ class WeekCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        collectionView.deselectItemAtIndexPath(indexPath, animated: true)
+//        collectionView.deselectItemAtIndexPath(indexPath, animated: true)
         let _ = collectionView.cellForItemAtIndexPath(indexPath) as? DayCell
+//        cell?.mainView.colorForFill = UIColor.getColorForCell(withRow: indexPath.row, alpha: 0.6)
+        
         dayNumber = indexPath.row
         colorForCell = UIColor.getColorForCell(withRow: indexPath.row, alpha: 1)
         

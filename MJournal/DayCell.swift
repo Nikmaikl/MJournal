@@ -17,7 +17,7 @@ class DayCell: UICollectionViewCell {
     var day: String! {
         didSet {
             let dayImage = UIImage(named: self.day)
-            self.dayName.text = day
+            self.dayName.text = NSLocalizedString(self.day, comment: "Day")
             self.dayImage.image = dayImage
             self.dayImage.bounds.size = dayImage!.size
         }

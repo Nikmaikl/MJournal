@@ -45,16 +45,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Guv-ux-NwS" customClass="DayCellView" customModule="MJournal" customModuleProvider="target">
-                                            <rect key="frame" x="8" y="8" width="128" height="128"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="144" height="144"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Monday" translatesAutoresizingMaskIntoConstraints="NO" id="NKU-Gg-8mh">
-                                                    <rect key="frame" x="47" y="25" width="34" height="66"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Monday" translatesAutoresizingMaskIntoConstraints="NO" id="NKU-Gg-8mh">
+                                                    <rect key="frame" x="55" y="28" width="34" height="66"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yX-pp-Ooc">
-                                                    <rect key="frame" x="25" y="99" width="78" height="21"/>
+                                                    <rect key="frame" x="8" y="102" width="128" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="T9a-t0-niQ"/>
-                                                        <constraint firstAttribute="width" constant="78" id="mJi-Zk-0oM"/>
+                                                        <constraint firstAttribute="width" constant="128" id="mJi-Zk-0oM"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -65,8 +65,8 @@
                                             <constraints>
                                                 <constraint firstItem="NKU-Gg-8mh" firstAttribute="centerX" secondItem="Guv-ux-NwS" secondAttribute="centerX" id="0FH-xP-1PU"/>
                                                 <constraint firstItem="3yX-pp-Ooc" firstAttribute="centerX" secondItem="Guv-ux-NwS" secondAttribute="centerX" id="0l1-nU-hlr"/>
-                                                <constraint firstAttribute="bottom" secondItem="3yX-pp-Ooc" secondAttribute="bottom" constant="8" id="4Ph-LW-sSX"/>
-                                                <constraint firstItem="3yX-pp-Ooc" firstAttribute="top" secondItem="NKU-Gg-8mh" secondAttribute="bottom" constant="15" id="fJe-QT-5L7"/>
+                                                <constraint firstItem="NKU-Gg-8mh" firstAttribute="centerY" secondItem="Guv-ux-NwS" secondAttribute="centerY" constant="-11.5" id="I7w-Aw-cub"/>
+                                                <constraint firstItem="3yX-pp-Ooc" firstAttribute="top" secondItem="NKU-Gg-8mh" secondAttribute="bottom" constant="8" id="NRJ-tb-AM5"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -78,10 +78,10 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="Guv-ux-NwS" firstAttribute="top" secondItem="Y7t-Wz-8dq" secondAttribute="topMargin" id="1vi-ia-3c6"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="Guv-ux-NwS" secondAttribute="trailing" id="8Bp-zf-gkq"/>
-                                    <constraint firstItem="Guv-ux-NwS" firstAttribute="leading" secondItem="Y7t-Wz-8dq" secondAttribute="leadingMargin" id="NUl-m3-w9f"/>
-                                    <constraint firstItem="Guv-ux-NwS" firstAttribute="bottom" secondItem="Y7t-Wz-8dq" secondAttribute="bottomMargin" id="gth-FT-nyL"/>
+                                    <constraint firstItem="Guv-ux-NwS" firstAttribute="top" secondItem="Y7t-Wz-8dq" secondAttribute="topMargin" constant="-8" id="1vi-ia-3c6"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="Guv-ux-NwS" secondAttribute="trailing" constant="-8" id="8Bp-zf-gkq"/>
+                                    <constraint firstItem="Guv-ux-NwS" firstAttribute="leading" secondItem="Y7t-Wz-8dq" secondAttribute="leadingMargin" constant="-8" id="NUl-m3-w9f"/>
+                                    <constraint firstItem="Guv-ux-NwS" firstAttribute="bottom" secondItem="Y7t-Wz-8dq" secondAttribute="bottomMargin" constant="8" id="gth-FT-nyL"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="dayImage" destination="NKU-Gg-8mh" id="dRe-es-Bbt"/>

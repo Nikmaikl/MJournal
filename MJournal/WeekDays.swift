@@ -12,7 +12,13 @@ class WeekDays {
     static var days = WeekDays.getDays()
     
     private class func getDays() -> Array<String> {
-        return Array(arrayLiteral: "Monday", "Tuesday", "Wednesday",
-            "Thursday", "Friday", "Saturday")
+        print(NSLocalizedString("Monday", comment: "Monday"))
+        return Array(arrayLiteral:
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday")
     }
 }

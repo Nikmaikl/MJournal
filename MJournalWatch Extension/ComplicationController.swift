@@ -32,14 +32,20 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
     // MARK: - Timeline Population
     
     func getCurrentTimelineEntryForComplication(complication: CLKComplication, withHandler handler: ((CLKComplicationTimelineEntry?) -> Void)) {
-        // Call the handler with the current timeline entry
-        handler(nil)
+        let template = CLKComplicationTemplateModularLargeStandardBody()
+        
+        template.headerTextProvider = CLKTimeIntervalTextProvider(startDate: NSDate(), endDate: NSDate(timeInterval: 60, sinceDate: NSDate()))
+        template.body1TextProvider = CLKSimpleTextProvider(text: "История")
+        template.body2TextProvider = CLKSimpleTextProvider(text: "Каб. 220")
+        
+        let entry = CLKComplicationTimelineEntry(date: NSDate(timeInterval: 60*60 * -0.25, sinceDate: NSDate()), complicationTemplate: template)
+        handler(entry)
     }
     
-    func getTimelineEntriesForComplication(complication: CLKComplication, beforeDate date: NSDate, limit: Int, withHandler handler: (([CLKComplicationTimelineEntry]?) -> Void)) {
-        // Call the handler with the timeline entries prior to the given date
-        handler(nil)
-    }
+//    func getTimelineEntriesForComplication(complication: CLKComplication, beforeDate date: NSDate, limit: Int, withHandler handler: (([CLKComplicationTimelineEntry]?) -> Void)) {
+//        // Call the handler with the timeline entries prior to the given date
+//        handler(nil)
+//    }
     
     func getTimelineEntriesForComplication(complication: CLKComplication, afterDate date: NSDate, limit: Int, withHandler handler: (([CLKComplicationTimelineEntry]?) -> Void)) {
         // Call the handler with the timeline entries after to the given date
@@ -60,7 +66,7 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         let template = CLKComplicationTemplateModularLargeStandardBody()
         template.headerTextProvider = CLKSimpleTextProvider(text: "Расписание")
         template.body1TextProvider = CLKSimpleTextProvider(text: "История")
-        template.body1TextProvider = CLKSimpleTextProvider(text: "Информатика")
+        template.body2TextProvider = CLKSimpleTextProvider(text: "Каб. 220")
         
         handler(template)
     }
