@@ -18,7 +18,7 @@ class DayCellView: UIView {
     }
     
     override func drawRect(rect: CGRect) {
-        let lineWidth = rect.width/84.0
+        let lineWidth = rect.width/44.0
         let cornerRadius = rect.width/16.0
         let tileRect = rect.insetBy(dx: lineWidth/1.0, dy: lineWidth/1.0)
         

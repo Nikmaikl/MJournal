@@ -14,10 +14,12 @@ let userDef = NSUserDefaults()
 class TodayViewController: UIViewController, NCWidgetProviding {
         
     @IBOutlet weak var currentShedule: UILabel!
+    
+    var timeTable = TimetableParser()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        TimetableParser.getCurrentSubject({
+        timeTable.getCurrentSubject({
             subj, nextSubj in
             self.currentShedule.text = "Сейчас: " + subj + "\nСледующий: " + nextSubj
         })

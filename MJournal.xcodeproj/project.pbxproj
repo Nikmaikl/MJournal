@@ -11,6 +11,7 @@
 		4C71A78B1C2B2E89006570CF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C71A7891C2B2DDF006570CF /* Localizable.strings */; };
 		4C71A78C1C2B2E8B006570CF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C71A7891C2B2DDF006570CF /* Localizable.strings */; };
 		4C71A78D1C2B2E8B006570CF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C71A7891C2B2DDF006570CF /* Localizable.strings */; };
+		4CEDA9C51D4410F800ED4E14 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEDA9C41D4410F800ED4E14 /* SettingsTableViewController.swift */; };
 		CE23CCAD1C14A67500A94F1D /* Timetable.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE23CCAC1C14A67500A94F1D /* Timetable.plist */; };
 		CE23CCAF1C14A85D00A94F1D /* TimetableParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23CCAE1C14A85D00A94F1D /* TimetableParser.swift */; };
 		CE2BB6811C16257E00778FC8 /* Shedule.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE3DF4241C1320F1004B9D42 /* Shedule.plist */; };
@@ -126,6 +127,7 @@
 		4C8A04361C1E09CB006DEEA5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		4C8A04371C1E09CB006DEEA5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		4C8A04381C1E09CB006DEEA5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Interface.strings; sourceTree = "<group>"; };
+		4CEDA9C41D4410F800ED4E14 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		CE23CCAC1C14A67500A94F1D /* Timetable.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Timetable.plist; sourceTree = "<group>"; };
 		CE23CCAE1C14A85D00A94F1D /* TimetableParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableParser.swift; sourceTree = "<group>"; };
 		CE3DF4241C1320F1004B9D42 /* Shedule.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Shedule.plist; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 			children = (
 				CEE427F31C11EFD3008637C2 /* WeekViewController.swift */,
 				CE3DF42A1C1327AF004B9D42 /* DaySheduleViewController.swift */,
+				4CEDA9C41D4410F800ED4E14 /* SettingsTableViewController.swift */,
 				CEE427F81C11FF88008637C2 /* DayCell.swift */,
 				CEBF44C21C12246B00598EF3 /* DayCellView.swift */,
 			);
@@ -458,6 +461,9 @@
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
+							com.apple.InterAppAudio = {
+								enabled = 0;
+							};
 						};
 					};
 					CEBD70A31C15FB4E0076E708 = {
@@ -556,6 +562,7 @@
 				CEE427F71C11FC91008637C2 /* WeekDays.swift in Sources */,
 				CE23CCAF1C14A85D00A94F1D /* TimetableParser.swift in Sources */,
 				CEE427F41C11EFD3008637C2 /* WeekViewController.swift in Sources */,
+				4CEDA9C51D4410F800ED4E14 /* SettingsTableViewController.swift in Sources */,
 				CEBF44C31C12246B00598EF3 /* DayCellView.swift in Sources */,
 				CE3DF4271C132409004B9D42 /* SheduleParser.swift in Sources */,
 				CE7926EB1C14B40C00CCB672 /* RoomParser.swift in Sources */,

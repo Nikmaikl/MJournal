@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cyk-bf-o2w">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cyk-bf-o2w">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -60,13 +60,21 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сегодня" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aM6-ZE-Bu1">
+                                                    <rect key="frame" x="43" y="123" width="58" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="13"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="NKU-Gg-8mh" firstAttribute="centerX" secondItem="Guv-ux-NwS" secondAttribute="centerX" id="0FH-xP-1PU"/>
                                                 <constraint firstItem="3yX-pp-Ooc" firstAttribute="centerX" secondItem="Guv-ux-NwS" secondAttribute="centerX" id="0l1-nU-hlr"/>
+                                                <constraint firstItem="aM6-ZE-Bu1" firstAttribute="top" secondItem="3yX-pp-Ooc" secondAttribute="bottom" id="CR9-2b-XQm"/>
                                                 <constraint firstItem="NKU-Gg-8mh" firstAttribute="centerY" secondItem="Guv-ux-NwS" secondAttribute="centerY" constant="-11.5" id="I7w-Aw-cub"/>
                                                 <constraint firstItem="3yX-pp-Ooc" firstAttribute="top" secondItem="NKU-Gg-8mh" secondAttribute="bottom" constant="8" id="NRJ-tb-AM5"/>
+                                                <constraint firstItem="aM6-ZE-Bu1" firstAttribute="centerX" secondItem="Guv-ux-NwS" secondAttribute="centerX" id="uxR-aP-NpG"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -87,6 +95,7 @@
                                     <outlet property="dayImage" destination="NKU-Gg-8mh" id="dRe-es-Bbt"/>
                                     <outlet property="dayName" destination="3yX-pp-Ooc" id="GZy-3L-mji"/>
                                     <outlet property="mainView" destination="Guv-ux-NwS" id="qsE-kv-Dfb"/>
+                                    <outlet property="nowLabel" destination="aM6-ZE-Bu1" id="ncq-eF-QVh"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -95,7 +104,13 @@
                             <outlet property="delegate" destination="iOH-hU-Q24" id="OUK-A3-aeo"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Week" id="8sv-8F-jgi"/>
+                    <navigationItem key="navigationItem" title="Week" id="8sv-8F-jgi">
+                        <barButtonItem key="leftBarButtonItem" image="settings" id="rHd-g5-eKK">
+                            <connections>
+                                <segue destination="0AZ-t9-hb3" kind="show" id="t8a-ts-oJW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="sfL-2W-gFq" kind="show" identifier="MoreInfo" id="dRY-Lj-PxF"/>
                     </connections>
@@ -104,7 +119,57 @@
             </objects>
             <point key="canvasLocation" x="339" y="1094"/>
         </scene>
-        <!--Day Shedule View Controller-->
+        <!--Settings-->
+        <scene sceneID="zeF-cD-dSc">
+            <objects>
+                <tableViewController id="0AZ-t9-hb3" customClass="SettingsTableViewController" customModule="MJournal" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="78" sectionHeaderHeight="28" sectionFooterHeight="28" id="gRP-a6-bA2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="78" id="hje-0v-7s9">
+                                <rect key="frame" x="0.0" y="92" width="600" height="78"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hje-0v-7s9" id="5Js-B7-ZB9">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="77"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s7v-cy-Zfe">
+                                            <rect key="frame" x="8" y="17" width="44" height="44"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="44" id="7P5-zH-Xo7"/>
+                                                <constraint firstAttribute="height" constant="44" id="ox1-Jd-Rd8"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Время занятий" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xFE-EF-Wyt">
+                                            <rect key="frame" x="60" y="28" width="121" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="s7v-cy-Zfe" firstAttribute="leading" secondItem="5Js-B7-ZB9" secondAttribute="leadingMargin" id="IlT-ew-fDZ"/>
+                                        <constraint firstItem="xFE-EF-Wyt" firstAttribute="centerY" secondItem="5Js-B7-ZB9" secondAttribute="centerY" id="kpk-cW-jA2"/>
+                                        <constraint firstItem="xFE-EF-Wyt" firstAttribute="leading" secondItem="s7v-cy-Zfe" secondAttribute="trailing" constant="8" id="rgK-A9-LlZ"/>
+                                        <constraint firstItem="s7v-cy-Zfe" firstAttribute="centerY" secondItem="5Js-B7-ZB9" secondAttribute="centerY" id="wRa-WW-MNl"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="0AZ-t9-hb3" id="7p6-Dn-1Xl"/>
+                            <outlet property="delegate" destination="0AZ-t9-hb3" id="WW2-8P-NRC"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Settings" id="Fs7-2E-9be"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K3Q-Xv-1eX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="973" y="1094"/>
+        </scene>
+        <!--Title-->
         <scene sceneID="rhh-nb-ocd">
             <objects>
                 <tableViewController id="sfL-2W-gFq" customClass="DaySheduleViewController" customModule="MJournal" customModuleProvider="target" sceneMemberID="viewController">
@@ -112,6 +177,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" hidden="YES" contentMode="scaleToFill" id="G5H-GT-M6G">
+                            <rect key="frame" x="0.0" y="181" width="600" height="71"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUo-hG-QvK">
+                                    <rect key="frame" x="20" y="10" width="560" height="51"/>
+                                    <color key="backgroundColor" red="0.30706701479999998" green="0.79965641359999995" blue="0.50641067750000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                    <state key="normal" title="+ Добавить">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="addSubject:" destination="sfL-2W-gFq" eventType="touchUpInside" id="gbS-gk-XEQ"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="LUo-hG-QvK" firstAttribute="top" secondItem="G5H-GT-M6G" secondAttribute="top" constant="10" id="ICz-BH-Qn2"/>
+                                <constraint firstAttribute="trailing" secondItem="LUo-hG-QvK" secondAttribute="trailing" constant="20" id="dhg-gd-XzT"/>
+                                <constraint firstAttribute="bottom" secondItem="LUo-hG-QvK" secondAttribute="bottom" constant="10" id="nnq-3t-klc"/>
+                                <constraint firstItem="LUo-hG-QvK" firstAttribute="leading" secondItem="G5H-GT-M6G" secondAttribute="leading" constant="20" id="swn-kc-Tjg"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SubjectCell" textLabel="0jG-R5-uWh" detailTextLabel="bVK-6Y-fFh" rowHeight="89" style="IBUITableViewCellStyleSubtitle" id="eXg-Zt-reY">
                                 <rect key="frame" x="0.0" y="92" width="600" height="89"/>
@@ -136,6 +229,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="TDa-L1-V2I" kind="show" id="eTg-tU-5Uv"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -144,13 +240,36 @@
                             <outlet property="delegate" destination="sfL-2W-gFq" id="DMH-n4-qZT"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="Vir-XW-Cw6"/>
+                    <connections>
+                        <outlet property="addSubjectView" destination="G5H-GT-M6G" id="cUP-dZ-N4S"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8AM-AO-Jn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="339" y="1854"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="nMo-yh-zRJ">
+            <objects>
+                <viewController id="TDa-L1-V2I" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="daj-ab-pK0"/>
+                        <viewControllerLayoutGuide type="bottom" id="XEg-zL-gIJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VS3-M7-OD3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wun-9B-d2s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="979" y="1854"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Monday" width="34" height="66"/>
+        <image name="settings" width="22" height="22"/>
     </resources>
 </document>

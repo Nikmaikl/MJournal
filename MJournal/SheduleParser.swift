@@ -9,14 +9,15 @@
 import Foundation
 
 class SheduleParser {
-    static var shedule = SheduleParser.loadShedule()
     
-    private class func loadShedule() -> [NSArray] {
-        var result = [NSArray]()
-        let arr = NSArray(contentsOfFile: NSBundle.mainBundle().pathForResource("Shedule", ofType: "plist")!)
+    static var shedule = SheduleParser.getShedule()
+    
+    private class func getShedule() -> [NSMutableArray] {
+        var result = [NSMutableArray]()
+        let arr = NSMutableArray(contentsOfFile: NSBundle.mainBundle().pathForResource("Shedule", ofType: "plist")!)
         
-        for a in arr as! [NSArray] {
-            result.append(a)
+        for a in arr! {
+            result.append(a as! NSMutableArray)
         }
         
         return result

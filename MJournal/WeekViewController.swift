@@ -23,6 +23,7 @@ class WeekCollectionViewController: UICollectionViewController {
     let defaultCornerRadius: CGFloat = 10.0
     let defaultSpace: CGFloat = 16.0
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,14 +39,19 @@ class WeekCollectionViewController: UICollectionViewController {
 
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        highlightCurrentDay()
     }
     
     func highlightCurrentDay() {
         let currentCell = collectionView?.cellForItemAtIndexPath(currentDayIndex) as? DayCell
-        currentCell?.mainView.colorForFill = UIColor.getColorForCell(withRow: currentDayIndex.row, alpha: 0.06)
+        
+        currentCell?.mainView.colorForFill = UIColor.getColorForCell(withRow: currentDayIndex.row, alpha: 0.2)
     }
     
     // MARK: - Navigation
@@ -70,37 +76,22 @@ class WeekCollectionViewController: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as? DayCell
-
+        
+        if currentDayIndex.row == indexPath.row {
+            cell?.todayDay = true
+        }
+        
         cell?.day = WeekDays.days[indexPath.row]
         cell?.mainView.colorForBezel = UIColor.getColorForCell(withRow: indexPath.row, alpha: 1)
+
         
         return cell!
     }
 
     // MARK: UICollectionViewDelegate
     
-    override func collectionView(collectionView: UICollectionView, didHighlightItemAtIndexPath indexPath: NSIndexPath) {
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as? DayCell
-        
-        cell?.mainView?.colorForFill = UIColor.getColorForCell(withRow: indexPath.row, alpha: 0.6)
-        cell?.mainView.setNeedsDisplay()
-    }
-    
-    override func collectionView(collectionView: UICollectionView, didUnhighlightItemAtIndexPath indexPath: NSIndexPath) {
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as? DayCell
-        
-        highlightCurrentDay()
-        
-        if indexPath != currentDayIndex { cell?.mainView?.colorForFill = UIColor.whiteColor() }
-        else { highlightCurrentDay() }
-        cell?.mainView.setNeedsDisplay()
-    }
-    
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-//        collectionView.deselectItemAtIndexPath(indexPath, animated: true)
         let _ = collectionView.cellForItemAtIndexPath(indexPath) as? DayCell
-//        cell?.mainView.colorForFill = UIColor.getColorForCell(withRow: indexPath.row, alpha: 0.6)
-        
         dayNumber = indexPath.row
         colorForCell = UIColor.getColorForCell(withRow: indexPath.row, alpha: 1)
         

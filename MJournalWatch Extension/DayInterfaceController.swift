@@ -13,12 +13,14 @@ class DayInterfaceController: WKInterfaceController {
 
     @IBOutlet var table: WKInterfaceTable!
     
+    var sheduleParser = SheduleParser()
+    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
-        let dayNumber = context as? Int
+        let dayNumber = Time.getDay()
         
-        let subjects = SheduleParser.shedule[dayNumber!]
+        let subjects = SheduleParser.shedule[dayNumber]
         
         table.setNumberOfRows(subjects.count, withRowType: "SubjectRow")
         for (i, subj) in subjects.enumerate() {
