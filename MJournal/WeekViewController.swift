@@ -41,7 +41,8 @@ class WeekCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.barStyle = .Black//UIColor(red: 30/255, green: 31/255, blue: 39/255, alpha: 1.0) //30 31 39
     }
     
     override func viewDidAppear(animated: Bool) {

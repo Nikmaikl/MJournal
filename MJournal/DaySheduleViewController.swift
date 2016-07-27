@@ -20,7 +20,7 @@ class DaySheduleViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.tintColor = colorForBar
+//        self.navigationController?.navigationBar.tintColor = colorForBar
         self.clearsSelectionOnViewWillAppear = false
         
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
@@ -95,10 +95,16 @@ class DaySheduleViewController: UITableViewController {
         let subject = SheduleParser.shedule[dayNumber][indexPath.row] as! String
         let room: String = String(RoomParser.rooms[subject]!)
         
-        cell.textLabel!.text = String(indexPath.row+1) + ". " + subject
-        cell.detailTextLabel!.text = "     " + String(TimetableParser.timeTable["Regular"]![indexPath.row]["Start"] as! String) + " - " + String(TimetableParser.timeTable["Regular"]![indexPath.row]["End"] as! String)
+        if let subjectCell = cell as? SubjectTableViewCell {
+            subjectCell.colorForToday = colorForBar
+            subjectCell.lesson = Lesson(name: subject, time: String(TimetableParser.timeTable["Regular"]![indexPath.row]["Start"] as! String) + " - \n" + String(TimetableParser.timeTable["Regular"]![indexPath.row]["End"] as! String), type: nil, place: nil, professor: nil)
+        }
+        
+        
+//        cell.textLabel!.text = String(indexPath.row+1) + ". " + subject
+//        cell.detailTextLabel!.text = "     " + String(TimetableParser.timeTable["Regular"]![indexPath.row]["Start"] as! String) + " - " + String(TimetableParser.timeTable["Regular"]![indexPath.row]["End"] as! String)
         if room != "0" {
-            cell.detailTextLabel!.text! += ", каб. " + room
+//            cell.detailTextLabel!.text! += ", каб. " + room
         }
         
         return cell

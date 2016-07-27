@@ -27,10 +27,6 @@ class DayCellView: UIView {
         colorForBezel.setStroke()
         path.lineWidth = lineWidth
         path.stroke()
-        path.fill()
-    }
-    
-    func fillWithColor(color: UIColor) {
-        color.setFill()
+//        path.fill()
     }
 }
