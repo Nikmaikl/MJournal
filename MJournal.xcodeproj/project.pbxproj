@@ -13,6 +13,9 @@
 		4C71A78D1C2B2E8B006570CF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C71A7891C2B2DDF006570CF /* Localizable.strings */; };
 		4CBEC5AF1D47F8A80042EAD2 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBEC5AE1D47F8A80042EAD2 /* SettingsTableViewCell.swift */; };
 		4CBEC5B11D47FC590042EAD2 /* SubjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBEC5B01D47FC590042EAD2 /* SubjectTableViewCell.swift */; };
+		4CC582E91D4A38190001148F /* SubjectInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC582E81D4A38190001148F /* SubjectInfoTableViewController.swift */; };
+		4CC5830C1D4A96BE0001148F /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5830B1D4A96BE0001148F /* Lesson.swift */; };
+		4CC5830E1D4A97120001148F /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5830D1D4A97120001148F /* Setting.swift */; };
 		4CEDA9C51D4410F800ED4E14 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEDA9C41D4410F800ED4E14 /* SettingsTableViewController.swift */; };
 		CE23CCAD1C14A67500A94F1D /* Timetable.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE23CCAC1C14A67500A94F1D /* Timetable.plist */; };
 		CE23CCAF1C14A85D00A94F1D /* TimetableParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23CCAE1C14A85D00A94F1D /* TimetableParser.swift */; };
@@ -131,6 +134,9 @@
 		4C8A04381C1E09CB006DEEA5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Interface.strings; sourceTree = "<group>"; };
 		4CBEC5AE1D47F8A80042EAD2 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		4CBEC5B01D47FC590042EAD2 /* SubjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectTableViewCell.swift; sourceTree = "<group>"; };
+		4CC582E81D4A38190001148F /* SubjectInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectInfoTableViewController.swift; sourceTree = "<group>"; };
+		4CC5830B1D4A96BE0001148F /* Lesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		4CC5830D1D4A97120001148F /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		4CEDA9C41D4410F800ED4E14 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		CE23CCAC1C14A67500A94F1D /* Timetable.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Timetable.plist; sourceTree = "<group>"; };
 		CE23CCAE1C14A85D00A94F1D /* TimetableParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableParser.swift; sourceTree = "<group>"; };
@@ -198,6 +204,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C004FBA1D4BFB2500CD71CE /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CEE427F81C11FF88008637C2 /* DayCell.swift */,
+				4CBEC5B01D47FC590042EAD2 /* SubjectTableViewCell.swift */,
+				4CBEC5AE1D47F8A80042EAD2 /* SettingsTableViewCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		4C004FBB1D4BFBE800CD71CE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CEBF44C21C12246B00598EF3 /* DayCellView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		CE43E30B1C10D45C006F1D95 = {
 			isa = PBXGroup;
 			children = (
@@ -227,7 +251,7 @@
 			children = (
 				CE9D57431C14CA76009B4025 /* MJournal.entitlements */,
 				CEE427F51C11FC76008637C2 /* Model */,
-				CEBD70CC1C160A620076E708 /* ViewControllers+Cells */,
+				CEBD70CC1C160A620076E708 /* ViewControllers */,
 				CE43E31B1C10D45C006F1D95 /* Main.storyboard */,
 				CE43E31E1C10D45C006F1D95 /* Assets.xcassets */,
 				CE43E3201C10D45C006F1D95 /* LaunchScreen.storyboard */,
@@ -340,18 +364,17 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
-		CEBD70CC1C160A620076E708 /* ViewControllers+Cells */ = {
+		CEBD70CC1C160A620076E708 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4C004FBA1D4BFB2500CD71CE /* Cells */,
+				4C004FBB1D4BFBE800CD71CE /* Views */,
 				CEE427F31C11EFD3008637C2 /* WeekViewController.swift */,
 				CE3DF42A1C1327AF004B9D42 /* DaySheduleViewController.swift */,
+				4CC582E81D4A38190001148F /* SubjectInfoTableViewController.swift */,
 				4CEDA9C41D4410F800ED4E14 /* SettingsTableViewController.swift */,
-				CEE427F81C11FF88008637C2 /* DayCell.swift */,
-				CEBF44C21C12246B00598EF3 /* DayCellView.swift */,
-				4CBEC5AE1D47F8A80042EAD2 /* SettingsTableViewCell.swift */,
-				4CBEC5B01D47FC590042EAD2 /* SubjectTableViewCell.swift */,
 			);
-			name = "ViewControllers+Cells";
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 		CEE427F51C11FC76008637C2 /* Model */ = {
@@ -362,6 +385,8 @@
 				CE7926E61C14B36800CCB672 /* Parses */,
 				CEE427F61C11FC91008637C2 /* WeekDays.swift */,
 				CE9D57471C14CB38009B4025 /* Time.swift */,
+				4CC5830B1D4A96BE0001148F /* Lesson.swift */,
+				4CC5830D1D4A97120001148F /* Setting.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -570,9 +595,12 @@
 				CE23CCAF1C14A85D00A94F1D /* TimetableParser.swift in Sources */,
 				CEE427F41C11EFD3008637C2 /* WeekViewController.swift in Sources */,
 				4CEDA9C51D4410F800ED4E14 /* SettingsTableViewController.swift in Sources */,
+				4CC582E91D4A38190001148F /* SubjectInfoTableViewController.swift in Sources */,
+				4CC5830C1D4A96BE0001148F /* Lesson.swift in Sources */,
 				4CBEC5B11D47FC590042EAD2 /* SubjectTableViewCell.swift in Sources */,
 				CEBF44C31C12246B00598EF3 /* DayCellView.swift in Sources */,
 				CE3DF4271C132409004B9D42 /* SheduleParser.swift in Sources */,
+				4CC5830E1D4A97120001148F /* Setting.swift in Sources */,
 				CE7926EB1C14B40C00CCB672 /* RoomParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -767,7 +795,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = MJournal/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mike.MJournal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -784,7 +812,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = MJournal/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mike.MJournal;
 				PRODUCT_NAME = "$(TARGET_NAME)";

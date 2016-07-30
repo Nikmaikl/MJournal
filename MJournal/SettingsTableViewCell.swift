@@ -31,8 +31,3 @@ class SettingsTableViewCell: UITableViewCell {
     }
 
 }
-
-class Setting {
-    var icon: UIImageView!
-    var name: String!
-}

@@ -2,9 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Алгебра и геометрия</key>
+	<integer>0</integer>
+	<key>Дискретная математика</key>
+	<integer>0</integer>
+	<key>Иностранный язык</key>
+	<integer>0</integer>
+	<key>Программирование</key>
+	<integer>0</integer>
+	<key>Инженерная графика</key>
+	<integer>0</integer>
+	<key>Математический анализ</key>
+	<integer>0</integer>
 	<key>Философия</key>
 	<integer>220</integer>
-	<key>Обществознание</key>
+	<key>Математика</key>
 	<integer>0</integer>
 	<key>ОБЖ</key>
 	<integer>0</integer>
@@ -19,8 +31,6 @@
 	<key>Рус. литература</key>
 	<integer>0</integer>
 	<key>ПУР</key>
-	<integer>0</integer>
-	<key>Математика</key>
 	<integer>0</integer>
 	<key>Рус. язык</key>
 	<integer>315</integer>

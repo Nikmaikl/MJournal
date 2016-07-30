@@ -6,45 +6,39 @@
 	<array>
 		<dict>
 			<key>Start</key>
-			<string>8:30</string>
+			<string>09:00</string>
 			<key>End</key>
-			<string>9:15</string>
+			<string>10:35</string>
 		</dict>
 		<dict>
 			<key>Start</key>
-			<string>9:25</string>
+			<string>10:45</string>
 			<key>End</key>
-			<string>10:10</string>
+			<string>12:20</string>
 		</dict>
 		<dict>
 			<key>Start</key>
-			<string>10:25</string>
+			<string>12:50</string>
 			<key>End</key>
-			<string>11:10</string>
+			<string>14:25</string>
 		</dict>
 		<dict>
 			<key>Start</key>
-			<string>11:40</string>
+			<string>14:35</string>
 			<key>End</key>
-			<string>12:25</string>
+			<string>16:10</string>
 		</dict>
 		<dict>
 			<key>Start</key>
-			<string>12:40</string>
+			<string>16:20</string>
 			<key>End</key>
-			<string>13:25</string>
+			<string>17:55</string>
 		</dict>
 		<dict>
 			<key>Start</key>
-			<string>13:35</string>
+			<string>18:00</string>
 			<key>End</key>
-			<string>14:15</string>
-		</dict>
-		<dict>
-			<key>Start</key>
-			<string>13:35</string>
-			<key>End</key>
-			<string>15:20</string>
+			<string>21:20</string>
 		</dict>
 	</array>
 	<key>Short</key>

@@ -3,53 +3,34 @@
 <plist version="1.0">
 <array>
 	<array>
-		<string>География</string>
+		<string>Алгебра и геометрия</string>
+		<string>Дискретная математика</string>
+		<string>Математика</string>
+	</array>
+	<array>
+		<string>Иностранный язык</string>
 		<string>История</string>
-		<string>Информатика</string>
 		<string>История</string>
-		<string>Англ. язык</string>
-		<string>Англ.-амер.литер.</string>
+	</array>
+	<array>
+		<string>Программирование</string>
+		<string>Физика</string>
+		<string>Программирование</string>
+		<string>Иностранный язык</string>
 	</array>
 	<array>
 		<string>Физкультура</string>
-		<string>Англ. язык</string>
-		<string>Рус. язык</string>
-		<string>Рус. язык</string>
-		<string>Математика</string>
-		<string>ПУР</string>
-	</array>
-	<array>
-		<string>Математика</string>
-		<string>Англ. язык</string>
-		<string>Рус. литература</string>
-		<string>Рус. литература</string>
-		<string>Франц. язык</string>
-		<string>Англ. язык</string>
+		<string>Дискретная математика</string>
 	</array>
 	<array>
 		<string>Физика</string>
-		<string>Математика</string>
-		<string>Англ. язык</string>
-		<string>Химия</string>
-		<string>История</string>
-		<string>Биология</string>
-		<string>Физкультура</string>
-	</array>
-	<array>
-		<string>Англ. язык</string>
-		<string>История</string>
-		<string>ОБЖ</string>
-		<string>Рус. язык</string>
-		<string>Обществознание</string>
-		<string>Математика</string>
-	</array>
-	<array>
-		<string>Франц. язык</string>
-		<string>Обществознание</string>
-		<string>Философия</string>
-		<string>Физкультура</string>
-		<string>Рус. литература</string>
 		<string>Физика</string>
+		<string>Инженерная графика</string>
+		<string>Физкультура</string>
+	</array>
+	<array>
+		<string>Математика</string>
+		<string>Математический анализ</string>
 	</array>
 </array>
 </plist>
