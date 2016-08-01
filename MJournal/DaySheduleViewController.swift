@@ -18,14 +18,50 @@ class DaySheduleViewController: UITableViewController {
     @IBOutlet weak var addSubjectButton: UIButton!
     @IBOutlet weak var addSubjectView: UIView!
     
+    var lpgr: UILongPressGestureRecognizer!
+    
+    var currentLongPressingRow:NSIndexPath? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = colorForBar
         self.clearsSelectionOnViewWillAppear = true
         
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        lpgr.minimumPressDuration = 0.1
+        self.tableView.addGestureRecognizer(lpgr)
     }
     
+    func handleLongPress(lgr: UILongPressGestureRecognizer) {
+        let p = lgr.locationInView(self.tableView)
+        let indexPath = tableView.indexPathForRowAtPoint(p)
+        
+        if indexPath != nil && (currentLongPressingRow?.row == indexPath!.row || currentLongPressingRow == nil) {
+            currentLongPressingRow = indexPath
+            let cell = tableView!.cellForRowAtIndexPath(indexPath!)
+            UIView.animateWithDuration(0.2, animations: {
+                if lgr.state == .Ended {
+                    cell!.transform = CGAffineTransformMakeScale(1, 1)
+                } else {
+                    cell!.transform = CGAffineTransformMakeScale(0.9, 0.9)
+                }
+                }, completion: { b->Void in
+                    if lgr.state == .Ended {
+                        self.currentLongPressingRow = nil
+                    }
+            })
+        } else if (currentLongPressingRow != nil && (currentLongPressingRow?.row != indexPath?.row ||
+            indexPath == nil)) {
+            let cell = tableView!.cellForRowAtIndexPath(currentLongPressingRow!)
+            UIView.animateWithDuration(0.2, animations: {
+                cell!.transform = CGAffineTransformMakeScale(1, 1)
+                self.currentLongPressingRow = nil
+            })
+            
+        }
+    }
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -44,7 +80,6 @@ class DaySheduleViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, willBeginEditingRowAtIndexPath indexPath: NSIndexPath) {
-        print("Began")
     }
     
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
@@ -94,8 +129,6 @@ class DaySheduleViewController: UITableViewController {
 
     @IBAction func addSubject(sender: AnyObject) {
         SheduleParser.shedule[dayNumber].addObject("")
-        print(tableView.numberOfRowsInSection(0))
-        print(TimetableParser.timeTable["Regular"]!.count)
         tableView.reloadSections(NSIndexSet(indexesInRange: NSRange(0...0)), withRowAnimation: .None)
         
         addSubjectView.hidden = true
@@ -109,6 +142,22 @@ class DaySheduleViewController: UITableViewController {
         if tableView.numberOfRowsInSection(0) == TimetableParser.timeTable["Regular"]!.count {
             addSubjectView.hidden = true
         }
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let row = tableView.cellForRowAtIndexPath(indexPath)
+        if let subjectRow = row as? SubjectTableViewCell {
+            UIView.animateWithDuration(0.2, animations: {
+                subjectRow.transform = CGAffineTransformMakeScale(0.85, 0.85)
+                }, completion: { b->Void in
+                    UIView.animateWithDuration(0.05, animations: {
+                        subjectRow.transform = CGAffineTransformMakeScale(1, 1)
+                        }, completion: { b->Void in
+                            self.performSegueWithIdentifier("ShowSubjectInfo", sender: nil)
+                        })
+            })
+        }
+        
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

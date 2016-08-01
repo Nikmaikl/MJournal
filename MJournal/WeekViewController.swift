@@ -16,6 +16,8 @@ class WeekCollectionViewController: UICollectionViewController {
     var colorForCell: UIColor = UIColor.blackColor()
     let currentDayIndex = NSIndexPath(forRow: Time.getDay(), inSection: 0)
     
+    var currentLongPressingRow:NSIndexPath? = nil
+    
     var screenSize: CGSize {
         return UIScreen.mainScreen().bounds.size
     }
@@ -23,6 +25,7 @@ class WeekCollectionViewController: UICollectionViewController {
     let defaultCornerRadius: CGFloat = 10.0
     let defaultSpace: CGFloat = 16.0
     
+    var lpgr: UILongPressGestureRecognizer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +39,39 @@ class WeekCollectionViewController: UICollectionViewController {
         layout?.minimumInteritemSpacing = defaultSpace
         
         collectionView!.contentInset = UIEdgeInsets(top: defaultSpace, left: defaultSpace, bottom: defaultSpace, right: defaultSpace)
+        
+        lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        lpgr.minimumPressDuration = 0.1
+        self.collectionView!.addGestureRecognizer(lpgr)
+    }
+    
+    func handleLongPress(lgr: UILongPressGestureRecognizer) {
+        let p = lgr.locationInView(self.collectionView)
+        let indexPath = self.collectionView?.indexPathForItemAtPoint(p)
+        
+        if indexPath != nil && (currentLongPressingRow?.row == indexPath!.row || currentLongPressingRow == nil) {
+            currentLongPressingRow = indexPath
+            let cell = collectionView!.cellForItemAtIndexPath(indexPath!)
+            UIView.animateWithDuration(0.2, animations: {
+                if lgr.state == .Ended {
+                    cell!.transform = CGAffineTransformMakeScale(1, 1)
+                } else {
+                    cell!.transform = CGAffineTransformMakeScale(0.85, 0.85)
+                }
+                }, completion: { b->Void in
+                    if lgr.state == .Ended {
+                        self.currentLongPressingRow = nil
+                    }
+            })
+        } else if (currentLongPressingRow != nil && (currentLongPressingRow?.row != indexPath?.row ||
+        indexPath == nil)) {
+            let cell = collectionView!.cellForItemAtIndexPath(currentLongPressingRow!)
+            UIView.animateWithDuration(0.2, animations: {
+                cell!.transform = CGAffineTransformMakeScale(1, 1)
+                self.currentLongPressingRow = nil
+                })
 
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -66,6 +101,7 @@ class WeekCollectionViewController: UICollectionViewController {
             } else {
                 moreInfo.title = NSLocalizedString(WeekDays.days[dayNumber], comment: "Day")
             }
+            
         }
     }
 
@@ -96,7 +132,22 @@ class WeekCollectionViewController: UICollectionViewController {
         dayNumber = indexPath.row
         colorForCell = UIColor.getColorForCell(withRow: indexPath.row, alpha: 1)
         
-        performSegueWithIdentifier("MoreInfo", sender: self)
+        let cell = collectionView.cellForItemAtIndexPath(indexPath)
+        if let dayCell = cell as? DayCell {
+            UIView.animateWithDuration(0.2, animations: {
+//                dayCell.mainView.backgroundColor = self.colorForCell
+                dayCell.transform = CGAffineTransformMakeScale(0.8, 0.8)
+                }, completion: { b->Void in
+                    UIView.animateWithDuration(0.05, animations: {
+                        dayCell.transform = CGAffineTransformMakeScale(1, 1)
+                        }, completion: { b->Void in
+//                            dayCell.mainView.backgroundColor = UIColor(red: 31/255, green: 31/255, blue: 31/255, alpha: 0.4)
+                            self.performSegueWithIdentifier("MoreInfo", sender: self)
+                    })
+            })
+        }
+        
+
     }
     
     override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {

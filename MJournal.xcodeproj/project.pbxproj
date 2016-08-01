@@ -16,6 +16,7 @@
 		4CC582E91D4A38190001148F /* SubjectInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC582E81D4A38190001148F /* SubjectInfoTableViewController.swift */; };
 		4CC5830C1D4A96BE0001148F /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5830B1D4A96BE0001148F /* Lesson.swift */; };
 		4CC5830E1D4A97120001148F /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5830D1D4A97120001148F /* Setting.swift */; };
+		4CD8408D1D4D0ED300ABD11F /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD8408C1D4D0ED300ABD11F /* SelectionViewController.swift */; };
 		4CEDA9C51D4410F800ED4E14 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEDA9C41D4410F800ED4E14 /* SettingsTableViewController.swift */; };
 		CE23CCAD1C14A67500A94F1D /* Timetable.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE23CCAC1C14A67500A94F1D /* Timetable.plist */; };
 		CE23CCAF1C14A85D00A94F1D /* TimetableParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23CCAE1C14A85D00A94F1D /* TimetableParser.swift */; };
@@ -137,6 +138,7 @@
 		4CC582E81D4A38190001148F /* SubjectInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectInfoTableViewController.swift; sourceTree = "<group>"; };
 		4CC5830B1D4A96BE0001148F /* Lesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		4CC5830D1D4A97120001148F /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		4CD8408C1D4D0ED300ABD11F /* SelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 		4CEDA9C41D4410F800ED4E14 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		CE23CCAC1C14A67500A94F1D /* Timetable.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Timetable.plist; sourceTree = "<group>"; };
 		CE23CCAE1C14A85D00A94F1D /* TimetableParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableParser.swift; sourceTree = "<group>"; };
@@ -373,6 +375,7 @@
 				CE3DF42A1C1327AF004B9D42 /* DaySheduleViewController.swift */,
 				4CC582E81D4A38190001148F /* SubjectInfoTableViewController.swift */,
 				4CEDA9C41D4410F800ED4E14 /* SettingsTableViewController.swift */,
+				4CD8408C1D4D0ED300ABD11F /* SelectionViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -481,7 +484,7 @@
 						DevelopmentTeam = 3PU2FE6BA7;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
@@ -490,7 +493,7 @@
 						DevelopmentTeam = 3PU2FE6BA7;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.InterAppAudio = {
 								enabled = 0;
@@ -598,6 +601,7 @@
 				4CC582E91D4A38190001148F /* SubjectInfoTableViewController.swift in Sources */,
 				4CC5830C1D4A96BE0001148F /* Lesson.swift in Sources */,
 				4CBEC5B11D47FC590042EAD2 /* SubjectTableViewCell.swift in Sources */,
+				4CD8408D1D4D0ED300ABD11F /* SelectionViewController.swift in Sources */,
 				CEBF44C31C12246B00598EF3 /* DayCellView.swift in Sources */,
 				CE3DF4271C132409004B9D42 /* SheduleParser.swift in Sources */,
 				4CC5830E1D4A97120001148F /* Setting.swift in Sources */,
@@ -790,7 +794,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = MJournal/MJournal.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -807,7 +810,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = MJournal/MJournal.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -823,7 +825,6 @@
 		CE9D573F1C14CA21009B4025 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = MJournalToday/MJournalToday.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MJournalToday/Info.plist;
@@ -838,7 +839,6 @@
 		CE9D57401C14CA21009B4025 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = MJournalToday/MJournalToday.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MJournalToday/Info.plist;

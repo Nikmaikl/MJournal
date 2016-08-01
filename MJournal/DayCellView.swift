@@ -21,7 +21,7 @@ class DayCellView: UIView {
         let lineWidth = rect.width/44.0
         let cornerRadius = rect.width/16.0
         let tileRect = rect.insetBy(dx: lineWidth/1.0, dy: lineWidth/1.0)
-        
+        self.layer.cornerRadius = 20
         let path = UIBezierPath(roundedRect: tileRect, cornerRadius: CGFloat(cornerRadius))
         colorForFill.setFill()
         colorForBezel.setStroke()

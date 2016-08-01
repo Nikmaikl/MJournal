@@ -20,8 +20,12 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var endTime: UILabel!
     
     @IBOutlet weak var lessonNameField: UITextField!
-    @IBOutlet weak var typeOfLessonField: UITextField!
     @IBOutlet weak var audienceNumberField: UITextField!
+    @IBOutlet weak var lessonTypeButton: UIButton!
+    
+    @IBOutlet weak var lessonTypeHeightConstraint: NSLayoutConstraint!
+    
+    var lessonType = "ЛАБОРАТОРНАЯ РАБОТА"
     
     var colorForToday: UIColor! {
         didSet {
@@ -51,10 +55,14 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate {
         super.awakeFromNib()
         // Initialization code
         lessonNameField.delegate = self
-        typeOfLessonField.delegate = self
         audienceNumberField.delegate = self
-        typeOfLessonField.backgroundColor = UIColor(red: 237/255, green: 168/255, blue: 84/255, alpha: 1.0)
-        typeOfLessonField.borderStyle = .None
+    }
+    
+    func updateLessonType(notification: NSNotification) {
+        if let extractInfo = notification.userInfo {
+            lessonType = extractInfo["Type"] as! String
+            lessonTypeButton.titleLabel!.text = lessonType
+        }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -91,33 +99,33 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate {
     override func setEditing(editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         if lesson == nil { return }
+        lessonTypeButton.titleLabel!.text = lessonType
         if editing {
             lessonNameField.enabled = true
             lessonNameField.backgroundColor = getBakColorForTextFieldWhileEditing()
             lessonNameField.borderStyle = .RoundedRect
             
-            typeOfLessonField.enabled = true
-            typeOfLessonField.borderStyle = .RoundedRect
-            
-            
             audienceNumberField.enabled = true
             audienceNumberField.borderStyle = .RoundedRect
+            
+            lessonTypeButton.enabled = true
+            lessonTypeHeightConstraint.constant = 20
+            lessonTypeButton.layoutIfNeeded()
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateLessonType), name: "ChosenType", object: nil)
+            
         } else {
             lessonNameField.enabled = false
             lessonNameField.backgroundColor = colorForToday
             lessonNameField.borderStyle = .None
             
-            
-            typeOfLessonField.enabled = false
-            typeOfLessonField.borderStyle = .None
-            
-            
             audienceNumberField.enabled = false
             audienceNumberField.borderStyle = .None
+            
+            lessonTypeButton.enabled = false
+            lessonTypeHeightConstraint.constant = 12
+            lessonTypeButton.layoutIfNeeded()
+            NSNotificationCenter.defaultCenter().removeObserver(self, name: "ChosenType", object: nil)
         }
-    }
-    
-    func resetColorOfField(textField: UITextField) {
     }
     
     func getBakColorForTextFieldWhileEditing() -> UIColor {
@@ -126,10 +134,11 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate {
         var b: CGFloat = 0.0
         var a: CGFloat = 0.0
         colorForToday.getHue(&hue, saturation: &sat, brightness: &b, alpha: &a)
-        return UIColor(hue: hue, saturation: sat, brightness: b-0.1, alpha: a)
+        return UIColor(hue: hue, saturation: sat, brightness: b-0.2, alpha: a)
     }
     
     override func resignFirstResponder() -> Bool {
         return true
     }
+    
 }
