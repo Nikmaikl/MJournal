@@ -61,11 +61,13 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate {
     func updateLessonType(notification: NSNotification) {
         if let extractInfo = notification.userInfo {
             lessonType = extractInfo["Type"] as! String
-            lessonTypeButton.titleLabel!.text = lessonType
+            lessonTypeButton.setAttributedTitle(NSAttributedString(string: lessonType.uppercaseString), forState: .Normal)
         }
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        //self.navigationItem.rightBarButtonItem?.enabled = true
         textField.resignFirstResponder()
         return true
     }
@@ -109,9 +111,9 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate {
             audienceNumberField.borderStyle = .RoundedRect
             
             lessonTypeButton.enabled = true
-            lessonTypeHeightConstraint.constant = 20
+            lessonTypeButton.layer.cornerRadius = 5
+            lessonTypeHeightConstraint.constant = 25
             lessonTypeButton.layoutIfNeeded()
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateLessonType), name: "ChosenType", object: nil)
             
         } else {
             lessonNameField.enabled = false
@@ -122,9 +124,10 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate {
             audienceNumberField.borderStyle = .None
             
             lessonTypeButton.enabled = false
+            lessonTypeButton.layer.cornerRadius = 0
             lessonTypeHeightConstraint.constant = 12
             lessonTypeButton.layoutIfNeeded()
-            NSNotificationCenter.defaultCenter().removeObserver(self, name: "ChosenType", object: nil)
+//            NSNotificationCenter.defaultCenter().removeObserver(self, name: "ChosenType", object: nil)
         }
     }
     
@@ -136,6 +139,14 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate {
         colorForToday.getHue(&hue, saturation: &sat, brightness: &b, alpha: &a)
         return UIColor(hue: hue, saturation: sat, brightness: b-0.2, alpha: a)
     }
+    
+    @IBAction func lessonTypePressed(sender: UIButton) {
+        
+//        UIViewController * vc = [storyboard instantiateViewControllerWithIdentifier:@"IDENTIFIER_OF_YOUR_VIEWCONTROLLER"];
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateLessonType), name: "ChosenType", object: nil)
+    }
+    
     
     override func resignFirstResponder() -> Bool {
         return true

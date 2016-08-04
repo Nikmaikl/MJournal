@@ -28,6 +28,7 @@ class DaySheduleViewController: UITableViewController {
         self.clearsSelectionOnViewWillAppear = true
         
         self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        if tableView.numberOfRowsInSection(0) == 0 { self.navigationItem.rightBarButtonItem?.enabled = false}
         lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         lpgr.minimumPressDuration = 0.1
         self.tableView.addGestureRecognizer(lpgr)
@@ -61,7 +62,7 @@ class DaySheduleViewController: UITableViewController {
             
         }
     }
-
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -83,12 +84,11 @@ class DaySheduleViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-        let destRow = destinationIndexPath.row
-        let sourceRow = sourceIndexPath.row
+//        let destRow = destinationIndexPath.row
         
-        for (var i=0; i < SheduleParser.shedule[dayNumber].count-destRow-1; i+=1) {
-            SheduleParser.shedule[dayNumber][i] = SheduleParser.shedule[dayNumber][i+1]
-        }
+//        for (var i=0; i < SheduleParser.shedule[dayNumber].count-destRow-1; i+=1) {
+//            SheduleParser.shedule[dayNumber][i] = SheduleParser.shedule[dayNumber][i+1]
+//        }
         
         SheduleParser.shedule[dayNumber][destinationIndexPath.row] = SheduleParser.shedule[dayNumber][sourceIndexPath.row]
         tableView.reloadData()
@@ -130,13 +130,14 @@ class DaySheduleViewController: UITableViewController {
     @IBAction func addSubject(sender: AnyObject) {
         SheduleParser.shedule[dayNumber].addObject("")
         tableView.reloadSections(NSIndexSet(indexesInRange: NSRange(0...0)), withRowAnimation: .None)
-        
-        addSubjectView.hidden = true
-        self.navigationItem.rightBarButtonItem?.enabled = false
+//        addSubjectView.hidden = true
+//        self.navigationItem.rightBarButtonItem?.enabled = false
         
         if tableView.numberOfRowsInSection(0) == 1 && !tableView.editing {
-            addSubjectView.hidden = true
-            self.navigationItem.rightBarButtonItem?.enabled = true
+//            self.navigationItem.rightBarButtonItem?.enabled = true
+            setEditing(true, animated: true)
+            let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as? SubjectTableViewCell
+            cell?.lessonNameField.becomeFirstResponder()
         }
         
         if tableView.numberOfRowsInSection(0) == TimetableParser.timeTable["Regular"]!.count {
@@ -158,6 +159,11 @@ class DaySheduleViewController: UITableViewController {
             })
         }
         
+    }
+    
+    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        if self.tableView.editing {return .Delete}
+        return .None
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

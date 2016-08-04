@@ -28,9 +28,6 @@
 		<string>Инженерная графика</string>
 		<string>Физкультура</string>
 	</array>
-	<array>
-		<string>Математика</string>
-		<string>Математический анализ</string>
-	</array>
+	<array/>
 </array>
 </plist>

@@ -16,6 +16,7 @@
 		4CC582E91D4A38190001148F /* SubjectInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC582E81D4A38190001148F /* SubjectInfoTableViewController.swift */; };
 		4CC5830C1D4A96BE0001148F /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5830B1D4A96BE0001148F /* Lesson.swift */; };
 		4CC5830E1D4A97120001148F /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5830D1D4A97120001148F /* Setting.swift */; };
+		4CD6DA561D535ABA00514A04 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA541D535ABA00514A04 /* Model.xcdatamodeld */; };
 		4CD8408D1D4D0ED300ABD11F /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD8408C1D4D0ED300ABD11F /* SelectionViewController.swift */; };
 		4CEDA9C51D4410F800ED4E14 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEDA9C41D4410F800ED4E14 /* SettingsTableViewController.swift */; };
 		CE23CCAD1C14A67500A94F1D /* Timetable.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE23CCAC1C14A67500A94F1D /* Timetable.plist */; };
@@ -138,6 +139,7 @@
 		4CC582E81D4A38190001148F /* SubjectInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectInfoTableViewController.swift; sourceTree = "<group>"; };
 		4CC5830B1D4A96BE0001148F /* Lesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		4CC5830D1D4A97120001148F /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		4CD6DA551D535ABA00514A04 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		4CD8408C1D4D0ED300ABD11F /* SelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 		4CEDA9C41D4410F800ED4E14 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		CE23CCAC1C14A67500A94F1D /* Timetable.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Timetable.plist; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 				CE9D57471C14CB38009B4025 /* Time.swift */,
 				4CC5830B1D4A96BE0001148F /* Lesson.swift */,
 				4CC5830D1D4A97120001148F /* Setting.swift */,
+				4CD6DA541D535ABA00514A04 /* Model.xcdatamodeld */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 				CEBF44C31C12246B00598EF3 /* DayCellView.swift in Sources */,
 				CE3DF4271C132409004B9D42 /* SheduleParser.swift in Sources */,
 				4CC5830E1D4A97120001148F /* Setting.swift in Sources */,
+				4CD6DA561D535ABA00514A04 /* Model.xcdatamodeld in Sources */,
 				CE7926EB1C14B40C00CCB672 /* RoomParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -971,6 +975,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4CD6DA541D535ABA00514A04 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4CD6DA551D535ABA00514A04 /* Model.xcdatamodel */,
+			);
+			currentVersion = 4CD6DA551D535ABA00514A04 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CE43E30C1C10D45C006F1D95 /* Project object */;
 }

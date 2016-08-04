@@ -135,13 +135,11 @@ class WeekCollectionViewController: UICollectionViewController {
         let cell = collectionView.cellForItemAtIndexPath(indexPath)
         if let dayCell = cell as? DayCell {
             UIView.animateWithDuration(0.2, animations: {
-//                dayCell.mainView.backgroundColor = self.colorForCell
                 dayCell.transform = CGAffineTransformMakeScale(0.8, 0.8)
                 }, completion: { b->Void in
                     UIView.animateWithDuration(0.05, animations: {
                         dayCell.transform = CGAffineTransformMakeScale(1, 1)
                         }, completion: { b->Void in
-//                            dayCell.mainView.backgroundColor = UIColor(red: 31/255, green: 31/255, blue: 31/255, alpha: 0.4)
                             self.performSegueWithIdentifier("MoreInfo", sender: self)
                     })
             })

@@ -32,6 +32,6 @@ class Data {
     static var lessons = Data.getLessons()
     
     class func getLessons() -> [[Lesson]] {
-        return [[Lesson(name: "Физикаи", startTime: String(TimetableParser.timeTable["Regular"]![0]["Start"] as! String), endTime: String(TimetableParser.timeTable["Regular"]![0]["End"] as! String), type: nil, place: nil, professor: nil)]]
+        return [[Lesson(name: "Физика", startTime: String(TimetableParser.timeTable["Regular"]![0]["Start"] as! String), endTime: String(TimetableParser.timeTable["Regular"]![0]["End"] as! String), type: nil, place: nil, professor: nil)]]
     }
 }
