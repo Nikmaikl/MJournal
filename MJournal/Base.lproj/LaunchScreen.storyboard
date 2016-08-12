@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="qWa-4e-YEZ">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
@@ -20,7 +21,7 @@
             </objects>
             <point key="canvasLocation" x="-589" y="375"/>
         </scene>
-        <!--Week-->
+        <!--Неделя-->
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
@@ -33,7 +34,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Week" id="XpM-U8-kKC"/>
+                    <navigationItem key="navigationItem" title="Неделя" id="XpM-U8-kKC"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

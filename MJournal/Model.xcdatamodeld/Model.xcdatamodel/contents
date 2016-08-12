@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G31" minimumToolsVersion="Xcode 7.0">
-    <entity name="Lesson" syncable="YES"/>
+    <entity name="Day" representedClassName=".Day" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="lessons" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Lesson" inverseName="day" inverseEntity="Lesson" syncable="YES"/>
+    </entity>
+    <entity name="Lesson" representedClassName=".Lesson" syncable="YES">
+        <attribute name="audience" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="endTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="place" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="professor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="day" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Day" inverseName="lessons" inverseEntity="Day" syncable="YES"/>
+    </entity>
+    <entity name="Shedule" syncable="YES"/>
     <elements>
-        <element name="Lesson" positionX="-63" positionY="-18" width="128" height="45"/>
+        <element name="Day" positionX="-3683" positionY="333" width="128" height="73"/>
+        <element name="Lesson" positionX="-3843" positionY="333" width="128" height="178"/>
+        <element name="Shedule" positionX="-3519" positionY="333" width="128" height="43"/>
     </elements>
 </model>

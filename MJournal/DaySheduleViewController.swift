@@ -7,31 +7,89 @@
 //
 
 import UIKit
+import CoreData
+import Firebase
+import GoogleMobileAds
 
-class DaySheduleViewController: UITableViewController {
-
-    var dayNumber: Int = 0
-    var colorForBar: UIColor = UIColor(red: 76/255, green: 86/255, blue: 108/225, alpha: 1.0)
+class DaySheduleViewController: UITableViewController, SavingLessonDelegate {
     
-    var day: String?
+    var dayNumber: Int = 0
     
     @IBOutlet weak var addSubjectButton: UIButton!
     @IBOutlet weak var addSubjectView: UIView!
+    @IBOutlet weak var blankListOfLessonsView: UIView!
+    
+    var standartLeftItem: UIBarButtonItem!
+    var standartRightItem: UIBarButtonItem!
     
     var lpgr: UILongPressGestureRecognizer!
     
-    var currentLongPressingRow:NSIndexPath? = nil
+    var currentLongPressingRow: NSIndexPath? = nil
+    
+    var currentDay: Day!
+    
+    
+    var colorForBar = UIColor(red: 76/255, green: 86/255, blue: 108/225, alpha: 1.0)
+    
+    
+    var leftButtonItemCancel: UIBarButtonItem!
+    var rightButtonItemOk: UIBarButtonItem!
+    var rightbarItemEdit: UIBarButtonItem!
+    
+    @IBOutlet weak var noneSubjectsLabel: UILabel!
+    
+    var banner: GADBannerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        leftButtonItemCancel = UIBarButtonItem(image: UIImage(named: "Cancel_icon"), style: .Plain, target: self, action: #selector(cancelEditing))
+        rightButtonItemOk = UIBarButtonItem(image: UIImage(named: "Ok_icon"), style: .Plain, target: self, action: #selector(saveLesson))
+        rightbarItemEdit = UIBarButtonItem(image: UIImage(named: "Edit_icon"), style: .Plain, target: self, action: #selector(editButtonTapped))
+        
+        noneSubjectsLabel.font = UIFont.appMediumFont()
+        addSubjectButton.titleLabel?.font = UIFont.appSemiBoldFont()
+        
+        CoreDataHelper.instance.save()
+        
+        standartLeftItem = navigationItem.leftBarButtonItem
+        standartRightItem = rightbarItemEdit
+        
+        leftButtonItemCancel.setTitleTextAttributes(["NSFontAttributeName": UIFont.appMediumFont()], forState: .Normal)
+        
         self.navigationController?.navigationBar.tintColor = colorForBar
         self.clearsSelectionOnViewWillAppear = true
         
-        self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        if tableView.numberOfRowsInSection(0) == 0 { self.navigationItem.rightBarButtonItem?.enabled = false}
+        self.navigationItem.rightBarButtonItem = standartRightItem
+        if tableView.numberOfRowsInSection(0) == 0 { self.navigationItem.rightBarButtonItem = nil}
         lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         lpgr.minimumPressDuration = 0.1
         self.tableView.addGestureRecognizer(lpgr)
+        
+        
+//        tableView.frame.size.height -= kGADAdSizeBanner.size.height*1.27
+        
+
+        
+    }
+    
+//    override func scrollViewDidScroll(scrollView: UIScrollView) {
+//        let newY = self.tableView.contentOffset.y + self.tableView.frame.size.height - banner.frame.size.height
+//        let newFrame = CGRectMake(banner.frame.origin.x, newY, banner.frame.size.width, banner.frame.size.height)
+//        self.banner.frame = newFrame
+//        self.banner.frame = newFrame
+//    }
+    
+    func saveLesson() {
+        setEditing(false, animated: true)
+        navigationItem.rightBarButtonItem = rightbarItemEdit
+    }
+    
+    func editButtonTapped() {
+        setEditing(!tableView.editing, animated: true)
+        if editing {
+        } else {
+        }
     }
     
     func handleLongPress(lgr: UILongPressGestureRecognizer) {
@@ -67,16 +125,62 @@ class DaySheduleViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         if tableView.numberOfRowsInSection(0) == 0 {
-            addSubjectView.hidden = false
+            tableView.tableFooterView = addSubjectView
+            tableView.tableHeaderView = blankListOfLessonsView
+            
         }
     }
     
     override func setEditing(editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        if editing || (!editing && tableView.numberOfRowsInSection(0) == 0) {
-            addSubjectView.hidden = false
+        if editing {
+            tableView.rowHeight = 260
+            tableView.beginUpdates()
+            tableView.endUpdates()
+            navigationItem.rightBarButtonItem = rightButtonItemOk
+            
+            if tableView.numberOfRowsInSection(0) == 1 {
+                tableView.tableFooterView = nil
+                navigationItem.leftBarButtonItem = nil
+                self.navigationItem.setHidesBackButton(true, animated: true)
+                if currentDay.allLessons().last?.name == nil {
+                    navigationItem.rightBarButtonItem?.enabled = false
+                }
+            } else {
+                tableView.tableFooterView = addSubjectView
+                self.navigationItem.setHidesBackButton(true, animated: true)
+            }
+            
+            if currentDay.allLessons().last?.name != nil {
+                tableView.tableFooterView = addSubjectView
+            }
+            
+            if tableView.numberOfRowsInSection(0)+1 > TimetableParser.timeTable.count {
+                tableView.tableFooterView = nil
+            }
         } else {
-            addSubjectView.hidden = true
+            tableView.rowHeight = 135
+            tableView.beginUpdates()
+            tableView.endUpdates()
+            tableView.tableFooterView = nil
+            navigationItem.leftBarButtonItem = standartLeftItem
+            navigationItem.rightBarButtonItem?.title = nil
+            navigationItem.rightBarButtonItem = rightbarItemEdit
+            self.navigationItem.setHidesBackButton(false, animated: true)
+        }
+    }
+    
+    func cancelEditing() {
+        setEditing(false, animated: true)
+        CoreDataHelper.instance.context.deleteObject(currentDay.allLessons().last!)
+        CoreDataHelper.instance.save()
+        self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .None)
+        if tableView.numberOfRowsInSection(0) == 0 {
+            tableView.tableFooterView = addSubjectView
+            navigationItem.rightBarButtonItem = nil
+            tableView.tableHeaderView = blankListOfLessonsView
+        } else {
+            navigationItem.rightBarButtonItem = rightbarItemEdit
         }
     }
     
@@ -84,20 +188,15 @@ class DaySheduleViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
-//        let destRow = destinationIndexPath.row
-        
-//        for (var i=0; i < SheduleParser.shedule[dayNumber].count-destRow-1; i+=1) {
-//            SheduleParser.shedule[dayNumber][i] = SheduleParser.shedule[dayNumber][i+1]
-//        }
         
         SheduleParser.shedule[dayNumber][destinationIndexPath.row] = SheduleParser.shedule[dayNumber][sourceIndexPath.row]
         tableView.reloadData()
     }
     
     // MARK: - Table view data source
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return SheduleParser.shedule[dayNumber].count
+        return currentDay.lessons!.count
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -109,40 +208,52 @@ class DaySheduleViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
+        return false
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         
         if editingStyle == .Delete {
-            
-            SheduleParser.shedule[dayNumber].removeObjectAtIndex(indexPath.row)
+            CoreDataHelper.instance.context.deleteObject(currentDay.allLessons()[indexPath.row])
+            CoreDataHelper.instance.save()
             tableView.reloadSections(NSIndexSet(indexesInRange: NSRange(0...0)), withRowAnimation: .None)
+            if tableView.numberOfRowsInSection(0)+1 >= TimetableParser.timeTable.count {
+                tableView.tableFooterView = addSubjectView
+            }
             if tableView.numberOfRowsInSection(0) == 0 {
                 self.setEditing(false, animated: true)
-                self.navigationItem.rightBarButtonItem?.enabled = false
+                self.navigationItem.rightBarButtonItem = nil
+                tableView.tableHeaderView = blankListOfLessonsView
+                tableView.tableFooterView = addSubjectView
+            } else {
+                self.navigationItem.rightBarButtonItem = rightButtonItemOk
             }
-            addSubjectView.hidden = false
-            
         }
     }
-
+    
     @IBAction func addSubject(sender: AnyObject) {
-        SheduleParser.shedule[dayNumber].addObject("")
-        tableView.reloadSections(NSIndexSet(indexesInRange: NSRange(0...0)), withRowAnimation: .None)
-//        addSubjectView.hidden = true
-//        self.navigationItem.rightBarButtonItem?.enabled = false
+        let lesson = Lesson()
+        lesson.startTime = String(TimetableParser.timeTable[currentDay.lessons!.count]["Start"] as! String)
+        lesson.endTime = String(TimetableParser.timeTable[currentDay.lessons!.count]["End"] as! String)
+        lesson.id = currentDay.lessons?.count
+        lesson.day = currentDay
+        
+        tableView.tableHeaderView = nil
+        tableView.tableFooterView = nil
+        
+        
+        currentDay.lessons!.addObject(lesson)
+        CoreDataHelper.instance.save()
+        self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .None)
+        
         
         if tableView.numberOfRowsInSection(0) == 1 && !tableView.editing {
-//            self.navigationItem.rightBarButtonItem?.enabled = true
             setEditing(true, animated: true)
-            let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0)) as? SubjectTableViewCell
-            cell?.lessonNameField.becomeFirstResponder()
         }
         
-        if tableView.numberOfRowsInSection(0) == TimetableParser.timeTable["Regular"]!.count {
-            addSubjectView.hidden = true
-        }
+        let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: Int(lesson.id!), inSection: 0)) as? SubjectTableViewCell
+        cell?.lessonNameField.becomeFirstResponder()
+        
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -154,8 +265,8 @@ class DaySheduleViewController: UITableViewController {
                     UIView.animateWithDuration(0.05, animations: {
                         subjectRow.transform = CGAffineTransformMakeScale(1, 1)
                         }, completion: { b->Void in
-                            self.performSegueWithIdentifier("ShowSubjectInfo", sender: nil)
-                        })
+//                            self.performSegueWithIdentifier("ShowSubjectInfo", sender: subjectRow)
+                    })
             })
         }
         
@@ -168,17 +279,24 @@ class DaySheduleViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SubjectCell", forIndexPath: indexPath)
-        let subject = SheduleParser.shedule[dayNumber][indexPath.row] as! String
         
         if let subjectCell = cell as? SubjectTableViewCell {
             subjectCell.colorForToday = colorForBar
-            if SheduleParser.shedule[dayNumber][indexPath.row] as! String == "" {
-                subjectCell.lesson = Lesson(name: "", startTime: String(TimetableParser.timeTable["Regular"]![indexPath.row]["Start"] as! String), endTime: String(TimetableParser.timeTable["Regular"]![indexPath.row]["End"] as! String), type: nil, place: nil, professor: nil)
-                return subjectCell
+            subjectCell.lesson = currentDay.allLessons()[indexPath.row]
+            subjectCell.navigationController = self
+            if subjectCell.lesson?.name == nil {
             }
-            subjectCell.lesson = Lesson(name: subject, startTime: String(TimetableParser.timeTable["Regular"]![indexPath.row]["Start"] as! String), endTime: String(TimetableParser.timeTable["Regular"]![indexPath.row]["End"] as! String), type: nil, place: nil, professor: nil)
+            return subjectCell
         }
         
         return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let destinationVC = segue.destinationViewController as? SubjectInfoTableViewController {
+            if let cell = sender as? SubjectTableViewCell {
+                destinationVC.lesson = cell.lesson
+            }
+        }
     }
 }

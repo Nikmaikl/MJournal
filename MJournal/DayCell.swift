@@ -20,6 +20,7 @@ class DayCell: UICollectionViewCell {
     var day: String! {
         didSet {
             self.dayName.text = NSLocalizedString(self.day, comment: "Day")
+            self.dayName.font = UIFont.appSemiBoldFont()
             if todayDay {
                 self.nowLabel.hidden = false
             }

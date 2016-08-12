@@ -7,18 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C0D859D1D5C9CAE00CF6F02 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D859C1D5C9CAE00CF6F02 /* GoogleService-Info.plist */; };
+		4C0D859E1D5C9CAE00CF6F02 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D859C1D5C9CAE00CF6F02 /* GoogleService-Info.plist */; };
+		4C0D859F1D5C9CAE00CF6F02 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D859C1D5C9CAE00CF6F02 /* GoogleService-Info.plist */; };
+		4C0D85A01D5C9CAE00CF6F02 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D859C1D5C9CAE00CF6F02 /* GoogleService-Info.plist */; };
+		4C43D0971D575E02001D7B5C /* BannerCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43D0961D575E02001D7B5C /* BannerCollectionReusableView.swift */; };
 		4C71A7871C2B2DDF006570CF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C71A7891C2B2DDF006570CF /* Localizable.strings */; };
 		4C71A78B1C2B2E89006570CF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C71A7891C2B2DDF006570CF /* Localizable.strings */; };
 		4C71A78C1C2B2E8B006570CF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C71A7891C2B2DDF006570CF /* Localizable.strings */; };
 		4C71A78D1C2B2E8B006570CF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C71A7891C2B2DDF006570CF /* Localizable.strings */; };
+		4C9564E91D5BD90600653091 /* Day+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA571D535CEE00514A04 /* Day+CoreDataProperties.swift */; };
+		4C9564EA1D5BD90800653091 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA581D535CEE00514A04 /* Day.swift */; };
+		4C9564EB1D5BD90B00653091 /* Lesson+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA591D535CEE00514A04 /* Lesson+CoreDataProperties.swift */; };
+		4C9564EC1D5BD91200653091 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA5D1D535D6700514A04 /* Lesson.swift */; };
+		4C9564ED1D5BD91600653091 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA541D535ABA00514A04 /* Model.xcdatamodeld */; };
+		4C9564EE1D5BD91900653091 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA601D53867A00514A04 /* CoreDataHelper.swift */; };
+		4CAADD1C1D560EF8005D53A6 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAADD1B1D560EF8005D53A6 /* Font.swift */; };
 		4CBEC5AF1D47F8A80042EAD2 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBEC5AE1D47F8A80042EAD2 /* SettingsTableViewCell.swift */; };
 		4CBEC5B11D47FC590042EAD2 /* SubjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBEC5B01D47FC590042EAD2 /* SubjectTableViewCell.swift */; };
 		4CC582E91D4A38190001148F /* SubjectInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC582E81D4A38190001148F /* SubjectInfoTableViewController.swift */; };
-		4CC5830C1D4A96BE0001148F /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5830B1D4A96BE0001148F /* Lesson.swift */; };
 		4CC5830E1D4A97120001148F /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5830D1D4A97120001148F /* Setting.swift */; };
 		4CD6DA561D535ABA00514A04 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA541D535ABA00514A04 /* Model.xcdatamodeld */; };
+		4CD6DA5A1D535CEE00514A04 /* Day+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA571D535CEE00514A04 /* Day+CoreDataProperties.swift */; };
+		4CD6DA5B1D535CEE00514A04 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA581D535CEE00514A04 /* Day.swift */; };
+		4CD6DA5C1D535CEE00514A04 /* Lesson+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA591D535CEE00514A04 /* Lesson+CoreDataProperties.swift */; };
+		4CD6DA5E1D535D6700514A04 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA5D1D535D6700514A04 /* Lesson.swift */; };
+		4CD6DA611D53867A00514A04 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA601D53867A00514A04 /* CoreDataHelper.swift */; };
 		4CD8408D1D4D0ED300ABD11F /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD8408C1D4D0ED300ABD11F /* SelectionViewController.swift */; };
 		4CEDA9C51D4410F800ED4E14 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEDA9C41D4410F800ED4E14 /* SettingsTableViewController.swift */; };
+		89E1ECC4C4FAC211426FCD1D /* libPods-MJournal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C9033DC84C59E48CFFDFE63 /* libPods-MJournal.a */; };
 		CE23CCAD1C14A67500A94F1D /* Timetable.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE23CCAC1C14A67500A94F1D /* Timetable.plist */; };
 		CE23CCAF1C14A85D00A94F1D /* TimetableParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23CCAE1C14A85D00A94F1D /* TimetableParser.swift */; };
 		CE2BB6811C16257E00778FC8 /* Shedule.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE3DF4241C1320F1004B9D42 /* Shedule.plist */; };
@@ -129,19 +146,29 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1ADDF86CA1CCA1739C5F43F0 /* Pods-MJournal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MJournal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MJournal/Pods-MJournal.debug.xcconfig"; sourceTree = "<group>"; };
+		4C0D859C1D5C9CAE00CF6F02 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4C43D0961D575E02001D7B5C /* BannerCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerCollectionReusableView.swift; sourceTree = "<group>"; };
 		4C71A7881C2B2DDF006570CF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4C71A78A1C2B2DE3006570CF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4C8A04361C1E09CB006DEEA5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		4C8A04371C1E09CB006DEEA5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		4C8A04381C1E09CB006DEEA5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Interface.strings; sourceTree = "<group>"; };
+		4CAADD1B1D560EF8005D53A6 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		4CBEC5AE1D47F8A80042EAD2 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		4CBEC5B01D47FC590042EAD2 /* SubjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectTableViewCell.swift; sourceTree = "<group>"; };
 		4CC582E81D4A38190001148F /* SubjectInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectInfoTableViewController.swift; sourceTree = "<group>"; };
-		4CC5830B1D4A96BE0001148F /* Lesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		4CC5830D1D4A97120001148F /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		4CD6DA551D535ABA00514A04 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		4CD6DA571D535CEE00514A04 /* Day+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Day+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4CD6DA581D535CEE00514A04 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		4CD6DA591D535CEE00514A04 /* Lesson+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Lesson+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4CD6DA5D1D535D6700514A04 /* Lesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
+		4CD6DA601D53867A00514A04 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		4CD8408C1D4D0ED300ABD11F /* SelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 		4CEDA9C41D4410F800ED4E14 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		8C9033DC84C59E48CFFDFE63 /* libPods-MJournal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MJournal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7262A72468E3A2892E82F0A /* Pods-MJournal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MJournal.release.xcconfig"; path = "Pods/Target Support Files/Pods-MJournal/Pods-MJournal.release.xcconfig"; sourceTree = "<group>"; };
 		CE23CCAC1C14A67500A94F1D /* Timetable.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Timetable.plist; sourceTree = "<group>"; };
 		CE23CCAE1C14A85D00A94F1D /* TimetableParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimetableParser.swift; sourceTree = "<group>"; };
 		CE3DF4241C1320F1004B9D42 /* Shedule.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Shedule.plist; sourceTree = "<group>"; };
@@ -183,10 +210,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2C80FB460519639D0EE43BC5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CE43E3111C10D45C006F1D95 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89E1ECC4C4FAC211426FCD1D /* libPods-MJournal.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +249,7 @@
 				CEE427F81C11FF88008637C2 /* DayCell.swift */,
 				4CBEC5B01D47FC590042EAD2 /* SubjectTableViewCell.swift */,
 				4CBEC5AE1D47F8A80042EAD2 /* SettingsTableViewCell.swift */,
+				4C43D0961D575E02001D7B5C /* BannerCollectionReusableView.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -226,6 +262,28 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		4CD6DA5F1D535DB100514A04 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				4CD6DA571D535CEE00514A04 /* Day+CoreDataProperties.swift */,
+				4CD6DA581D535CEE00514A04 /* Day.swift */,
+				4CD6DA591D535CEE00514A04 /* Lesson+CoreDataProperties.swift */,
+				4CD6DA5D1D535D6700514A04 /* Lesson.swift */,
+				4CD6DA541D535ABA00514A04 /* Model.xcdatamodeld */,
+				4CD6DA601D53867A00514A04 /* CoreDataHelper.swift */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		8A2DA0D6B25FEEAB32EC7EA1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1ADDF86CA1CCA1739C5F43F0 /* Pods-MJournal.debug.xcconfig */,
+				B7262A72468E3A2892E82F0A /* Pods-MJournal.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CE43E30B1C10D45C006F1D95 = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +294,7 @@
 				CEBD70B41C15FB4E0076E708 /* MJournalWatch Extension */,
 				CE9D57311C14CA21009B4025 /* Frameworks */,
 				CE43E3151C10D45C006F1D95 /* Products */,
+				8A2DA0D6B25FEEAB32EC7EA1 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -253,6 +312,7 @@
 		CE43E3161C10D45C006F1D95 /* MJournal */ = {
 			isa = PBXGroup;
 			children = (
+				4C0D859C1D5C9CAE00CF6F02 /* GoogleService-Info.plist */,
 				CE9D57431C14CA76009B4025 /* MJournal.entitlements */,
 				CEE427F51C11FC76008637C2 /* Model */,
 				CEBD70CC1C160A620076E708 /* ViewControllers */,
@@ -321,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				CE9D57321C14CA21009B4025 /* NotificationCenter.framework */,
+				8C9033DC84C59E48CFFDFE63 /* libPods-MJournal.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -364,6 +425,7 @@
 			isa = PBXGroup;
 			children = (
 				CE7926F11C14C82700CCB672 /* Color.swift */,
+				4CAADD1B1D560EF8005D53A6 /* Font.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -390,9 +452,8 @@
 				CE7926E61C14B36800CCB672 /* Parses */,
 				CEE427F61C11FC91008637C2 /* WeekDays.swift */,
 				CE9D57471C14CB38009B4025 /* Time.swift */,
-				4CC5830B1D4A96BE0001148F /* Lesson.swift */,
 				4CC5830D1D4A97120001148F /* Setting.swift */,
-				4CD6DA541D535ABA00514A04 /* Model.xcdatamodeld */,
+				4CD6DA5F1D535DB100514A04 /* CoreData */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -404,11 +465,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE43E3261C10D45C006F1D95 /* Build configuration list for PBXNativeTarget "MJournal" */;
 			buildPhases = (
+				C1BAD5C7F3F0CFCD68022002 /* [CP] Check Pods Manifest.lock */,
 				CE43E3101C10D45C006F1D95 /* Sources */,
 				CE43E3111C10D45C006F1D95 /* Frameworks */,
 				CE43E3121C10D45C006F1D95 /* Resources */,
 				CE9D57411C14CA21009B4025 /* Embed App Extensions */,
 				CEBD70CA1C15FB4E0076E708 /* Embed Watch Content */,
+				99F7A72A1B9A435A92ED15A2 /* [CP] Embed Pods Frameworks */,
+				443578783BCCE0095A350407 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -444,6 +508,7 @@
 			buildPhases = (
 				CEBD70A21C15FB4E0076E708 /* Resources */,
 				CEBD70C61C15FB4E0076E708 /* Embed App Extensions */,
+				2C80FB460519639D0EE43BC5 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -541,6 +606,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE43E3221C10D45C006F1D95 /* LaunchScreen.storyboard in Resources */,
+				4C0D859D1D5C9CAE00CF6F02 /* GoogleService-Info.plist in Resources */,
 				CE23CCAD1C14A67500A94F1D /* Timetable.plist in Resources */,
 				CE43E31F1C10D45C006F1D95 /* Assets.xcassets in Resources */,
 				4C71A7871C2B2DDF006570CF /* Localizable.strings in Resources */,
@@ -559,6 +625,7 @@
 				CE9D57461C14CAFC009B4025 /* Rooms.plist in Resources */,
 				CE9D57441C14CAF7009B4025 /* Shedule.plist in Resources */,
 				CE9D57451C14CAFA009B4025 /* Timetable.plist in Resources */,
+				4C0D859E1D5C9CAE00CF6F02 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,6 +634,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEBD70AA1C15FB4E0076E708 /* Assets.xcassets in Resources */,
+				4C0D859F1D5C9CAE00CF6F02 /* GoogleService-Info.plist in Resources */,
 				4C71A78C1C2B2E8B006570CF /* Localizable.strings in Resources */,
 				CEBD70A81C15FB4E0076E708 /* Interface.storyboard in Resources */,
 			);
@@ -581,10 +649,59 @@
 				CE2BB6831C16258300778FC8 /* Rooms.plist in Resources */,
 				CE2BB6811C16257E00778FC8 /* Shedule.plist in Resources */,
 				CE2BB6821C16258000778FC8 /* Timetable.plist in Resources */,
+				4C0D85A01D5C9CAE00CF6F02 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		443578783BCCE0095A350407 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MJournal/Pods-MJournal-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		99F7A72A1B9A435A92ED15A2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MJournal/Pods-MJournal-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1BAD5C7F3F0CFCD68022002 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CE43E3101C10D45C006F1D95 /* Sources */ = {
@@ -592,24 +709,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE3DF42B1C1327AF004B9D42 /* DaySheduleViewController.swift in Sources */,
+				4CD6DA611D53867A00514A04 /* CoreDataHelper.swift in Sources */,
 				CE43E3181C10D45C006F1D95 /* AppDelegate.swift in Sources */,
 				CE9D57481C14CB38009B4025 /* Time.swift in Sources */,
+				4CD6DA5C1D535CEE00514A04 /* Lesson+CoreDataProperties.swift in Sources */,
 				CEE427F91C11FF88008637C2 /* DayCell.swift in Sources */,
 				CE7926F21C14C82700CCB672 /* Color.swift in Sources */,
 				4CBEC5AF1D47F8A80042EAD2 /* SettingsTableViewCell.swift in Sources */,
 				CEE427F71C11FC91008637C2 /* WeekDays.swift in Sources */,
 				CE23CCAF1C14A85D00A94F1D /* TimetableParser.swift in Sources */,
+				4CD6DA5A1D535CEE00514A04 /* Day+CoreDataProperties.swift in Sources */,
 				CEE427F41C11EFD3008637C2 /* WeekViewController.swift in Sources */,
 				4CEDA9C51D4410F800ED4E14 /* SettingsTableViewController.swift in Sources */,
 				4CC582E91D4A38190001148F /* SubjectInfoTableViewController.swift in Sources */,
-				4CC5830C1D4A96BE0001148F /* Lesson.swift in Sources */,
 				4CBEC5B11D47FC590042EAD2 /* SubjectTableViewCell.swift in Sources */,
+				4CD6DA5B1D535CEE00514A04 /* Day.swift in Sources */,
 				4CD8408D1D4D0ED300ABD11F /* SelectionViewController.swift in Sources */,
 				CEBF44C31C12246B00598EF3 /* DayCellView.swift in Sources */,
 				CE3DF4271C132409004B9D42 /* SheduleParser.swift in Sources */,
+				4C43D0971D575E02001D7B5C /* BannerCollectionReusableView.swift in Sources */,
 				4CC5830E1D4A97120001148F /* Setting.swift in Sources */,
+				4CAADD1C1D560EF8005D53A6 /* Font.swift in Sources */,
 				4CD6DA561D535ABA00514A04 /* Model.xcdatamodeld in Sources */,
 				CE7926EB1C14B40C00CCB672 /* RoomParser.swift in Sources */,
+				4CD6DA5E1D535D6700514A04 /* Lesson.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -619,10 +742,16 @@
 			files = (
 				CEBD70A11C15EF7B0076E708 /* WeekDays.swift in Sources */,
 				CE9D57491C14CB38009B4025 /* Time.swift in Sources */,
+				4C9564EA1D5BD90800653091 /* Day.swift in Sources */,
 				CE9D574B1C14CD96009B4025 /* RoomParser.swift in Sources */,
 				CE9D57361C14CA21009B4025 /* TodayViewController.swift in Sources */,
+				4C9564EC1D5BD91200653091 /* Lesson.swift in Sources */,
+				4C9564EE1D5BD91900653091 /* CoreDataHelper.swift in Sources */,
+				4C9564EB1D5BD90B00653091 /* Lesson+CoreDataProperties.swift in Sources */,
 				CE9D574A1C14CD93009B4025 /* TimetableParser.swift in Sources */,
 				CE9D574C1C14CD99009B4025 /* SheduleParser.swift in Sources */,
+				4C9564ED1D5BD91600653091 /* Model.xcdatamodeld in Sources */,
+				4C9564E91D5BD90600653091 /* Day+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -796,33 +925,37 @@
 		};
 		CE43E3271C10D45C006F1D95 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1ADDF86CA1CCA1739C5F43F0 /* Pods-MJournal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = MJournal/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mike.MJournal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		CE43E3281C10D45C006F1D95 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7262A72468E3A2892E82F0A /* Pods-MJournal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = MJournal/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mike.MJournal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

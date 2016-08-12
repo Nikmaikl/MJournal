@@ -12,7 +12,6 @@ class WeekDays {
     static var days = WeekDays.getDays()
     
     private class func getDays() -> Array<String> {
-        print(NSLocalizedString("Monday", comment: "Monday"))
         return Array(arrayLiteral:
             "Monday",
             "Tuesday",

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import GoogleMobileAds
 
 private let reuseIdentifier = "CellDay"
 
@@ -27,8 +29,35 @@ class WeekCollectionViewController: UICollectionViewController {
     
     var lpgr: UILongPressGestureRecognizer!
     
+    var days = Day.allDays()
+    
+    @IBOutlet var bannerView: BannerCollectionReusableView!
+    
+    var banner: GADBannerView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.navigationBar.titleTextAttributes = ["NSFontAttributeName": UIFont.appBoldFont()]
+        
+        navigationController?.navigationBar.setBackgroundImage(
+            UIImage(),
+            forBarPosition: .Any,
+            barMetrics: .Default)
+        
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.barTintColor = UIColor.darkBackground()
+        navigationController?.navigationBar.translucent = false
+        
+        
+        if days.count == 0 {
+            for d in WeekDays.days {
+                let day = Day(name: d)
+                days.append(day)
+                CoreDataHelper.instance.save()
+            }
+        }
+        
         
         let numberOfItemsPerSmallerSide: CGFloat = 2
         let width = (min(screenSize.height, screenSize.width) - defaultSpace * 3) / numberOfItemsPerSmallerSide
@@ -43,6 +72,25 @@ class WeekCollectionViewController: UICollectionViewController {
         lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         lpgr.minimumPressDuration = 0.1
         self.collectionView!.addGestureRecognizer(lpgr)
+        
+        banner = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)//frame: CGRectMake((tableView.frame.size.width-kGADAdSizeBanner.size.width)/2, self.view.frame.size.height-kGADAdSizeBanner.size.height, kGADAdSizeBanner.size.width, kGADAdSizeBanner.size.height))
+        banner.adUnitID = "ca-app-pub-9919730864492896/4325157365"
+        banner.rootViewController = self
+        
+        self.navigationController?.setToolbarHidden(false, animated: true)
+        self.navigationController?.toolbar.backgroundColor = UIColor.clearColor()
+        self.navigationController?.toolbar.addSubview(banner)
+        
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID]
+        
+        banner.loadRequest(request)
+    }
+    
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionFooter, withReuseIdentifier: "bannerView", forIndexPath: indexPath)
+        // configure footer view
+        return view
     }
     
     func handleLongPress(lgr: UILongPressGestureRecognizer) {
@@ -95,6 +143,7 @@ class WeekCollectionViewController: UICollectionViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let moreInfo = segue.destinationViewController as? DaySheduleViewController {
             moreInfo.dayNumber = self.dayNumber
+            moreInfo.currentDay = days[dayNumber]
             moreInfo.colorForBar = self.colorForCell
             if dayNumber == currentDayIndex.row {
                 moreInfo.title = NSLocalizedString("Today", comment: "Today")

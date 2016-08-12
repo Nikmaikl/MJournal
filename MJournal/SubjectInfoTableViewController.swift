@@ -8,13 +8,47 @@
 
 import UIKit
 
-class SubjectInfoTableViewController: UITableViewController {
+class SubjectInfoTableViewController: UITableViewController, UITextViewDelegate {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var noteTextField: UITextView!
+    
+    var lesson: Lesson? {
+        didSet {
+//            startTimeHour.text = hour
+//            startTimeMin.text = min
+//            endTime.text = lesson!.endTime
+            
+//            audienceNumberField.text = lesson?.audience
+//            professorNameLabel.text = lesson?.professor
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 40
+        
+        noteTextField.delegate = self
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 40
+        
+        
+        nameLabel.text = lesson!.name
+        var hour = lesson!.startTime!
+        var min = lesson!.startTime!
+        hour.removeRange(lesson!.startTime!.endIndex.advancedBy(-3)..<lesson!.startTime!.endIndex)
+        min.removeRange(lesson!.startTime!.startIndex..<lesson!.startTime!.startIndex.advancedBy(3))
+    }
+    
+    func textViewDidChange(textView: UITextView) {
+        let fixedWidth = textView.frame.size.width
+        textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
+        let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
+        var newFrame = textView.frame
+        newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+        textView.frame = newFrame;
     }
 
     // MARK: - Table view data source

@@ -19,12 +19,14 @@ class SelectionViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     var selectedRow:Int? = 0
     var sourceRow = ""
     
+    var typeOfLesson = ["Лекция", "Семинар", "Практическое занятие", "Лабораторная работа", "МФК"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         pickerView.delegate = self
         pickerView.dataSource = self
         
-        sourceRow = TypesOfLesson.types[3]
+        sourceRow = typeOfLesson[3]
         
         self.view.backgroundColor = UIColor.clearColor()
         self.modalTransitionStyle = .CoverVertical
@@ -32,10 +34,15 @@ class SelectionViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.view.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.8)
+    }
+    
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.view.backgroundColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 0.8)
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -45,12 +52,12 @@ class SelectionViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return TypesOfLesson.types[row]
+        return typeOfLesson[row]
     }
     
     @IBAction func readyButtonPressed(sender: AnyObject) {
         if let extractSelectedRow = selectedRow {
-            NSNotificationCenter.defaultCenter().postNotificationName("ChosenType", object: nil, userInfo:["Type":TypesOfLesson.types[extractSelectedRow]])
+            NSNotificationCenter.defaultCenter().postNotificationName("ChosenType", object: nil, userInfo:["Type":typeOfLesson[extractSelectedRow]])
         }
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "ChosenType", object: nil)
         dismissViewControllerAnimated(true, completion: nil)
@@ -64,7 +71,7 @@ class SelectionViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return TypesOfLesson.types.count
+        return typeOfLesson.count
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
