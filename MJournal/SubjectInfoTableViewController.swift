@@ -8,13 +8,22 @@
 
 import UIKit
 
-class SubjectInfoTableViewController: UITableViewController, UITextViewDelegate {
+protocol RefreshLessonsDelegate: class {
+    func refresh()
+}
 
-    @IBOutlet weak var nameLabel: UILabel!
+class SubjectInfoTableViewController: UIViewController, UITextViewDelegate, UIPopoverPresentationControllerDelegate, DeleteLessonDelegate {
+
     @IBOutlet weak var noteTextField: UITextView!
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    var doneBarButton, trashBarButton: UIBarButtonItem!
+    
+    weak var refreshDelegate: RefreshLessonsDelegate!
     
     var lesson: Lesson? {
         didSet {
+            self.title = lesson?.name
 //            startTimeHour.text = hour
 //            startTimeMin.text = min
 //            endTime.text = lesson!.endTime
@@ -27,41 +36,105 @@ class SubjectInfoTableViewController: UITableViewController, UITextViewDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 40
+        trashBarButton = UIBarButtonItem(image: UIImage(named: "Trash_can"), style: .Plain, target: self, action: #selector(trashIt))
+        doneBarButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(doneIt))//(image: UIImage(named: "Trash_can"), style: .Plain, target: self, action: #selector(trashIt))
+
+//        self.tableView.rowHeight = UITableViewAutomaticDimension
+//        self.tableView.estimatedRowHeight = 40
         
         noteTextField.delegate = self
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 40
+        noteTextField.font = UIFont.appMediumFont(14)
+        titleLabel.font = UIFont.appSemiBoldFont(17)
+        
+        self.noteTextField.alwaysBounceVertical = true
+        self.noteTextField.text = lesson?.notes
+        
+        if noteTextField.text == "" {
+            noteTextField.becomeFirstResponder()
+            navigationItem.rightBarButtonItem = doneBarButton
+        } else {
+            navigationItem.rightBarButtonItem = trashBarButton
+        }
         
         
-        nameLabel.text = lesson!.name
-        var hour = lesson!.startTime!
-        var min = lesson!.startTime!
-        hour.removeRange(lesson!.startTime!.endIndex.advancedBy(-3)..<lesson!.startTime!.endIndex)
-        min.removeRange(lesson!.startTime!.startIndex..<lesson!.startTime!.startIndex.advancedBy(3))
+        
+//        tableView.rowHeight = UITableViewAutomaticDimension
+//        tableView.estimatedRowHeight = 40
+        
+    }
+    
+    func trashIt() {
+        let deleteVC = navigationController!.storyboard?.instantiateViewControllerWithIdentifier("DeleteVC") as? DeleteViewController
+        
+        deleteVC?.modalPresentationStyle = .Popover
+        deleteVC?.deleteDelegate = self
+        deleteVC?.currentDay = lesson!.day
+        deleteVC?.lesson = lesson
+        
+        if let popoverPC = deleteVC!.popoverPresentationController {
+            let sourceView = navigationItem.rightBarButtonItem?.valueForKey("view") as? UIView
+            popoverPC.sourceView = sourceView
+            
+            popoverPC.sourceRect = CGRectMake(CGRectGetMidX(sourceView!.bounds)-10, sourceView!.bounds.height,0,0)
+            popoverPC.permittedArrowDirections = .Up
+            
+            popoverPC.delegate = self
+            deleteVC!.preferredContentSize = CGSize(width: 280, height: 55)
+        }
+        
+        navigationController!.presentViewController(deleteVC!, animated: true, completion: {
+        })
+    }
+    
+    func doneIt() {
+        noteTextField.resignFirstResponder()
+        navigationItem.rightBarButtonItem = trashBarButton
     }
     
     func textViewDidChange(textView: UITextView) {
-        let fixedWidth = textView.frame.size.width
-        textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
-        let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
-        var newFrame = textView.frame
-        newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
-        textView.frame = newFrame;
+        lesson?.notes = textView.text
+        CoreDataHelper.instance.save()
     }
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        navigationItem.rightBarButtonItem = doneBarButton
+    }
+    
+    @IBAction func rightBarButtonPressed(sender: AnyObject) {
+        
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
+    }
+    
+    func delete() {
+        navigationController?.popViewControllerAnimated(true)
+        refreshDelegate.refresh()
+//        dismissViewControllerAnimated(true, completion: {
+//            var lessons = self.lesson!.day!.allNotEvenLessons()
+//            var evenLessons = self.lesson!.day!.allEvenLessons()
+//            lessons.removeAtIndex(Int(self.lesson!.id!))
+//            
+//            evenLessons.removeAtIndex(Int(self.lesson!.id!))
+//            lessons += evenLessons
+//            self.lesson!.day!.lessons = NSMutableSet(array: lessons)
+//            CoreDataHelper.instance.save()
+//        })
+    }
+    
+//    func textViewDidChange(textView: UITextView) {
+//        let fixedWidth = textView.frame.size.width
+//        textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
+//        let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
+//        var newFrame = textView.frame
+//        newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+//        textView.frame = newFrame;
+//    }
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 1
-    }
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

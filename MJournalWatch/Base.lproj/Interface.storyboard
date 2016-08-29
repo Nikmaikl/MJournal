@@ -10,6 +10,13 @@
             <objects>
                 <controller identifier="More_Info" title="Сегодня" id="awr-ST-mAh" customClass="DayInterfaceController" customModule="MJournalWatch_Extension">
                     <items>
+                        <group width="1" alignment="left" verticalAlignment="center" layout="vertical" spacing="8" id="bbZ-tM-GfD">
+                            <items>
+                                <imageView alignment="center" image="Bed_icon" id="OCt-Uh-7Rt"/>
+                                <label alignment="center" verticalAlignment="bottom" text="Нет занятий! Можно поспать." textAlignment="center" numberOfLines="0" id="MSo-yt-F8G"/>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="8" bottom="0.0"/>
+                        </group>
                         <table alignment="left" id="46Z-da-8k0">
                             <items>
                                 <tableRow identifier="SubjectRow" selectable="NO" id="0aD-Be-lUb" customClass="SubjectRowController" customModule="MJournalWatch_Extension">
@@ -26,6 +33,7 @@
                         </table>
                     </items>
                     <connections>
+                        <outlet property="noLessonsGroup" destination="bbZ-tM-GfD" id="KoV-xI-Ge0"/>
                         <outlet property="table" destination="46Z-da-8k0" id="kIy-D8-hbp"/>
                     </connections>
                 </controller>

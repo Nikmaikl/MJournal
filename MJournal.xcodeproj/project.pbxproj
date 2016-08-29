@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C0D859D1D5C9CAE00CF6F02 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D859C1D5C9CAE00CF6F02 /* GoogleService-Info.plist */; };
-		4C0D859E1D5C9CAE00CF6F02 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D859C1D5C9CAE00CF6F02 /* GoogleService-Info.plist */; };
-		4C0D859F1D5C9CAE00CF6F02 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D859C1D5C9CAE00CF6F02 /* GoogleService-Info.plist */; };
-		4C0D85A01D5C9CAE00CF6F02 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C0D859C1D5C9CAE00CF6F02 /* GoogleService-Info.plist */; };
+		4C0C6F501D63948800F2E1C0 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0C6F4F1D63948800F2E1C0 /* PickerViewController.swift */; };
+		4C1B565A1D686233004EACDC /* MainOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B56591D686233004EACDC /* MainOnboardingViewController.swift */; };
+		4C1B565D1D686887004EACDC /* SecondOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B565C1D686887004EACDC /* SecondOnboardingViewController.swift */; };
+		4C29AC201D70E22500BD099E /* DeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C29AC1F1D70E22500BD099E /* DeleteViewController.swift */; };
 		4C43D0971D575E02001D7B5C /* BannerCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43D0961D575E02001D7B5C /* BannerCollectionReusableView.swift */; };
+		4C6DF2EE1D6344A1009F460B /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA581D535CEE00514A04 /* Day.swift */; };
+		4C6DF2EF1D6344AD009F460B /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA5D1D535D6700514A04 /* Lesson.swift */; };
+		4C6DF2F01D6344B0009F460B /* Lesson+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA591D535CEE00514A04 /* Lesson+CoreDataProperties.swift */; };
+		4C6DF2F11D6344B3009F460B /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA601D53867A00514A04 /* CoreDataHelper.swift */; };
+		4C6DF2F21D6344B7009F460B /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA541D535ABA00514A04 /* Model.xcdatamodeld */; };
 		4C71A7871C2B2DDF006570CF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C71A7891C2B2DDF006570CF /* Localizable.strings */; };
 		4C71A78B1C2B2E89006570CF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C71A7891C2B2DDF006570CF /* Localizable.strings */; };
 		4C71A78C1C2B2E8B006570CF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C71A7891C2B2DDF006570CF /* Localizable.strings */; };
@@ -22,11 +27,15 @@
 		4C9564EC1D5BD91200653091 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA5D1D535D6700514A04 /* Lesson.swift */; };
 		4C9564ED1D5BD91600653091 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA541D535ABA00514A04 /* Model.xcdatamodeld */; };
 		4C9564EE1D5BD91900653091 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA601D53867A00514A04 /* CoreDataHelper.swift */; };
+		4C9E29251D5E73B700511136 /* MoreSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9E29241D5E73B700511136 /* MoreSettingsTableViewController.swift */; };
+		4C9E29271D5E792600511136 /* SheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9E29261D5E792600511136 /* SheduleTableViewCell.swift */; };
 		4CAADD1C1D560EF8005D53A6 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAADD1B1D560EF8005D53A6 /* Font.swift */; };
 		4CBEC5AF1D47F8A80042EAD2 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBEC5AE1D47F8A80042EAD2 /* SettingsTableViewCell.swift */; };
 		4CBEC5B11D47FC590042EAD2 /* SubjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBEC5B01D47FC590042EAD2 /* SubjectTableViewCell.swift */; };
+		4CC1E37E1D63376A004ACBF8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CC1E37D1D63376A004ACBF8 /* GoogleService-Info.plist */; };
 		4CC582E91D4A38190001148F /* SubjectInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC582E81D4A38190001148F /* SubjectInfoTableViewController.swift */; };
 		4CC5830E1D4A97120001148F /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5830D1D4A97120001148F /* Setting.swift */; };
+		4CCC54701D63454100FE5046 /* Day+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA571D535CEE00514A04 /* Day+CoreDataProperties.swift */; };
 		4CD6DA561D535ABA00514A04 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA541D535ABA00514A04 /* Model.xcdatamodeld */; };
 		4CD6DA5A1D535CEE00514A04 /* Day+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA571D535CEE00514A04 /* Day+CoreDataProperties.swift */; };
 		4CD6DA5B1D535CEE00514A04 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA581D535CEE00514A04 /* Day.swift */; };
@@ -35,6 +44,8 @@
 		4CD6DA611D53867A00514A04 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA601D53867A00514A04 /* CoreDataHelper.swift */; };
 		4CD8408D1D4D0ED300ABD11F /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD8408C1D4D0ED300ABD11F /* SelectionViewController.swift */; };
 		4CEDA9C51D4410F800ED4E14 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEDA9C41D4410F800ED4E14 /* SettingsTableViewController.swift */; };
+		4CF78A801D6A11950085F1B0 /* MJToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF78A7F1D6A11950085F1B0 /* MJToolbar.swift */; };
+		4CF78A841D6A36870085F1B0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF78A831D6A36870085F1B0 /* StoreKit.framework */; };
 		89E1ECC4C4FAC211426FCD1D /* libPods-MJournal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C9033DC84C59E48CFFDFE63 /* libPods-MJournal.a */; };
 		CE23CCAD1C14A67500A94F1D /* Timetable.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE23CCAC1C14A67500A94F1D /* Timetable.plist */; };
 		CE23CCAF1C14A85D00A94F1D /* TimetableParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23CCAE1C14A85D00A94F1D /* TimetableParser.swift */; };
@@ -147,16 +158,23 @@
 
 /* Begin PBXFileReference section */
 		1ADDF86CA1CCA1739C5F43F0 /* Pods-MJournal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MJournal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MJournal/Pods-MJournal.debug.xcconfig"; sourceTree = "<group>"; };
-		4C0D859C1D5C9CAE00CF6F02 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4C0C6F4F1D63948800F2E1C0 /* PickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
+		4C1B56591D686233004EACDC /* MainOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainOnboardingViewController.swift; sourceTree = "<group>"; };
+		4C1B565C1D686887004EACDC /* SecondOnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondOnboardingViewController.swift; sourceTree = "<group>"; };
+		4C29AC1F1D70E22500BD099E /* DeleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteViewController.swift; sourceTree = "<group>"; };
+		4C30C7061D6DAF8C008ED7EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		4C43D0961D575E02001D7B5C /* BannerCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerCollectionReusableView.swift; sourceTree = "<group>"; };
 		4C71A7881C2B2DDF006570CF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4C71A78A1C2B2DE3006570CF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4C8A04361C1E09CB006DEEA5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		4C8A04371C1E09CB006DEEA5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		4C8A04381C1E09CB006DEEA5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Interface.strings; sourceTree = "<group>"; };
+		4C9E29241D5E73B700511136 /* MoreSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreSettingsTableViewController.swift; sourceTree = "<group>"; };
+		4C9E29261D5E792600511136 /* SheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SheduleTableViewCell.swift; sourceTree = "<group>"; };
 		4CAADD1B1D560EF8005D53A6 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		4CBEC5AE1D47F8A80042EAD2 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		4CBEC5B01D47FC590042EAD2 /* SubjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectTableViewCell.swift; sourceTree = "<group>"; };
+		4CC1E37D1D63376A004ACBF8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4CC582E81D4A38190001148F /* SubjectInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectInfoTableViewController.swift; sourceTree = "<group>"; };
 		4CC5830D1D4A97120001148F /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		4CD6DA551D535ABA00514A04 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -167,6 +185,9 @@
 		4CD6DA601D53867A00514A04 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		4CD8408C1D4D0ED300ABD11F /* SelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 		4CEDA9C41D4410F800ED4E14 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		4CF78A7F1D6A11950085F1B0 /* MJToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJToolbar.swift; sourceTree = "<group>"; };
+		4CF78A831D6A36870085F1B0 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		4CF8C2871D6CEB2B000BFB80 /* MJournalWatch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "MJournalWatch Extension.entitlements"; sourceTree = "<group>"; };
 		8C9033DC84C59E48CFFDFE63 /* libPods-MJournal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MJournal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7262A72468E3A2892E82F0A /* Pods-MJournal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MJournal.release.xcconfig"; path = "Pods/Target Support Files/Pods-MJournal/Pods-MJournal.release.xcconfig"; sourceTree = "<group>"; };
 		CE23CCAC1C14A67500A94F1D /* Timetable.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Timetable.plist; sourceTree = "<group>"; };
@@ -222,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				89E1ECC4C4FAC211426FCD1D /* libPods-MJournal.a in Frameworks */,
+				4CF78A841D6A36870085F1B0 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,8 +270,9 @@
 			children = (
 				CEE427F81C11FF88008637C2 /* DayCell.swift */,
 				4CBEC5B01D47FC590042EAD2 /* SubjectTableViewCell.swift */,
-				4CBEC5AE1D47F8A80042EAD2 /* SettingsTableViewCell.swift */,
 				4C43D0961D575E02001D7B5C /* BannerCollectionReusableView.swift */,
+				4CBEC5AE1D47F8A80042EAD2 /* SettingsTableViewCell.swift */,
+				4C9E29261D5E792600511136 /* SheduleTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -258,8 +281,18 @@
 			isa = PBXGroup;
 			children = (
 				CEBF44C21C12246B00598EF3 /* DayCellView.swift */,
+				4CF78A7F1D6A11950085F1B0 /* MJToolbar.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		4C1B565B1D686868004EACDC /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				4C1B56591D686233004EACDC /* MainOnboardingViewController.swift */,
+				4C1B565C1D686887004EACDC /* SecondOnboardingViewController.swift */,
+			);
+			name = Onboarding;
 			sourceTree = "<group>";
 		};
 		4CD6DA5F1D535DB100514A04 /* CoreData */ = {
@@ -312,7 +345,7 @@
 		CE43E3161C10D45C006F1D95 /* MJournal */ = {
 			isa = PBXGroup;
 			children = (
-				4C0D859C1D5C9CAE00CF6F02 /* GoogleService-Info.plist */,
+				4CC1E37D1D63376A004ACBF8 /* GoogleService-Info.plist */,
 				CE9D57431C14CA76009B4025 /* MJournal.entitlements */,
 				CEE427F51C11FC76008637C2 /* Model */,
 				CEBD70CC1C160A620076E708 /* ViewControllers */,
@@ -380,6 +413,7 @@
 		CE9D57311C14CA21009B4025 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4CF78A831D6A36870085F1B0 /* StoreKit.framework */,
 				CE9D57321C14CA21009B4025 /* NotificationCenter.framework */,
 				8C9033DC84C59E48CFFDFE63 /* libPods-MJournal.a */,
 			);
@@ -410,6 +444,7 @@
 		CEBD70B41C15FB4E0076E708 /* MJournalWatch Extension */ = {
 			isa = PBXGroup;
 			children = (
+				4CF8C2871D6CEB2B000BFB80 /* MJournalWatch Extension.entitlements */,
 				CEBD70B51C15FB4E0076E708 /* InterfaceController.swift */,
 				CEBD70CE1C1620F50076E708 /* DayInterfaceController.swift */,
 				CEBD70B71C15FB4E0076E708 /* ExtensionDelegate.swift */,
@@ -440,6 +475,10 @@
 				4CC582E81D4A38190001148F /* SubjectInfoTableViewController.swift */,
 				4CEDA9C41D4410F800ED4E14 /* SettingsTableViewController.swift */,
 				4CD8408C1D4D0ED300ABD11F /* SelectionViewController.swift */,
+				4C9E29241D5E73B700511136 /* MoreSettingsTableViewController.swift */,
+				4C0C6F4F1D63948800F2E1C0 /* PickerViewController.swift */,
+				4C29AC1F1D70E22500BD099E /* DeleteViewController.swift */,
+				4C1B565B1D686868004EACDC /* Onboarding */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -549,19 +588,22 @@
 				TargetAttributes = {
 					CE43E3131C10D45C006F1D95 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 3PU2FE6BA7;
+						DevelopmentTeam = 63B76Z84QJ;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
 							};
 						};
 					};
 					CE9D572F1C14CA21009B4025 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 3PU2FE6BA7;
+						DevelopmentTeam = 63B76Z84QJ;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.InterAppAudio = {
 								enabled = 0;
@@ -570,11 +612,16 @@
 					};
 					CEBD70A31C15FB4E0076E708 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 3PU2FE6BA7;
+						DevelopmentTeam = 63B76Z84QJ;
 					};
 					CEBD70AF1C15FB4E0076E708 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 3PU2FE6BA7;
+						DevelopmentTeam = 63B76Z84QJ;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -606,7 +653,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE43E3221C10D45C006F1D95 /* LaunchScreen.storyboard in Resources */,
-				4C0D859D1D5C9CAE00CF6F02 /* GoogleService-Info.plist in Resources */,
+				4CC1E37E1D63376A004ACBF8 /* GoogleService-Info.plist in Resources */,
 				CE23CCAD1C14A67500A94F1D /* Timetable.plist in Resources */,
 				CE43E31F1C10D45C006F1D95 /* Assets.xcassets in Resources */,
 				4C71A7871C2B2DDF006570CF /* Localizable.strings in Resources */,
@@ -625,7 +672,6 @@
 				CE9D57461C14CAFC009B4025 /* Rooms.plist in Resources */,
 				CE9D57441C14CAF7009B4025 /* Shedule.plist in Resources */,
 				CE9D57451C14CAFA009B4025 /* Timetable.plist in Resources */,
-				4C0D859E1D5C9CAE00CF6F02 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,7 +680,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEBD70AA1C15FB4E0076E708 /* Assets.xcassets in Resources */,
-				4C0D859F1D5C9CAE00CF6F02 /* GoogleService-Info.plist in Resources */,
 				4C71A78C1C2B2E8B006570CF /* Localizable.strings in Resources */,
 				CEBD70A81C15FB4E0076E708 /* Interface.storyboard in Resources */,
 			);
@@ -649,7 +694,6 @@
 				CE2BB6831C16258300778FC8 /* Rooms.plist in Resources */,
 				CE2BB6811C16257E00778FC8 /* Shedule.plist in Resources */,
 				CE2BB6821C16258000778FC8 /* Timetable.plist in Resources */,
-				4C0D85A01D5C9CAE00CF6F02 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -711,14 +755,18 @@
 				CE3DF42B1C1327AF004B9D42 /* DaySheduleViewController.swift in Sources */,
 				4CD6DA611D53867A00514A04 /* CoreDataHelper.swift in Sources */,
 				CE43E3181C10D45C006F1D95 /* AppDelegate.swift in Sources */,
+				4C1B565A1D686233004EACDC /* MainOnboardingViewController.swift in Sources */,
 				CE9D57481C14CB38009B4025 /* Time.swift in Sources */,
 				4CD6DA5C1D535CEE00514A04 /* Lesson+CoreDataProperties.swift in Sources */,
+				4C9E29251D5E73B700511136 /* MoreSettingsTableViewController.swift in Sources */,
+				4C29AC201D70E22500BD099E /* DeleteViewController.swift in Sources */,
 				CEE427F91C11FF88008637C2 /* DayCell.swift in Sources */,
 				CE7926F21C14C82700CCB672 /* Color.swift in Sources */,
 				4CBEC5AF1D47F8A80042EAD2 /* SettingsTableViewCell.swift in Sources */,
 				CEE427F71C11FC91008637C2 /* WeekDays.swift in Sources */,
 				CE23CCAF1C14A85D00A94F1D /* TimetableParser.swift in Sources */,
 				4CD6DA5A1D535CEE00514A04 /* Day+CoreDataProperties.swift in Sources */,
+				4C1B565D1D686887004EACDC /* SecondOnboardingViewController.swift in Sources */,
 				CEE427F41C11EFD3008637C2 /* WeekViewController.swift in Sources */,
 				4CEDA9C51D4410F800ED4E14 /* SettingsTableViewController.swift in Sources */,
 				4CC582E91D4A38190001148F /* SubjectInfoTableViewController.swift in Sources */,
@@ -730,8 +778,11 @@
 				4C43D0971D575E02001D7B5C /* BannerCollectionReusableView.swift in Sources */,
 				4CC5830E1D4A97120001148F /* Setting.swift in Sources */,
 				4CAADD1C1D560EF8005D53A6 /* Font.swift in Sources */,
+				4CF78A801D6A11950085F1B0 /* MJToolbar.swift in Sources */,
 				4CD6DA561D535ABA00514A04 /* Model.xcdatamodeld in Sources */,
 				CE7926EB1C14B40C00CCB672 /* RoomParser.swift in Sources */,
+				4C9E29271D5E792600511136 /* SheduleTableViewCell.swift in Sources */,
+				4C0C6F501D63948800F2E1C0 /* PickerViewController.swift in Sources */,
 				4CD6DA5E1D535D6700514A04 /* Lesson.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -759,13 +810,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CCC54701D63454100FE5046 /* Day+CoreDataProperties.swift in Sources */,
 				CEBD70CF1C1620F50076E708 /* DayInterfaceController.swift in Sources */,
 				CEBD70B81C15FB4E0076E708 /* ExtensionDelegate.swift in Sources */,
+				4C6DF2F21D6344B7009F460B /* Model.xcdatamodeld in Sources */,
 				CEBD70D31C1622610076E708 /* Time.swift in Sources */,
+				4C6DF2F01D6344B0009F460B /* Lesson+CoreDataProperties.swift in Sources */,
+				4C6DF2EF1D6344AD009F460B /* Lesson.swift in Sources */,
 				CEBD70BC1C15FB4E0076E708 /* ComplicationController.swift in Sources */,
+				4C6DF2EE1D6344A1009F460B /* Day.swift in Sources */,
 				CEBD70CD1C161A5F0076E708 /* WeekDays.swift in Sources */,
 				CEBD70D11C1622590076E708 /* TimetableParser.swift in Sources */,
 				CEBD70B61C15FB4E0076E708 /* InterfaceController.swift in Sources */,
+				4C6DF2F11D6344B3009F460B /* CoreDataHelper.swift in Sources */,
 				CEBD70BA1C15FB4E0076E708 /* GlanceController.swift in Sources */,
 				CEBD70D01C1622570076E708 /* SheduleParser.swift in Sources */,
 				CEBD70D21C16225C0076E708 /* RoomParser.swift in Sources */,
@@ -807,6 +864,7 @@
 			children = (
 				CE43E31C1C10D45C006F1D95 /* Base */,
 				4C8A04361C1E09CB006DEEA5 /* ru */,
+				4C30C7061D6DAF8C008ED7EB /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -928,13 +986,15 @@
 			baseConfigurationReference = 1ADDF86CA1CCA1739C5F43F0 /* Pods-MJournal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MJournal/MJournal.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = MJournal/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mike.MJournal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.minikov.MJournal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -946,13 +1006,15 @@
 			baseConfigurationReference = B7262A72468E3A2892E82F0A /* Pods-MJournal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MJournal/MJournal.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = MJournal/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mike.MJournal;
+				PRODUCT_BUNDLE_IDENTIFIER = com.minikov.MJournal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -962,11 +1024,12 @@
 		CE9D573F1C14CA21009B4025 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MJournalToday/MJournalToday.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MJournalToday/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mike.MJournal.MJournalToday;
+				PRODUCT_BUNDLE_IDENTIFIER = com.minikov.MJournal.MJournalToday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -976,11 +1039,12 @@
 		CE9D57401C14CA21009B4025 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MJournalToday/MJournalToday.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MJournalToday/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mike.MJournal.MJournalToday;
+				PRODUCT_BUNDLE_IDENTIFIER = com.minikov.MJournal.MJournalToday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -991,11 +1055,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "MJournalWatch Extension/MJournalWatch Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "MJournalWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mike.MJournal.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.minikov.MJournal.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
@@ -1009,11 +1074,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "MJournalWatch Extension/MJournalWatch Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "MJournalWatch Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mike.MJournal.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.minikov.MJournal.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
@@ -1032,7 +1098,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = MJournalWatch_Extension;
 				INFOPLIST_FILE = MJournalWatch/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mike.MJournal.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.minikov.MJournal.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1050,7 +1116,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = MJournalWatch_Extension;
 				INFOPLIST_FILE = MJournalWatch/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mike.MJournal.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.minikov.MJournal.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;

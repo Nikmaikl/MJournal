@@ -22,9 +22,9 @@ class CoreDataHelper: NSObject {
             contentsOfURL: modelURL)!
         
         let fileManager = NSFileManager.defaultManager()
-        let docsURL = fileManager.URLsForDirectory(
-                    .DocumentDirectory, inDomains: .UserDomainMask).last
-//        let docsURL = fileManager.containerURLForSecurityApplicationGroupIdentifier("group.me.nikmaikl.mjournal")
+//        let docsURL = fileManager.URLsForDirectory(
+//                    .DocumentDirectory, inDomains: .UserDomainMask).last
+        let docsURL = fileManager.containerURLForSecurityApplicationGroupIdentifier("group.minikov.MJournal")
         let storeURL = docsURL!
             .URLByAppendingPathComponent("base.sqlite")
         

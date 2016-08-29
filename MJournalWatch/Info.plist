@@ -28,7 +28,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>com.mike.MJournal</string>
+	<string>com.minikov.MJournal</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 </dict>

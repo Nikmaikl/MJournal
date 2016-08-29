@@ -16,8 +16,12 @@ class SelectionViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     @IBOutlet weak var headerView: UIView!
     
+    @IBOutlet weak var undoButton: UIButton!
+    
     var selectedRow:Int? = 0
     var sourceRow = ""
+    
+    var editingLessonTypeID: Int!
     
     var typeOfLesson = ["Лекция", "Семинар", "Практическое занятие", "Лабораторная работа", "МФК"]
     
@@ -32,6 +36,8 @@ class SelectionViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         self.modalTransitionStyle = .CoverVertical
         self.modalPresentationStyle = .OverCurrentContext
         
+        readyButton.titleLabel?.font = UIFont.appSemiBoldFont(15)
+        undoButton.titleLabel?.font = UIFont.appMediumFont(15)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -42,7 +48,6 @@ class SelectionViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -57,17 +62,17 @@ class SelectionViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     @IBAction func readyButtonPressed(sender: AnyObject) {
         if let extractSelectedRow = selectedRow {
-            NSNotificationCenter.defaultCenter().postNotificationName("ChosenType", object: nil, userInfo:["Type":typeOfLesson[extractSelectedRow]])
+            NSNotificationCenter.defaultCenter().postNotificationName("ChosenType\(editingLessonTypeID)", object: nil, userInfo:["Type":typeOfLesson[extractSelectedRow]])
         }
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "ChosenType", object: nil)
+//        NSNotificationCenter.defaultCenter().removeObserver(self, name: "ChosenType", object: nil)
         dismissViewControllerAnimated(true, completion: nil)
     }
     @IBAction func editButtonPressed(sender: AnyObject) {
     }
     
     @IBAction func undoButtonPressed(sender: AnyObject) {
-        NSNotificationCenter.defaultCenter().postNotificationName("ChosenType", object: nil, userInfo:["Type":self.sourceRow])
-        NSNotificationCenter.defaultCenter().removeObserver(self.presentingViewController!, name: "ChosenType", object: nil)
+//        NSNotificationCenter.defaultCenter().postNotificationName("ChosenType", object: nil, userInfo:["Type":self.sourceRow])
+//        NSNotificationCenter.defaultCenter().removeObserver(self.presentingViewController!, name: "ChosenType", object: nil)
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {

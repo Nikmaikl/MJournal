@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="qWa-4e-YEZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -9,13 +9,11 @@
         <scene sceneID="UbS-qv-2GP">
             <objects>
                 <navigationController id="qWa-4e-YEZ" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="sgw-fT-3UG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="sgw-fT-3UG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.12156862745098039" green="0.12156862745098039" blue="0.12156862745098039" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
-                    <connections>
-                        <segue destination="01J-lp-oVM" kind="relationship" relationship="rootViewController" id="0f1-ZD-Ggf"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ACH-aS-JWF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -32,13 +30,29 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoWhite" translatesAutoresizingMaskIntoConstraints="NO" id="cMa-WE-RJK">
+                                <rect key="frame" x="246" y="258" width="109" height="83"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="109" id="YSs-Ns-zvB"/>
+                                    <constraint firstAttribute="height" constant="83" id="kDn-5V-pCw"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="cMa-WE-RJK" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Sfm-ri-LgR"/>
+                            <constraint firstItem="cMa-WE-RJK" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="gRq-TO-7Ux"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Неделя" id="XpM-U8-kKC"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="133" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="LogoWhite" width="109" height="83"/>
+    </resources>
 </document>

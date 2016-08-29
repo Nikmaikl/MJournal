@@ -81,6 +81,7 @@
     {
       "size" : "24x24",
       "idiom" : "watch",
+      "filename" : "58 - Settings-5.png",
       "scale" : "2x",
       "role" : "notificationCenter",
       "subtype" : "38mm"
@@ -88,6 +89,7 @@
     {
       "size" : "27.5x27.5",
       "idiom" : "watch",
+      "filename" : "58 - Settings-6.png",
       "scale" : "2x",
       "role" : "notificationCenter",
       "subtype" : "42mm"
@@ -102,12 +104,14 @@
     {
       "size" : "29x29",
       "idiom" : "watch",
+      "filename" : "80 - Spotlight.png",
       "role" : "companionSettings",
       "scale" : "3x"
     },
     {
       "size" : "40x40",
       "idiom" : "watch",
+      "filename" : "58 - Settings@2x-5.png",
       "scale" : "2x",
       "role" : "appLauncher",
       "subtype" : "38mm"
@@ -115,6 +119,7 @@
     {
       "size" : "86x86",
       "idiom" : "watch",
+      "filename" : "152 - iPad-1.png",
       "scale" : "2x",
       "role" : "quickLook",
       "subtype" : "38mm"
@@ -122,6 +127,7 @@
     {
       "size" : "98x98",
       "idiom" : "watch",
+      "filename" : "152 - iPad-2.png",
       "scale" : "2x",
       "role" : "quickLook",
       "subtype" : "42mm"

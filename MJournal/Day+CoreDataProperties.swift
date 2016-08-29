@@ -13,8 +13,6 @@ import Foundation
 import CoreData
 
 extension Day {
-
     @NSManaged var name: String?
     @NSManaged var lessons: NSMutableSet?
-
 }

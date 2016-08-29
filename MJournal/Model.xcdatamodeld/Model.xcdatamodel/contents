@@ -8,7 +8,10 @@
         <attribute name="audience" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="endTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="isEven" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="number" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="place" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="professor" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="String" syncable="YES"/>
@@ -18,7 +21,7 @@
     <entity name="Shedule" syncable="YES"/>
     <elements>
         <element name="Day" positionX="-3683" positionY="333" width="128" height="73"/>
-        <element name="Lesson" positionX="-3843" positionY="333" width="128" height="178"/>
+        <element name="Lesson" positionX="-3843" positionY="333" width="128" height="223"/>
         <element name="Shedule" positionX="-3519" positionY="333" width="128" height="43"/>
     </elements>
 </model>

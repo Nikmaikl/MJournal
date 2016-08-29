@@ -1,0 +1,162 @@
+
+/* Class = "UILabel"; text = "11:20"; ObjectID = "0Kh-xJ-fze"; */
+"0Kh-xJ-fze.text" = "11:20";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "0m9-j7-eg8"; */
+"0m9-j7-eg8.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "2na-Pd-Nd2"; */
+"2na-Pd-Nd2.title" = " ";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "3yX-pp-Ooc"; */
+"3yX-pp-Ooc.text" = "Label";
+
+/* Class = "UILabel"; text = "ауд: "; ObjectID = "5Cu-R2-BOP"; */
+"5Cu-R2-BOP.text" = "room: ";
+
+/* Class = "UITextField"; placeholder = "Профессор"; ObjectID = "6CI-kW-aEC"; */
+"6CI-kW-aEC.placeholder" = "Professor";
+
+/* Class = "UITextField"; text = "Ветарган Н.С"; ObjectID = "6CI-kW-aEC"; */
+"6CI-kW-aEC.text" = "Ветарган Н.С";
+
+/* Class = "UILabel"; text = "00"; ObjectID = "7DC-RF-jfZ"; */
+"7DC-RF-jfZ.text" = "00";
+
+/* Class = "UILabel"; text = "00"; ObjectID = "8Ms-K1-cmx"; */
+"8Ms-K1-cmx.text" = "00";
+
+/* Class = "UINavigationItem"; title = "Week"; ObjectID = "8sv-8F-jgi"; */
+"8sv-8F-jgi.title" = "Week";
+
+/* Class = "UILabel"; text = "Первая пара"; ObjectID = "9mD-N2-8j5"; */
+"9mD-N2-8j5.text" = "Первая пара";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "9r0-fj-gJT"; */
+"9r0-fj-gJT.title" = " ";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "A5a-39-Q6Q"; */
+"A5a-39-Q6Q.title" = " ";
+
+/* Class = "UILabel"; text = "09"; ObjectID = "BIz-QQ-1Br"; */
+"BIz-QQ-1Br.text" = "09";
+
+/* Class = "UIButton"; normalTitle = "Восстановить покупки"; ObjectID = "Bz7-pc-6zm"; */
+"Bz7-pc-6zm.normalTitle" = "Восстановить покупки";
+
+/* Class = "UINavigationItem"; title = "Настройки"; ObjectID = "Fs7-2E-9be"; */
+"Fs7-2E-9be.title" = "Setting";
+
+/* Class = "UIButton"; normalTitle = "09:00"; ObjectID = "HnT-59-Sbq"; */
+"HnT-59-Sbq.normalTitle" = "09:00";
+
+/* Class = "UINavigationItem"; title = "Время занятий"; ObjectID = "OCa-Jw-qyE"; */
+"OCa-Jw-qyE.title" = "Timetable";
+
+/* Class = "UILabel"; text = "+"; ObjectID = "OU0-Cf-EnM"; */
+"OU0-Cf-EnM.text" = "+";
+
+/* Class = "UILabel"; text = "Задание"; ObjectID = "RPS-r2-KxR"; */
+"RPS-r2-KxR.text" = "Задание";
+
+/* Class = "UIButton"; normalTitle = "09:00"; ObjectID = "TBe-82-cmc"; */
+"TBe-82-cmc.normalTitle" = "09:00";
+
+/* Class = "UILabel"; text = "Добро пожаловать в MJournal!"; ObjectID = "UJq-Md-nzW"; */
+"UJq-Md-nzW.text" = "Welcome to MJournal!";
+
+/* Class = "UINavigationItem"; title = "Title"; ObjectID = "Vir-XW-Cw6"; */
+"Vir-XW-Cw6.title" = "Title";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "XPD-c6-Fqu"; */
+"XPD-c6-Fqu.text" = "-";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "Xa6-ga-f4T"; */
+"Xa6-ga-f4T.title" = " ";
+
+/* Class = "UILabel"; text = "на четную неделю"; ObjectID = "ZGD-w9-hIB"; */
+"ZGD-w9-hIB.text" = "на четную неделю";
+
+/* Class = "UITextField"; placeholder = "номер"; ObjectID = "Zo8-zY-74I"; */
+"Zo8-zY-74I.placeholder" = "number";
+
+/* Class = "UITextField"; text = "524"; ObjectID = "Zo8-zY-74I"; */
+"Zo8-zY-74I.text" = "524";
+
+/* Class = "UIButton"; normalTitle = "Отменить"; ObjectID = "aAh-Lf-gbM"; */
+"aAh-Lf-gbM.normalTitle" = "Undo";
+
+/* Class = "UILabel"; text = "Сегодня"; ObjectID = "aM6-ZE-Bu1"; */
+"aM6-ZE-Bu1.text" = "Now";
+
+/* Class = "UILabel"; text = "09"; ObjectID = "bAN-2b-I4w"; */
+"bAN-2b-I4w.text" = "09";
+
+/* Class = "UIButton"; normalTitle = "Удалить пару"; ObjectID = "bkT-u5-kK1"; */
+"bkT-u5-kK1.normalTitle" = "Удалить пару";
+
+/* Class = "UILabel"; text = "Нет занятий!"; ObjectID = "cCP-e9-oVw"; */
+"cCP-e9-oVw.text" = "No lessons!";
+
+/* Class = "UITextField"; placeholder = "Профессор"; ObjectID = "e89-bm-rAv"; */
+"e89-bm-rAv.placeholder" = "Professor";
+
+/* Class = "UITextField"; text = "Ветарган Н.С"; ObjectID = "e89-bm-rAv"; */
+"e89-bm-rAv.text" = "Ветарган Н.С";
+
+/* Class = "UITextField"; placeholder = "Введите название"; ObjectID = "emq-Kq-8qz"; */
+"emq-Kq-8qz.placeholder" = "Type the title";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "f9I-hH-VDv"; */
+"f9I-hH-VDv.title" = " ";
+
+/* Class = "UILabel"; text = "Предмет"; ObjectID = "iYt-6k-KlK"; */
+"iYt-6k-KlK.text" = "Предмет";
+
+/* Class = "UILabel"; text = "Можно поспать или добавить свое"; ObjectID = "iau-wj-c7g"; */
+"iau-wj-c7g.text" = "You can sleap or add your shedule";
+
+/* Class = "UILabel"; text = "Сколько длится одно занятие?"; ObjectID = "kcl-PG-h2d"; */
+"kcl-PG-h2d.text" = "How long does one lesson last?";
+
+/* Class = "UILabel"; text = "ауд: "; ObjectID = "kpL-yn-MMv"; */
+"kpL-yn-MMv.text" = "room: ";
+
+/* Class = "UITextField"; placeholder = "номер"; ObjectID = "ljq-UQ-Da4"; */
+"ljq-UQ-Da4.placeholder" = "number";
+
+/* Class = "UITextField"; text = "524"; ObjectID = "ljq-UQ-Da4"; */
+"ljq-UQ-Da4.text" = "524";
+
+/* Class = "UIButton"; normalTitle = "Убрать рекламу за 69,00 ₽"; ObjectID = "m8Y-y7-Lv5"; */
+"m8Y-y7-Lv5.normalTitle" = "Remove ads for $2";
+
+/* Class = "UIButton"; normalTitle = "Приступить"; ObjectID = "mIc-PM-2mR"; */
+"mIc-PM-2mR.normalTitle" = "Start";
+
+/* Class = "UIButton"; normalTitle = "Готово"; ObjectID = "n6a-Jv-4vc"; */
+"n6a-Jv-4vc.normalTitle" = "Done";
+
+/* Class = "UILabel"; text = "11:20"; ObjectID = "o3V-5x-P2W"; */
+"o3V-5x-P2W.text" = "11:20";
+
+/* Class = "UITextField"; placeholder = "Введите название"; ObjectID = "pGf-yj-BPf"; */
+"pGf-yj-BPf.placeholder" = "Type the title";
+
+/* Class = "UIButton"; normalTitle = "Перейти к расписанию"; ObjectID = "pcC-c0-LxV"; */
+"pcC-c0-LxV.normalTitle" = "Go to the shedule";
+
+/* Class = "UIButton"; normalTitle = "Продолжить"; ObjectID = "peA-KT-ePz"; */
+"peA-KT-ePz.normalTitle" = "Next step";
+
+/* Class = "UILabel"; text = "Для начала настройте расписание занятий"; ObjectID = "pkY-j6-HAf"; */
+"pkY-j6-HAf.text" = "For now let's edit the timetable";
+
+/* Class = "UIButton"; normalTitle = "ЛЕКЦИЯ"; ObjectID = "pne-no-tVL"; */
+"pne-no-tVL.normalTitle" = "ЛЕКЦИЯ";
+
+/* Class = "UIButton"; normalTitle = "ЛЕКЦИЯ"; ObjectID = "rkH-WZ-Db8"; */
+"rkH-WZ-Db8.normalTitle" = "ЛЕКЦИЯ";
+
+/* Class = "UILabel"; text = "Время занятий"; ObjectID = "xFE-EF-Wyt"; */
+"xFE-EF-Wyt.text" = "Timetable";

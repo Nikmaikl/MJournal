@@ -39,11 +39,56 @@ class Day: NSManagedObject {
         return results as! [Day]
     }
     
-    func allLessons() -> [Lesson] {
-//        NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
-//        NSArray *sorted = [yourSet sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
+//    func allLessons() -> [Lesson] {
+//        let descriptor = NSSortDescriptor(key: "id", ascending: true)
+//        return lessons?.sortedArrayUsingDescriptors([descriptor]) as! [Lesson]
+//    }
+    
+    
+    
+    func allEvenLessons() -> [Lesson] {
         let descriptor = NSSortDescriptor(key: "id", ascending: true)
-        return lessons?.sortedArrayUsingDescriptors([descriptor]) as! [Lesson]
+        let lessonsArray = lessons?.sortedArrayUsingDescriptors([descriptor]) as! [Lesson]
+        var finalArray = [Lesson]()
+        
+        for lesson in lessonsArray {
+            if (lesson.isEven == true) {
+                finalArray.append(lesson)
+            }
+        }
+        
+        return finalArray
     }
 
+    func getEvenLesson(id: Int) -> Lesson? {
+        for lesson in allEvenLessons() {
+            if lesson.id == id {
+                return lesson
+            }
+        }
+        return nil
+    }
+    
+    func getNotEvenLesson(id: Int) -> Lesson? {
+        for lesson in allNotEvenLessons() {
+            if lesson.id == id {
+                return lesson
+            }
+        }
+        return nil
+    }
+    
+    func allNotEvenLessons() -> [Lesson] {
+        let descriptor = NSSortDescriptor(key: "id", ascending: true)
+        let lessonsArray = lessons?.sortedArrayUsingDescriptors([descriptor]) as! [Lesson]
+        var finalArray = [Lesson]()
+        
+        for lesson in lessonsArray {
+            if (lesson.isEven == false) {
+                finalArray.append(lesson)
+            }
+        }
+        
+        return finalArray
+    }
 }

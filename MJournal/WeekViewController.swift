@@ -9,10 +9,11 @@
 import UIKit
 import Firebase
 import GoogleMobileAds
+import WatchConnectivity
 
 private let reuseIdentifier = "CellDay"
 
-class WeekCollectionViewController: UICollectionViewController {
+class WeekCollectionViewController: UICollectionViewController, WCSessionDelegate {
 
     var dayNumber: Int = 0
     var colorForCell: UIColor = UIColor.blackColor()
@@ -49,7 +50,6 @@ class WeekCollectionViewController: UICollectionViewController {
         navigationController?.navigationBar.barTintColor = UIColor.darkBackground()
         navigationController?.navigationBar.translucent = false
         
-        
         if days.count == 0 {
             for d in WeekDays.days {
                 let day = Day(name: d)
@@ -58,6 +58,17 @@ class WeekCollectionViewController: UICollectionViewController {
             }
         }
         
+        if #available(iOS 9.0, *) {
+            if WCSession.isSupported() {
+                let session = WCSession.defaultSession()
+                session.delegate = self
+                session.activateSession()
+                
+                do {
+                    try session.updateApplicationContext(["currentDay": days[0]])
+                } catch { print(error) }
+            }
+        } else {}
         
         let numberOfItemsPerSmallerSide: CGFloat = 2
         let width = (min(screenSize.height, screenSize.width) - defaultSpace * 3) / numberOfItemsPerSmallerSide
@@ -73,14 +84,22 @@ class WeekCollectionViewController: UICollectionViewController {
         lpgr.minimumPressDuration = 0.1
         self.collectionView!.addGestureRecognizer(lpgr)
         
-        banner = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)//frame: CGRectMake((tableView.frame.size.width-kGADAdSizeBanner.size.width)/2, self.view.frame.size.height-kGADAdSizeBanner.size.height, kGADAdSizeBanner.size.width, kGADAdSizeBanner.size.height))
+        banner = GADBannerView(frame: CGRectMake(collectionView!.frame.width/2-kGADAdSizeBanner.size.width/2 ,0, kGADAdSizeBanner.size.width, 44))
         banner.adUnitID = "ca-app-pub-9919730864492896/4325157365"
         banner.rootViewController = self
+
         
-        self.navigationController?.setToolbarHidden(false, animated: true)
-        self.navigationController?.toolbar.backgroundColor = UIColor.clearColor()
+        self.navigationController?.setToolbarHidden(false, animated: false)
+        
+        navigationController?.toolbar.setBackgroundImage(UIImage(),
+                                        forToolbarPosition: UIBarPosition.Any,
+                                        barMetrics: UIBarMetrics.Default)
+        navigationController?.toolbar.setShadowImage(UIImage(),
+                                    forToolbarPosition: UIBarPosition.Any)
+        
+        self.navigationController?.toolbar.backgroundColor = UIColor.darkBackground()
         self.navigationController?.toolbar.addSubview(banner)
-        
+//
         let request = GADRequest()
         request.testDevices = [kGADSimulatorID]
         
@@ -124,7 +143,7 @@ class WeekCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()//UIColor(red: 105/255, green: 141/255, blue: 169/225, alpha: 1.0)//UIColor(red: 69/255, green: 121/255, blue: 188/255, alpha: 1.0)
         self.navigationController?.navigationBar.barStyle = .Black
     }
     

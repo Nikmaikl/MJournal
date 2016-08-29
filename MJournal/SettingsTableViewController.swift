@@ -10,10 +10,19 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController {
 
-    var mainSettings = ["Время занятий", "Предметы", "Преподаватели", "Корпуса", "Типы занятий"]
+    var mainSettings = ["Время занятий"]//, "Преподаватели", "Корпуса"]
+    var adSettings = ["Убрать рекламу за 69,00 ₽", "Восстановить покупки"]
+    
+    @IBOutlet weak var adButton: UIButton!
+    @IBOutlet weak var restoreAdButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        adButton.titleLabel?.font = UIFont.appSemiBoldFont(15)
+        restoreAdButton.titleLabel?.font = UIFont.appSemiBoldFont(13)
+//        navigationController?.navigationBar.tintColor = UIColor.orangeColor()
+        clearsSelectionOnViewWillAppear = true
     }
 
     // MARK: - Table view data source
@@ -24,35 +33,38 @@ class SettingsTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return mainSettings.count
+        switch section {
+        case 0:
+            return mainSettings.count
+        default:
+            return 0
+        }
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MainSettings", forIndexPath: indexPath) as? SettingsTableViewCell
-        
-        cell?.nameLabel.text = mainSettings[indexPath.row]
-        var iconImage: UIImage!
-        
-        switch indexPath.row {
-        case 0:
-            iconImage = UIImage(named: "Clock_icon")!
-        case 1:
-            iconImage = UIImage(named: "Books_icon")!
-        case 2:
-            iconImage = UIImage(named: "Professor_icon")!
-        case 3:
-            iconImage = UIImage(named: "School_icon")!
-        case 4:
-            iconImage = UIImage(named: "TypeOfLesson_icon")!
+        let mainSettingsCell = tableView.dequeueReusableCellWithIdentifier("MainSettings", forIndexPath: indexPath) as? SettingsTableViewCell
             
-        default:
-            return cell!
-        }
-        
-        cell?.iconImageView.image =  iconImage
-
-        return cell!
+            let backgroundView = UIView()
+            backgroundView.backgroundColor = UIColor.darkBackgroundSelectionCell()
+            mainSettingsCell!.selectedBackgroundView = backgroundView
+            
+            mainSettingsCell?.nameLabel.text = mainSettings[indexPath.row]
+            var iconImage: UIImage!
+            
+            switch indexPath.row {
+            case 0:
+                iconImage = UIImage(named: "Clock_icon")!
+            case 1:
+                iconImage = UIImage(named: "Professor_icon")!
+            case 2:
+                iconImage = UIImage(named: "School_icon")!
+            default:
+                return mainSettingsCell!
+            }
+            
+            mainSettingsCell?.iconImageView.image =  iconImage
+            
+            return mainSettingsCell!
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -63,7 +75,17 @@ class SettingsTableViewController: UITableViewController {
             return nil
         }
     }
-
+    
+//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        let selectedCell = tableView.cellForRowAtIndexPath(indexPath)!
+//        selectedCell.contentView.backgroundColor = UIColor.redColor()
+//    }
+//
+//    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+//        let cellToDeSelect:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+//        cellToDeSelect.contentView.backgroundColor = UIColor.clearColor()
+//    }
+    
     /*
     // MARK: - Navigation
 

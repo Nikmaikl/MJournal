@@ -14,9 +14,16 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         FIRApp.configure()
+        
+        if !NSUserDefaults.standardUserDefaults().boolForKey("PassedOnboarding") {
+            let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+            let vc = storyboard.instantiateViewControllerWithIdentifier("Onboarding")
+            window?.rootViewController = vc
+        }
+
         return true
     }
     
@@ -83,4 +90,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }
 //    }
 }
-

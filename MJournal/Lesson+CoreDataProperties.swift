@@ -20,8 +20,10 @@ extension Lesson {
     @NSManaged var type: String?
     @NSManaged var place: String?
     @NSManaged var professor: String?
+    @NSManaged var notes: String?
     @NSManaged var day: Day?
     @NSManaged var audience: String?
     @NSManaged var id: NSNumber?
-    
+    @NSManaged var isEven: NSNumber?
+    @NSManaged var number: NSNumber?
 }

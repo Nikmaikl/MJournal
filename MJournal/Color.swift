@@ -32,4 +32,8 @@ extension UIColor {
         return UIColor(red: 31/255, green: 31/255, blue: 31/225, alpha: 1.0)
     }
     
+    class func darkBackgroundSelectionCell() -> UIColor {
+        return UIColor(red: 47/255, green: 49/255, blue: 49/225, alpha: 1.0)
+    }
+    
 }

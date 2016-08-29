@@ -9,8 +9,6 @@
 import UIKit
 import NotificationCenter
 
-let userDef = NSUserDefaults()
-
 class TodayViewController: UIViewController, NCWidgetProviding {
         
     @IBOutlet weak var currentShedule: UILabel!
@@ -20,11 +18,23 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for (i, lesson) in (Day.allDays()[currentDay].allLessons()).enumerate() {
-            currentShedule.text = "\(i). \(lesson)"
+        let notEvenLessons = Day.allDays()[currentDay].allNotEvenLessons()
+        
+        if notEvenLessons.count == 0 {
+            currentShedule.textAlignment = .Center
+            currentShedule.text = "Сегодня нет занятий"
+            return
+        }
+        
+        for (i, lesson) in notEvenLessons.enumerate() {
+            currentShedule.text = "\(i+1). \(lesson.name!)\n"
         }
     }
     
     func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
+    }
+    
+    func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
     }
 }

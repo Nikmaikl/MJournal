@@ -26,4 +26,10 @@ class DayCell: UICollectionViewCell {
             }
         }
     }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        
+    }
 }

@@ -22,12 +22,18 @@ class SettingsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        nameLabel.font = UIFont.appMediumFont(17)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+//        if (selected) {
+//            self.backgroundColor = [UIColor colorWithRed:234.0f/255 green:202.0f/255 blue:255.0f/255 alpha:1.0f];
+//        }
+//        else {
+//            self.backgroundColor = [UIColor clearColor];
+//        }
     }
 
 }
