@@ -63,12 +63,8 @@ class WeekCollectionViewController: UICollectionViewController, WCSessionDelegat
                 let session = WCSession.defaultSession()
                 session.delegate = self
                 session.activateSession()
-                
-                do {
-                    try session.updateApplicationContext(["currentDay": days[0]])
-                } catch { print(error) }
             }
-        } else {}
+        }
         
         let numberOfItemsPerSmallerSide: CGFloat = 2
         let width = (min(screenSize.height, screenSize.width) - defaultSpace * 3) / numberOfItemsPerSmallerSide
@@ -83,23 +79,35 @@ class WeekCollectionViewController: UICollectionViewController, WCSessionDelegat
         lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         lpgr.minimumPressDuration = 0.1
         self.collectionView!.addGestureRecognizer(lpgr)
-        
+
+        setupGoogleAdToolbar()
+    }
+    
+    @available(iOS 9.0, *)
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+        var lessons = [String]()
+        for lesson in Day.allDays()[Time.getDay()].allNotEvenLessons() {
+            lessons.append(lesson.name!)
+        }
+        replyHandler(["currentDay": lessons])
+    }
+    
+    func setupGoogleAdToolbar() {
         banner = GADBannerView(frame: CGRectMake(collectionView!.frame.width/2-kGADAdSizeBanner.size.width/2 ,0, kGADAdSizeBanner.size.width, 44))
         banner.adUnitID = "ca-app-pub-9919730864492896/4325157365"
         banner.rootViewController = self
-
         
         self.navigationController?.setToolbarHidden(false, animated: false)
         
         navigationController?.toolbar.setBackgroundImage(UIImage(),
-                                        forToolbarPosition: UIBarPosition.Any,
-                                        barMetrics: UIBarMetrics.Default)
+                                                         forToolbarPosition: UIBarPosition.Any,
+                                                         barMetrics: UIBarMetrics.Default)
         navigationController?.toolbar.setShadowImage(UIImage(),
-                                    forToolbarPosition: UIBarPosition.Any)
+                                                     forToolbarPosition: UIBarPosition.Any)
         
         self.navigationController?.toolbar.backgroundColor = UIColor.darkBackground()
         self.navigationController?.toolbar.addSubview(banner)
-//
+        
         let request = GADRequest()
         request.testDevices = [kGADSimulatorID]
         

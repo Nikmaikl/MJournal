@@ -11,6 +11,7 @@
 		4C1B565A1D686233004EACDC /* MainOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B56591D686233004EACDC /* MainOnboardingViewController.swift */; };
 		4C1B565D1D686887004EACDC /* SecondOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B565C1D686887004EACDC /* SecondOnboardingViewController.swift */; };
 		4C29AC201D70E22500BD099E /* DeleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C29AC1F1D70E22500BD099E /* DeleteViewController.swift */; };
+		4C3D97541D74D8890016EE0F /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7926F11C14C82700CCB672 /* Color.swift */; };
 		4C43D0971D575E02001D7B5C /* BannerCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C43D0961D575E02001D7B5C /* BannerCollectionReusableView.swift */; };
 		4C6DF2EE1D6344A1009F460B /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA581D535CEE00514A04 /* Day.swift */; };
 		4C6DF2EF1D6344AD009F460B /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA5D1D535D6700514A04 /* Lesson.swift */; };
@@ -21,6 +22,8 @@
 		4C71A78B1C2B2E89006570CF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C71A7891C2B2DDF006570CF /* Localizable.strings */; };
 		4C71A78C1C2B2E8B006570CF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C71A7891C2B2DDF006570CF /* Localizable.strings */; };
 		4C71A78D1C2B2E8B006570CF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C71A7891C2B2DDF006570CF /* Localizable.strings */; };
+		4C8A1D981D745EA400D2AFD2 /* SubjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C8A1D971D745EA400D2AFD2 /* SubjectTableViewCell.xib */; };
+		4C8A1D9A1D74613400D2AFD2 /* SheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C8A1D991D74613400D2AFD2 /* SheduleTableViewCell.xib */; };
 		4C9564E91D5BD90600653091 /* Day+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA571D535CEE00514A04 /* Day+CoreDataProperties.swift */; };
 		4C9564EA1D5BD90800653091 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA581D535CEE00514A04 /* Day.swift */; };
 		4C9564EB1D5BD90B00653091 /* Lesson+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA591D535CEE00514A04 /* Lesson+CoreDataProperties.swift */; };
@@ -36,6 +39,8 @@
 		4CC582E91D4A38190001148F /* SubjectInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC582E81D4A38190001148F /* SubjectInfoTableViewController.swift */; };
 		4CC5830E1D4A97120001148F /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC5830D1D4A97120001148F /* Setting.swift */; };
 		4CCC54701D63454100FE5046 /* Day+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA571D535CEE00514A04 /* Day+CoreDataProperties.swift */; };
+		4CD3DD2B1D74850F00E77813 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAADD1B1D560EF8005D53A6 /* Font.swift */; };
+		4CD3DD2C1D74851700E77813 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAADD1B1D560EF8005D53A6 /* Font.swift */; };
 		4CD6DA561D535ABA00514A04 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA541D535ABA00514A04 /* Model.xcdatamodeld */; };
 		4CD6DA5A1D535CEE00514A04 /* Day+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA571D535CEE00514A04 /* Day+CoreDataProperties.swift */; };
 		4CD6DA5B1D535CEE00514A04 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA581D535CEE00514A04 /* Day.swift */; };
@@ -169,6 +174,8 @@
 		4C8A04361C1E09CB006DEEA5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		4C8A04371C1E09CB006DEEA5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		4C8A04381C1E09CB006DEEA5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Interface.strings; sourceTree = "<group>"; };
+		4C8A1D971D745EA400D2AFD2 /* SubjectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubjectTableViewCell.xib; sourceTree = "<group>"; };
+		4C8A1D991D74613400D2AFD2 /* SheduleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SheduleTableViewCell.xib; sourceTree = "<group>"; };
 		4C9E29241D5E73B700511136 /* MoreSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreSettingsTableViewController.swift; sourceTree = "<group>"; };
 		4C9E29261D5E792600511136 /* SheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SheduleTableViewCell.swift; sourceTree = "<group>"; };
 		4CAADD1B1D560EF8005D53A6 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
@@ -270,9 +277,11 @@
 			children = (
 				CEE427F81C11FF88008637C2 /* DayCell.swift */,
 				4CBEC5B01D47FC590042EAD2 /* SubjectTableViewCell.swift */,
+				4C8A1D971D745EA400D2AFD2 /* SubjectTableViewCell.xib */,
 				4C43D0961D575E02001D7B5C /* BannerCollectionReusableView.swift */,
 				4CBEC5AE1D47F8A80042EAD2 /* SettingsTableViewCell.swift */,
 				4C9E29261D5E792600511136 /* SheduleTableViewCell.swift */,
+				4C8A1D991D74613400D2AFD2 /* SheduleTableViewCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -656,6 +665,8 @@
 				4CC1E37E1D63376A004ACBF8 /* GoogleService-Info.plist in Resources */,
 				CE23CCAD1C14A67500A94F1D /* Timetable.plist in Resources */,
 				CE43E31F1C10D45C006F1D95 /* Assets.xcassets in Resources */,
+				4C8A1D9A1D74613400D2AFD2 /* SheduleTableViewCell.xib in Resources */,
+				4C8A1D981D745EA400D2AFD2 /* SubjectTableViewCell.xib in Resources */,
 				4C71A7871C2B2DDF006570CF /* Localizable.strings in Resources */,
 				CE3DF4251C1320F1004B9D42 /* Shedule.plist in Resources */,
 				CE43E31D1C10D45C006F1D95 /* Main.storyboard in Resources */,
@@ -798,6 +809,7 @@
 				CE9D57361C14CA21009B4025 /* TodayViewController.swift in Sources */,
 				4C9564EC1D5BD91200653091 /* Lesson.swift in Sources */,
 				4C9564EE1D5BD91900653091 /* CoreDataHelper.swift in Sources */,
+				4CD3DD2B1D74850F00E77813 /* Font.swift in Sources */,
 				4C9564EB1D5BD90B00653091 /* Lesson+CoreDataProperties.swift in Sources */,
 				CE9D574A1C14CD93009B4025 /* TimetableParser.swift in Sources */,
 				CE9D574C1C14CD99009B4025 /* SheduleParser.swift in Sources */,
@@ -822,10 +834,12 @@
 				CEBD70CD1C161A5F0076E708 /* WeekDays.swift in Sources */,
 				CEBD70D11C1622590076E708 /* TimetableParser.swift in Sources */,
 				CEBD70B61C15FB4E0076E708 /* InterfaceController.swift in Sources */,
+				4CD3DD2C1D74851700E77813 /* Font.swift in Sources */,
 				4C6DF2F11D6344B3009F460B /* CoreDataHelper.swift in Sources */,
 				CEBD70BA1C15FB4E0076E708 /* GlanceController.swift in Sources */,
 				CEBD70D01C1622570076E708 /* SheduleParser.swift in Sources */,
 				CEBD70D21C16225C0076E708 /* RoomParser.swift in Sources */,
+				4C3D97541D74D8890016EE0F /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

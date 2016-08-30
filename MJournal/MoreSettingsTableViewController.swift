@@ -64,6 +64,7 @@ class MoreSettingsTableViewController: UITableViewController, PickerDelegate {
             NSUserDefaults.standardUserDefaults().synchronize()
         }
         
+        tableView.registerNib(UINib(nibName: "SheduleTableViewCell", bundle: nil), forCellReuseIdentifier: "SheduleCell")
     }
     
     func nextStep() {

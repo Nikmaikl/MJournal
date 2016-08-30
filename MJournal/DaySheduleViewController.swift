@@ -74,6 +74,7 @@ class DaySheduleViewController: UITableViewController, LessonDelegate, RefreshLe
         tableView.rowHeight = UITableViewAutomaticDimension
         
 //        tableView.frame.size.height -= kGADAdSizeBanner.size.height*1.27
+        
     }
     
     func saveLesson() {
@@ -336,7 +337,12 @@ class DaySheduleViewController: UITableViewController, LessonDelegate, RefreshLe
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SubjectCell", forIndexPath: indexPath)        
+        var cell = tableView.dequeueReusableCellWithIdentifier("SubjectCell")
+        if cell == nil {
+            tableView.registerNib(UINib(nibName: "SubjectTableViewCell", bundle: nil), forCellReuseIdentifier: "SubjectCell")
+            cell = tableView.dequeueReusableCellWithIdentifier("SubjectCell")
+        }
+
         if let subjectCell = cell as? SubjectTableViewCell {
             let lesson = currentDay.allNotEvenLessons()[indexPath.row]
             lesson.id = indexPath.row
@@ -358,14 +364,20 @@ class DaySheduleViewController: UITableViewController, LessonDelegate, RefreshLe
             if !editing {
                 if lesson2 != nil {
                     subjectCell.lesson2 = lesson2
+                } else {
+                    subjectCell.cardView2.hidden = true
                 }
-                subjectCell.cardView2.hidden = true
                 subjectCell.visualView.hidden = true
             }
+            
             return subjectCell
         }
         
-        return cell
+        return cell!
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

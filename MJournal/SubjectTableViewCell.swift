@@ -32,6 +32,7 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
     @IBOutlet weak var numberOfLessonButton: UIButton!
     @IBOutlet weak var timeView: UIView!
     
+    @IBOutlet weak var numberOfLessonContainerView: UIView!
     
     //Second Card
     
@@ -103,6 +104,7 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
         didSet {
             headerView.backgroundColor = colorForToday
             headerView2.backgroundColor = headerView.backgroundColor
+            numberOfLessonContainerView.backgroundColor = colorForToday
         }
     }
     
@@ -129,8 +131,8 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
             
             endTime.font = UIFont.appMediumFont(13)
             endTime2.font = endTime.font
-            audienceNumberField.font = UIFont.appSemiBoldFont()
-            audienceNumberField2.font = audienceNumberField.font
+            audienceNumberField.font = UIFont.appSemiBoldFont(14)
+            audienceNumberField2.font = UIFont.appSemiBoldFont(14)
             professorNameTextField.font = UIFont.appMediumFont(14)
             professorNameTextField2.font = professorNameTextField.font
             
@@ -163,6 +165,15 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
                 mainView.hidden = false
             }
             
+            if !editing {
+                lessonNameField.backgroundColor = UIColor.clearColor()
+                lessonNameField2.backgroundColor = UIColor.clearColor()
+            } else {
+                //if lesson?.name != nil {
+//                    navigationController.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: id, inSection: 0)], withRowAnimation: .None)
+                //}
+            }
+            
         }
     }
     
@@ -173,7 +184,10 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
                 audienceNumberField2.text = lesson2!.audience
                 professorNameTextField2.text = lesson2!.professor
                 visualView.hidden = true
-                showCardView2()
+                cardView2.hidden = false
+                self.cardView2.alpha = 0.2
+                cardViewTrailingConstraint.constant = 35
+//                showCardView2()
             } else {
                 lessonNameField2.text = nil
                 audienceNumberField2.text = nil
@@ -198,8 +212,6 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
         audienceNumberField2.delegate = self
         professorNameTextField2.delegate = self
 
-        mainView.hidden = true
-
         leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(leftSwiped))
         leftSwipeGesture.direction = .Left
         self.addGestureRecognizer(leftSwipeGesture)
@@ -216,6 +228,8 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
             lesson2?.startTime = lesson?.startTime
             lesson2?.endTime = lesson?.endTime
         }
+        
+        
     }
     
     func setupLessonTime() {
@@ -365,7 +379,6 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
             navigationController.tableView.beginUpdates()
             navigationController.tableView.endUpdates()
             
-//            navigationController.tableView.reloadRowsAtInfdexPaths([NSIndexPath(forRow: navigationController.currentDay.allLessons().count-1, inSection: 0)], withRowAnimation: .Automatic)
         }
         
         if lessonNameField.text != "" && audienceNumberField.text != "" && professorNameTextField.text != "" {
@@ -376,7 +389,6 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
             CoreDataHelper.instance.save()
             
             navigationController.navigationItem.rightBarButtonItem?.enabled = true
-            lessonDelegate?.shouldSaveLesson!(id)
             
             if lesson2 == nil {
                 cardView2.hidden = false
@@ -464,81 +476,11 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
         
         if editing {
             
-            if navigationController.tableView.numberOfRowsInSection(0)+1 >= Int((navigationController.currentDay.allNotEvenLessons().last?.number)!)-1 {
-                navigationController.tableView.tableFooterView = nil
-            }
-            
-            numberOfLessonButton.enabled = true
-            
-            lessonNameField.enabled = true
-            lessonNameField2.enabled = true
-            lessonNameField.backgroundColor = getBakColorForTextFieldWhileEditing()
-            lessonNameField2.backgroundColor = getBakColorForTextFieldWhileEditing()
-            lessonNameField.borderStyle = .RoundedRect
-            lessonNameField2.borderStyle = .RoundedRect
-            
-            audienceNumberField.enabled = true
-            audienceNumberField2.enabled = true
-            audienceNumberField.borderStyle = .RoundedRect
-            audienceNumberField2.borderStyle = .RoundedRect
-            
-            lessonTypeButton.enabled = true
-            lessonTypeButton2.enabled = true
-            lessonTypeButton.backgroundColor = UIColor.whiteColor()
-            lessonTypeButton2.backgroundColor = UIColor.whiteColor()
-            lessonTypeButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-            lessonTypeButton2.setTitleColor(UIColor.blackColor(), forState: .Normal)
-            lessonTypeButton.layer.borderWidth = 0.5
-            lessonTypeButton2.layer.borderWidth = 0.5
-            lessonTypeButton.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2).CGColor
-            lessonTypeButton2.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2).CGColor
-            lessonTypeButton.layer.cornerRadius = 5
-            lessonTypeButton.layer.masksToBounds = false
-            lessonTypeButton2.layer.cornerRadius = 5
-            lessonTypeButton2.layer.masksToBounds = false
-
-            
-            lessonTypeHeightConstraint.constant = 44
-            lessonType2HeightConstraint.constant = 44
-            lessonTypeTrailingConstraint.active = true
-            lessonType2TrailingConstraint.active = true
-            
-            lessonNameHeightConstraint.constant = 44
-            lessonName2HeightConstraint.constant = 44
-            audienceNumberFieldHeightConstraint.constant = 44
-            audienceNumberField2HeightConstraint.constant = 44
-            
-            headerViewHeightConstraint.constant = 60
-            headerView2HeightConstraint.constant = 60
-            
-            professorHeightConstraint.constant = 44
-            professor2HeightConstraint.constant = 44
-            
-            
-            professorNameTextField.borderStyle = .RoundedRect
-            professorNameTextField2.borderStyle = .RoundedRect
-            professorNameTextField.enabled = true
-            professorNameTextField2.enabled = true
-            
-            professorCenterConstraint.active = false
-            professor2CenterConstraint.active = false
-            professorLeadingConstraint.active = true
-            professor2LeadingConstraint.active = true
-            professorTopConstraint.active = true
-            professor2TopConstraint.active = true
-
-            if lesson2 == nil {
-                cardView2.hidden = false
-                visualView.hidden = false
-                cardView2.alpha = 1.0
-//                cardViewTrailingConstraint.constant = 35
-            } else {
-                cardView2.hidden = false
-                visualView.hidden = true
-//                cardViewTrailingConstraint.constant = 35
-            }
+            startedEditing()
             
         } else {
+            
+            numberOfLessonContainerView.hidden = false
             //if navigationController.title == "Четная неделя"{
                 
 //                self.cardView2WidthConstraint.active = false
@@ -633,6 +575,83 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
         }
     }
     
+    func startedEditing() {
+        if navigationController.tableView.numberOfRowsInSection(0)+1 >= Int((navigationController.currentDay.allNotEvenLessons().last?.number)!)-1 {
+            navigationController.tableView.tableFooterView = nil
+        }
+        
+        numberOfLessonContainerView.hidden = true
+        numberOfLessonButton.enabled = true
+        
+        lessonNameField.enabled = true
+        lessonNameField2.enabled = true
+        lessonNameField.backgroundColor = getBakColorForTextFieldWhileEditing()
+        lessonNameField2.backgroundColor = getBakColorForTextFieldWhileEditing()
+        lessonNameField.borderStyle = .RoundedRect
+        lessonNameField2.borderStyle = .RoundedRect
+        
+        audienceNumberField.enabled = true
+        audienceNumberField2.enabled = true
+        audienceNumberField.borderStyle = .RoundedRect
+        audienceNumberField2.borderStyle = .RoundedRect
+        
+        lessonTypeButton.enabled = true
+        lessonTypeButton2.enabled = true
+        lessonTypeButton.backgroundColor = UIColor.whiteColor()
+        lessonTypeButton2.backgroundColor = UIColor.whiteColor()
+        lessonTypeButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        lessonTypeButton2.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        lessonTypeButton.layer.borderWidth = 0.5
+        lessonTypeButton2.layer.borderWidth = 0.5
+        lessonTypeButton.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2).CGColor
+        lessonTypeButton2.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2).CGColor
+        lessonTypeButton.layer.cornerRadius = 5
+        lessonTypeButton.layer.masksToBounds = false
+        lessonTypeButton2.layer.cornerRadius = 5
+        lessonTypeButton2.layer.masksToBounds = false
+        
+        
+        lessonTypeHeightConstraint.constant = 44
+        lessonType2HeightConstraint.constant = 44
+        lessonTypeTrailingConstraint.active = true
+        lessonType2TrailingConstraint.active = true
+        
+        lessonNameHeightConstraint.constant = 44
+        lessonName2HeightConstraint.constant = 44
+        audienceNumberFieldHeightConstraint.constant = 44
+        audienceNumberField2HeightConstraint.constant = 44
+        
+        headerViewHeightConstraint.constant = 60
+        headerView2HeightConstraint.constant = 60
+        
+        professorHeightConstraint.constant = 44
+        professor2HeightConstraint.constant = 44
+        
+        
+        professorNameTextField.borderStyle = .RoundedRect
+        professorNameTextField2.borderStyle = .RoundedRect
+        professorNameTextField.enabled = true
+        professorNameTextField2.enabled = true
+        
+        professorCenterConstraint.active = false
+        professor2CenterConstraint.active = false
+        professorLeadingConstraint.active = true
+        professor2LeadingConstraint.active = true
+        professorTopConstraint.active = true
+        professor2TopConstraint.active = true
+        
+        cardViewTrailingConstraint.constant = 35
+        
+        if lesson2 == nil {
+            cardView2.hidden = false
+            visualView.hidden = false
+            cardView2.alpha = 1.0
+        } else {
+            cardView2.hidden = false
+            visualView.hidden = true
+        }
+    }
+    
     func getBakColorForTextFieldWhileEditing() -> UIColor {
         var hue: CGFloat = 0.0
         var sat: CGFloat = 0.0
@@ -702,15 +721,6 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
                             }
                         }
                         
-//                        let nextLesson = allNotEvenLessons[Int((self.lesson?.id!)!)+1] as? Lesson
-//                        
-//                        if self.lesson!.number == 1 {
-//                            self.lessonNumber = self.lessonNumber + 1
-//                        } else if self.lessonNumber+1 >= Int(.number!) {
-//                            self.lessonNumber = Int((allNotEvenLessons[allNotEvenLessons.count-2].number)!)+1
-//                        } else {
-//                            self.lessonNumber = self.lessonNumber + 1
-//                        }
                         self.numberOfLessonLabel.text = "\(self.lessonNumber)"
                         self.lesson?.number = self.lessonNumber
                         self.lesson?.startTime = self.timeTable[self.lessonNumber-1][0]

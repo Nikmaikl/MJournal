@@ -43,7 +43,7 @@ class SubjectInfoTableViewController: UIViewController, UITextViewDelegate, UIPo
 //        self.tableView.estimatedRowHeight = 40
         
         noteTextField.delegate = self
-        noteTextField.font = UIFont.appMediumFont(14)
+        noteTextField.font = UIFont.appMediumFont(17)
         titleLabel.font = UIFont.appSemiBoldFont(17)
         
         self.noteTextField.alwaysBounceVertical = true
