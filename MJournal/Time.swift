@@ -27,6 +27,7 @@ class Time {
         let calendar = NSCalendar.currentCalendar()
         
         if unit == NSCalendarUnit.Weekday {
+//            return calendar.component(unit, fromDate: date)-2
             return calendar.component(unit, fromDate: date)-2
         }
         

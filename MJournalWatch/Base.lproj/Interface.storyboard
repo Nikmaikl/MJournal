@@ -22,7 +22,7 @@
                                 <tableRow identifier="SubjectRow" selectable="NO" id="0aD-Be-lUb" customClass="SubjectRowController" customModule="MJournalWatch_Extension">
                                     <group key="rootItem" width="1" alignment="left" id="F7S-7u-XbM">
                                         <items>
-                                            <label alignment="left" verticalAlignment="center" numberOfLines="0" id="t9b-KU-rJe"/>
+                                            <label alignment="left" verticalAlignment="center" textAlignment="left" numberOfLines="2" id="t9b-KU-rJe"/>
                                         </items>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </group>
@@ -47,9 +47,9 @@
         <!--Сегодня-->
         <scene sceneID="0HF-00-CQ1">
             <objects>
-                <controller identifier="More_Info_Even" title="Сегодня" id="GcE-Ey-gTp" customClass="DayInterfaceController" customModule="MJournalWatch_Extension">
+                <controller identifier="More_Info_Even" title="Сегодня" id="GcE-Ey-gTp" customClass="EvenDayInterfaceController" customModule="MJournalWatch_Extension">
                     <items>
-                        <group width="1" alignment="left" verticalAlignment="center" layout="vertical" spacing="8" id="gtb-gW-umx">
+                        <group width="1" alignment="left" verticalAlignment="center" hidden="YES" layout="vertical" spacing="8" id="gtb-gW-umx">
                             <items>
                                 <imageView alignment="center" image="Bed_icon" id="rVc-nl-tVt"/>
                                 <label alignment="center" verticalAlignment="bottom" text="Нет занятий! Можно поспать." textAlignment="center" numberOfLines="0" id="p3Z-pJ-7tu"/>
@@ -58,24 +58,25 @@
                         </group>
                         <table alignment="left" id="7Hp-cJ-992">
                             <items>
-                                <tableRow identifier="SubjectRow" selectable="NO" id="Vtn-1I-OdG" customClass="SubjectRowController" customModule="MJournalWatch_Extension">
+                                <tableRow identifier="EvenSubjectRow" selectable="NO" id="Vtn-1I-OdG" customClass="EvenSubjectRowController" customModule="MJournalWatch_Extension">
                                     <group key="rootItem" width="1" alignment="left" id="IVe-dT-1VQ">
                                         <items>
-                                            <label alignment="left" verticalAlignment="center" text="Label" numberOfLines="0" id="Y7I-a4-bz9"/>
+                                            <label alignment="left" verticalAlignment="center" numberOfLines="2" id="Y7I-a4-bz9"/>
                                         </items>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     </group>
                                     <connections>
-                                        <outlet property="label" destination="Y7I-a4-bz9" id="k1d-NV-Hty"/>
+                                        <outlet property="label" destination="Y7I-a4-bz9" id="Bc3-bv-KEL"/>
+                                        <outlet property="subjectGroup" destination="IVe-dT-1VQ" id="grw-kv-auy"/>
                                     </connections>
                                 </tableRow>
                             </items>
                         </table>
                     </items>
                     <connections>
-                        <outlet property="noLessonsGroup" destination="gtb-gW-umx" id="xFc-He-QeI"/>
-                        <outlet property="noLessonsLabel" destination="p3Z-pJ-7tu" id="d2z-zA-kvb"/>
-                        <outlet property="table" destination="7Hp-cJ-992" id="ptL-Ar-HMy"/>
+                        <outlet property="noLessonsGroup" destination="gtb-gW-umx" id="MF9-fT-FUD"/>
+                        <outlet property="noLessonsLabel" destination="p3Z-pJ-7tu" id="WIb-5S-bSp"/>
+                        <outlet property="table" destination="7Hp-cJ-992" id="epR-KD-eLI"/>
                     </connections>
                 </controller>
             </objects>

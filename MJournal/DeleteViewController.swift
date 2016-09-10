@@ -21,8 +21,9 @@ class DeleteViewController: UIViewController {
 
     @IBAction func deleteLesson(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: { self.deleteDelegate.delete() })
-        print(lesson.id!)
+        
         var lessons = currentDay.allNotEvenLessons()
+        
         lessons.removeAtIndex(Int(lesson.id!))
         var evenLessons = currentDay.allEvenLessons()
         

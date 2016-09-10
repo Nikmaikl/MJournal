@@ -48,9 +48,10 @@
 		4CD6DA5E1D535D6700514A04 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA5D1D535D6700514A04 /* Lesson.swift */; };
 		4CD6DA611D53867A00514A04 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA601D53867A00514A04 /* CoreDataHelper.swift */; };
 		4CD8408D1D4D0ED300ABD11F /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD8408C1D4D0ED300ABD11F /* SelectionViewController.swift */; };
+		4CDD11471D762FD300072528 /* EvenDayInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD11461D762FD300072528 /* EvenDayInterfaceController.swift */; };
 		4CEDA9C51D4410F800ED4E14 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEDA9C41D4410F800ED4E14 /* SettingsTableViewController.swift */; };
 		4CF78A801D6A11950085F1B0 /* MJToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF78A7F1D6A11950085F1B0 /* MJToolbar.swift */; };
-		4CF78A841D6A36870085F1B0 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CF78A831D6A36870085F1B0 /* StoreKit.framework */; };
+		4CF8BA101D80513B00943F78 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7926F11C14C82700CCB672 /* Color.swift */; };
 		89E1ECC4C4FAC211426FCD1D /* libPods-MJournal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C9033DC84C59E48CFFDFE63 /* libPods-MJournal.a */; };
 		CE23CCAD1C14A67500A94F1D /* Timetable.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE23CCAC1C14A67500A94F1D /* Timetable.plist */; };
 		CE23CCAF1C14A85D00A94F1D /* TimetableParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE23CCAE1C14A85D00A94F1D /* TimetableParser.swift */; };
@@ -191,9 +192,9 @@
 		4CD6DA5D1D535D6700514A04 /* Lesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		4CD6DA601D53867A00514A04 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		4CD8408C1D4D0ED300ABD11F /* SelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
+		4CDD11461D762FD300072528 /* EvenDayInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvenDayInterfaceController.swift; sourceTree = "<group>"; };
 		4CEDA9C41D4410F800ED4E14 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		4CF78A7F1D6A11950085F1B0 /* MJToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJToolbar.swift; sourceTree = "<group>"; };
-		4CF78A831D6A36870085F1B0 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4CF8C2871D6CEB2B000BFB80 /* MJournalWatch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "MJournalWatch Extension.entitlements"; sourceTree = "<group>"; };
 		8C9033DC84C59E48CFFDFE63 /* libPods-MJournal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MJournal.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7262A72468E3A2892E82F0A /* Pods-MJournal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MJournal.release.xcconfig"; path = "Pods/Target Support Files/Pods-MJournal/Pods-MJournal.release.xcconfig"; sourceTree = "<group>"; };
@@ -250,7 +251,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				89E1ECC4C4FAC211426FCD1D /* libPods-MJournal.a in Frameworks */,
-				4CF78A841D6A36870085F1B0 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,7 +422,6 @@
 		CE9D57311C14CA21009B4025 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4CF78A831D6A36870085F1B0 /* StoreKit.framework */,
 				CE9D57321C14CA21009B4025 /* NotificationCenter.framework */,
 				8C9033DC84C59E48CFFDFE63 /* libPods-MJournal.a */,
 			);
@@ -456,6 +455,7 @@
 				4CF8C2871D6CEB2B000BFB80 /* MJournalWatch Extension.entitlements */,
 				CEBD70B51C15FB4E0076E708 /* InterfaceController.swift */,
 				CEBD70CE1C1620F50076E708 /* DayInterfaceController.swift */,
+				4CDD11461D762FD300072528 /* EvenDayInterfaceController.swift */,
 				CEBD70B71C15FB4E0076E708 /* ExtensionDelegate.swift */,
 				CEBD70B91C15FB4E0076E708 /* GlanceController.swift */,
 				CEBD70BB1C15FB4E0076E708 /* ComplicationController.swift */,
@@ -598,18 +598,20 @@
 					CE43E3131C10D45C006F1D95 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 63B76Z84QJ;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
 							com.apple.InAppPurchase = {
-								enabled = 1;
+								enabled = 0;
 							};
 						};
 					};
 					CE9D572F1C14CA21009B4025 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 63B76Z84QJ;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -622,10 +624,12 @@
 					CEBD70A31C15FB4E0076E708 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 63B76Z84QJ;
+						LastSwiftMigration = 0800;
 					};
 					CEBD70AF1C15FB4E0076E708 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 63B76Z84QJ;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -811,6 +815,7 @@
 				4C9564EE1D5BD91900653091 /* CoreDataHelper.swift in Sources */,
 				4CD3DD2B1D74850F00E77813 /* Font.swift in Sources */,
 				4C9564EB1D5BD90B00653091 /* Lesson+CoreDataProperties.swift in Sources */,
+				4CF8BA101D80513B00943F78 /* Color.swift in Sources */,
 				CE9D574A1C14CD93009B4025 /* TimetableParser.swift in Sources */,
 				CE9D574C1C14CD99009B4025 /* SheduleParser.swift in Sources */,
 				4C9564ED1D5BD91600653091 /* Model.xcdatamodeld in Sources */,
@@ -838,6 +843,7 @@
 				4C6DF2F11D6344B3009F460B /* CoreDataHelper.swift in Sources */,
 				CEBD70BA1C15FB4E0076E708 /* GlanceController.swift in Sources */,
 				CEBD70D01C1622570076E708 /* SheduleParser.swift in Sources */,
+				4CDD11471D762FD300072528 /* EvenDayInterfaceController.swift in Sources */,
 				CEBD70D21C16225C0076E708 /* RoomParser.swift in Sources */,
 				4C3D97541D74D8890016EE0F /* Color.swift in Sources */,
 			);
@@ -1011,6 +1017,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.minikov.MJournal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1031,6 +1038,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.minikov.MJournal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1047,6 +1055,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -1062,6 +1071,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -1079,6 +1089,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -1098,6 +1109,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -1116,6 +1128,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -1134,6 +1147,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};

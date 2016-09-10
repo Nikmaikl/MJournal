@@ -8,12 +8,16 @@
 
 import UIKit
 import CoreData
+import Firebase
+import FirebaseAnalytics
+import WatchConnectivity
 
 @objc protocol LessonDelegate: class {
     optional func shouldSaveLesson(id: Int)
 }
 
-class DaySheduleViewController: UITableViewController, LessonDelegate, RefreshLessonsDelegate {
+
+class DaySheduleViewController: UITableViewController, WCSessionDelegate, LessonDelegate, RefreshLessonsDelegate {
     
     var dayNumber: Int = 0
     
@@ -30,7 +34,6 @@ class DaySheduleViewController: UITableViewController, LessonDelegate, RefreshLe
     
     var currentDay: Day!
     
-    
     var colorForBar = UIColor(red: 76/255, green: 86/255, blue: 108/225, alpha: 1.0)
     
     
@@ -42,6 +45,7 @@ class DaySheduleViewController: UITableViewController, LessonDelegate, RefreshLe
     
     var timeTable = [[String]]()
     var editingLessonTypeID: Int!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,14 +77,75 @@ class DaySheduleViewController: UITableViewController, LessonDelegate, RefreshLe
         
         tableView.rowHeight = UITableViewAutomaticDimension
         
-//        tableView.frame.size.height -= kGADAdSizeBanner.size.height*1.27
+        if #available(iOS 9.0, *) {
+            if WCSession.isSupported() {
+                let session = WCSession.defaultSession()
+                session.delegate = self
+                session.activateSession()
+            }
+        }
+    }
+    
+    @available(iOS 9.0, *)
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
         
+        var notEvenLessons = [String]()
+        var evenLessons = [String]()
+        if Time.getDay() == -1 {
+            replyHandler(["notEvenLessons": notEvenLessons, "evenLessons": evenLessons])
+            return
+        }
+        
+        let sourceEvenLessons = Day.allDays()[Time.getDay()].allEvenLessons()
+        
+        for (i, lesson) in Day.allDays()[Time.getDay()].allNotEvenLessons().enumerate() {
+            notEvenLessons.append(lesson.name!)
+            if i < sourceEvenLessons.count {
+                for evenLesson in sourceEvenLessons {
+                    if Int(evenLesson.id!) == i {
+                        evenLessons.append(evenLesson.name!)
+                        break
+                    } else {
+                        evenLessons.append(lesson.name!)
+                    }
+                }
+            } else {
+                evenLessons.append(lesson.name!)
+            }
+        }
+        
+        replyHandler(["notEvenLessons": notEvenLessons, "evenLessons": evenLessons])
     }
     
     func saveLesson() {
         setEditing(false, animated: true)
         navigationItem.rightBarButtonItem = rightbarItemEdit
+        
+        if #available(iOS 9.0, *) {
+            if WCSession.defaultSession().reachable {
+                let notEvenLessons = getNotEvenLessonsInString()
+                WCSession.defaultSession().sendMessage(["notEvenLessons": notEvenLessons], replyHandler: nil, errorHandler: nil)
+            }
+        }
     }
+    
+    func getNotEvenLessonsInString() -> [String] {
+        var notEvenLessons = [String]()
+        for lesson in Day.allDays()[Time.getDay()].allNotEvenLessons() {
+            notEvenLessons.append(lesson.name!)
+        }
+        return notEvenLessons
+    }
+    
+    func geEvenLessonsInString() -> [String] {
+        var evenLessons = [String]()
+        for lesson in Day.allDays()[Time.getDay()].allEvenLessons() {
+            evenLessons.append(lesson.name!)
+        }
+        return evenLessons
+    }
+    
+    
     
     func editButtonTapped() {
         setEditing(!tableView.editing, animated: true)
@@ -250,11 +315,22 @@ class DaySheduleViewController: UITableViewController, LessonDelegate, RefreshLe
     var shouldExpandCell = true
     
     @IBAction func addSubject(sender: AnyObject) {
+        UIView.animateWithDuration(0.2, animations: {
+            self.addSubjectButton.transform = CGAffineTransformMakeScale(0.8, 0.8)
+            }, completion: { b->Void in
+                UIView.animateWithDuration(0.05, animations: {
+                    self.addSubjectButton.transform = CGAffineTransformMakeScale(1, 1)
+                    }, completion: { b->Void in
+                        self.addNewSubject()
+                })
+        })
+    }
+    
+    func addNewSubject() {
         shouldExpandCell = false
-        
-//        if tableView.numberOfRowsInSection(0)+1 >= Int((currentDay.allNotEvenLessons().last?.number)!)-1 {
-//            tableView.tableFooterView = nil
-//        }
+        //        if tableView.numberOfRowsInSection(0)+1 >= Int((currentDay.allNotEvenLessons().last?.number)!)-1 {
+        //            tableView.tableFooterView = nil
+        //        }
         
         let lesson = Lesson()
         lesson.startTime = String(timeTable[currentDay.allNotEvenLessons().count][0])
@@ -279,10 +355,10 @@ class DaySheduleViewController: UITableViewController, LessonDelegate, RefreshLe
         
         
         //if tableView.numberOfRowsInSection(0) == 1 && !tableView.editing {
-            setEditing(true, animated: true)
+        setEditing(true, animated: true)
         //}
         
-
+        
         
         let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: Int(lesson.id!), inSection: 0)) as? SubjectTableViewCell
         cell?.lessonNameField.becomeFirstResponder()
@@ -292,7 +368,6 @@ class DaySheduleViewController: UITableViewController, LessonDelegate, RefreshLe
         cell?.headerView.layer.cornerRadius = 10
         cell?.cardView.backgroundColor = UIColor.clearColor()
     }
-    
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
@@ -358,7 +433,6 @@ class DaySheduleViewController: UITableViewController, LessonDelegate, RefreshLe
             }
             subjectCell.lesson = lesson
             subjectCell.navigationController = self
-            subjectCell.timeTable = timeTable
             subjectCell.lessonDelegate = self
             let lesson2 = currentDay.getEvenLesson(indexPath.row)
             if !editing {

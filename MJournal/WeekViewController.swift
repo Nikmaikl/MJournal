@@ -78,18 +78,22 @@ class WeekCollectionViewController: UICollectionViewController, WCSessionDelegat
         
         lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         lpgr.minimumPressDuration = 0.1
-        self.collectionView!.addGestureRecognizer(lpgr)
+//        self.collectionView!.addGestureRecognizer(lpgr)
 
         setupGoogleAdToolbar()
     }
     
     @available(iOS 9.0, *)
     func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
-        var lessons = [String]()
+        var notEvenLessons = [String]()
+        var evenLessons = [String]()
         for lesson in Day.allDays()[Time.getDay()].allNotEvenLessons() {
-            lessons.append(lesson.name!)
+            notEvenLessons.append(lesson.name!)
         }
-        replyHandler(["currentDay": lessons])
+        for lesson in Day.allDays()[Time.getDay()].allEvenLessons() {
+            evenLessons.append(lesson.name!)
+        }
+        replyHandler(["notEvenLessons": notEvenLessons, "evenLessons": evenLessons])
     }
     
     func setupGoogleAdToolbar() {

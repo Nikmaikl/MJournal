@@ -106,8 +106,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VVD-9d-1FV">
                                 <rect key="frame" x="0.0" y="40" width="568" height="78"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="524" placeholder="номер" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RGD-HK-xpQ">
-                                        <rect key="frame" x="106" y="42" width="454" height="20"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="номер" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RGD-HK-xpQ">
+                                        <rect key="frame" x="109" y="42" width="451" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="Soq-cD-kOh"/>
                                         </constraints>
@@ -118,7 +118,7 @@
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ауд: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZ6-aJ-l9q">
-                                        <rect key="frame" x="71" y="40" width="37" height="21"/>
+                                        <rect key="frame" x="71" y="42" width="37" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -191,7 +191,7 @@
                                 <color key="backgroundColor" red="0.98431372549999996" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="RGD-HK-xpQ" firstAttribute="bottom" secondItem="6US-OM-OnR" secondAttribute="top" constant="-20" id="4lK-7p-T9J"/>
-                                    <constraint firstItem="TZ6-aJ-l9q" firstAttribute="centerY" secondItem="RGD-HK-xpQ" secondAttribute="centerY" constant="-1.5" id="Edq-z7-Wfv"/>
+                                    <constraint firstItem="TZ6-aJ-l9q" firstAttribute="centerY" secondItem="RGD-HK-xpQ" secondAttribute="centerY" id="Edq-z7-Wfv"/>
                                     <constraint firstItem="6US-OM-OnR" firstAttribute="top" secondItem="RGD-HK-xpQ" secondAttribute="bottom" constant="8" id="FV4-0E-uNl"/>
                                     <constraint firstItem="H00-hm-vDX" firstAttribute="top" secondItem="AJI-86-EjL" secondAttribute="top" id="Jvg-93-m3a"/>
                                     <constraint firstAttribute="trailing" secondItem="RGD-HK-xpQ" secondAttribute="trailing" constant="8" id="Oec-tu-Xc6"/>
@@ -200,7 +200,7 @@
                                     <constraint firstAttribute="trailing" secondItem="6US-OM-OnR" secondAttribute="trailing" constant="11" id="TiK-bN-Eg5"/>
                                     <constraint firstItem="RGD-HK-xpQ" firstAttribute="bottom" secondItem="TZ6-aJ-l9q" secondAttribute="bottom" constant="1" id="W70-tR-jHN"/>
                                     <constraint firstItem="6US-OM-OnR" firstAttribute="centerY" secondItem="RGD-HK-xpQ" secondAttribute="centerY" constant="-2" id="Zjg-dF-Fip"/>
-                                    <constraint firstItem="RGD-HK-xpQ" firstAttribute="leading" secondItem="TZ6-aJ-l9q" secondAttribute="trailing" constant="-2" id="el8-Rs-8Jq"/>
+                                    <constraint firstItem="RGD-HK-xpQ" firstAttribute="leading" secondItem="TZ6-aJ-l9q" secondAttribute="trailing" constant="1" id="el8-Rs-8Jq"/>
                                     <constraint firstItem="H00-hm-vDX" firstAttribute="leading" secondItem="Feh-Er-e3N" secondAttribute="trailing" constant="8" id="fm3-aC-9Il"/>
                                     <constraint firstAttribute="bottom" secondItem="Feh-Er-e3N" secondAttribute="bottom" constant="1" id="g7S-0j-7TA"/>
                                     <constraint firstItem="6US-OM-OnR" firstAttribute="leading" secondItem="TZ6-aJ-l9q" secondAttribute="leading" id="hFi-L5-LTl"/>

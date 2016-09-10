@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAnalytics
 
 protocol RefreshLessonsDelegate: class {
     func refresh()
@@ -24,12 +26,6 @@ class SubjectInfoTableViewController: UIViewController, UITextViewDelegate, UIPo
     var lesson: Lesson? {
         didSet {
             self.title = lesson?.name
-//            startTimeHour.text = hour
-//            startTimeMin.text = min
-//            endTime.text = lesson!.endTime
-            
-//            audienceNumberField.text = lesson?.audience
-//            professorNameLabel.text = lesson?.professor
         }
     }
     
@@ -37,10 +33,7 @@ class SubjectInfoTableViewController: UIViewController, UITextViewDelegate, UIPo
         super.viewDidLoad()
         
         trashBarButton = UIBarButtonItem(image: UIImage(named: "Trash_can"), style: .Plain, target: self, action: #selector(trashIt))
-        doneBarButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(doneIt))//(image: UIImage(named: "Trash_can"), style: .Plain, target: self, action: #selector(trashIt))
-
-//        self.tableView.rowHeight = UITableViewAutomaticDimension
-//        self.tableView.estimatedRowHeight = 40
+        doneBarButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(doneIt))//(image: 
         
         noteTextField.delegate = self
         noteTextField.font = UIFont.appMediumFont(17)
@@ -55,12 +48,6 @@ class SubjectInfoTableViewController: UIViewController, UITextViewDelegate, UIPo
         } else {
             navigationItem.rightBarButtonItem = trashBarButton
         }
-        
-        
-        
-//        tableView.rowHeight = UITableViewAutomaticDimension
-//        tableView.estimatedRowHeight = 40
-        
     }
     
     func trashIt() {
@@ -87,6 +74,7 @@ class SubjectInfoTableViewController: UIViewController, UITextViewDelegate, UIPo
     }
     
     func doneIt() {
+        FIRAnalytics.logEventWithName("savedNote", parameters: ["text": noteTextField.text])
         noteTextField.resignFirstResponder()
         navigationItem.rightBarButtonItem = trashBarButton
     }
@@ -111,84 +99,5 @@ class SubjectInfoTableViewController: UIViewController, UITextViewDelegate, UIPo
     func delete() {
         navigationController?.popViewControllerAnimated(true)
         refreshDelegate.refresh()
-//        dismissViewControllerAnimated(true, completion: {
-//            var lessons = self.lesson!.day!.allNotEvenLessons()
-//            var evenLessons = self.lesson!.day!.allEvenLessons()
-//            lessons.removeAtIndex(Int(self.lesson!.id!))
-//            
-//            evenLessons.removeAtIndex(Int(self.lesson!.id!))
-//            lessons += evenLessons
-//            self.lesson!.day!.lessons = NSMutableSet(array: lessons)
-//            CoreDataHelper.instance.save()
-//        })
     }
-    
-//    func textViewDidChange(textView: UITextView) {
-//        let fixedWidth = textView.frame.size.width
-//        textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
-//        let newSize = textView.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
-//        var newFrame = textView.frame
-//        newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
-//        textView.frame = newFrame;
-//    }
-
-    // MARK: - Table view data source
-
-
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

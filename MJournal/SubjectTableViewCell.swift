@@ -10,7 +10,7 @@ import UIKit
 
 @objc protocol PickerDelegate: class {
     optional func saveTypeLesson(type: String)
-    optional func saveTime(time: String)
+//    optional func saveTime(time: String)
 }
 
 class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPresentationControllerDelegate, PickerDelegate {
@@ -131,10 +131,13 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
             
             endTime.font = UIFont.appMediumFont(13)
             endTime2.font = endTime.font
-            audienceNumberField.font = UIFont.appSemiBoldFont(14)
-            audienceNumberField2.font = UIFont.appSemiBoldFont(14)
+            audienceNumberField.font = UIFont.appRegularFont(14)
+            audienceNumberField2.font = UIFont.appRegularFont(13)
             professorNameTextField.font = UIFont.appMediumFont(14)
             professorNameTextField2.font = professorNameTextField.font
+            
+            placeLabel.font = UIFont.appSemiBoldFont(14)
+            placeLabel2.font = UIFont.appSemiBoldFont(14)
             
             lesson?.startTime = timeTable[lessonNumber-1][0]
             lesson?.endTime = timeTable[lessonNumber-1][1]
@@ -151,7 +154,11 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
             
             setupLessonTime()
             
-            audienceNumberField.text = lesson?.audience
+            if lesson?.audience != nil {
+                audienceNumberField.text = lesson?.audience
+            } else {
+//                audienceNumberField.text = "нет."
+            }
             professorNameTextField.text = lesson?.professor
             lessonTypeButton.setTitle(lesson?.type?.uppercaseString, forState: .Normal)
             lessonTypeButton2.setTitle(lessonTypeButton.titleLabel!.text, forState: .Normal)
@@ -228,7 +235,6 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
             lesson2?.startTime = lesson?.startTime
             lesson2?.endTime = lesson?.endTime
         }
-        
         
     }
     
@@ -371,21 +377,26 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
     }
     
     @IBAction func editingTextFieldChanged(sender: AnyObject) {
-        if sender as! NSObject == lessonNameField && lessonNameField.text?.characters.count != 0 {
-            navigationController.shouldExpandCell = true
+        if lessonNameField.text?.characters.count != 0 {
+            
             mainView.hidden = false
             headerView.layer.cornerRadius = 0
             cardView.backgroundColor = UIColor.whiteColor()
             navigationController.tableView.beginUpdates()
             navigationController.tableView.endUpdates()
             
-        }
+        //}
         
-        if lessonNameField.text != "" && audienceNumberField.text != "" && professorNameTextField.text != "" {
-            lesson?.name = lessonNameField.text
-            lesson?.audience = audienceNumberField.text
+        //if lessonNameField.text != "" && audienceNumberField.text != "" && professorNameTextField.text != "" {
+            if sender as! NSObject == lessonNameField {
+                lesson?.name = lessonNameField.text
+            } else if sender as! NSObject == audienceNumberField {
+                lesson?.audience = audienceNumberField.text
+            } else if sender as! NSObject == professorNameTextField {
+                lesson?.professor = professorNameTextField.text
+            }
+            
             lesson?.type = lessonTypeButton.titleLabel!.text
-            lesson?.professor = professorNameTextField.text
             CoreDataHelper.instance.save()
             
             navigationController.navigationItem.rightBarButtonItem?.enabled = true
@@ -397,7 +408,7 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
                 cardViewTrailingConstraint.constant = 35
             }
             
-            if Int((navigationController.currentDay.allNotEvenLessons().last?.number)!) >= timeTable.count {
+            if Int((navigationController.currentDay.allNotEvenLessons().last?.number)!)+1 >= timeTable.count {
                 navigationController.tableView.tableFooterView = nil
             } else {
                 UIView.performWithoutAnimation({
@@ -406,25 +417,23 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
                 })
                 navigationController.tableView.tableFooterView = navigationController.addSubjectView
             }
-        } else if lessonNameField.text == "" || audienceNumberField.text == "" || professorNameTextField.text == "" {
+        } else {
             navigationController.navigationItem.rightBarButtonItem?.enabled = false
-            navigationController.tableView.tableFooterView = nil
             if lesson2 == nil {
                 cardView2.hidden = true
-                cardViewTrailingConstraint.constant = 8
+//                cardViewTrailingConstraint.constant = 8
             }
         }
     }
     
     @IBAction func editingTextField2Changed(sender: AnyObject) {
-        if lessonNameField2.text != "" && audienceNumberField2.text != "" && professorNameTextField2.text != "" {
+        if lessonNameField2.text != "" {
             lesson2?.name = lessonNameField2.text
             lesson2?.audience = audienceNumberField2.text
             lesson2?.type = lessonTypeButton2.titleLabel!.text
             lesson2?.professor = professorNameTextField2.text
             CoreDataHelper.instance.save()
             navigationController.navigationItem.rightBarButtonItem?.enabled = true
-            
         }
     }
     
@@ -456,9 +465,11 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
     
     func textFieldDidBeginEditing(textField: UITextField) {
 //        if textField == lessonNameField || textField == audienceNumberField || textField == professorNameTextField {
+        if textField == lessonNameField || textField == lessonNameField2 {
             textField.text = ""
             navigationController.navigationItem.rightBarButtonItem?.enabled = false
             navigationController.tableView.tableFooterView = nil
+        }
 //        }
         if lesson2 == nil {
             cardView2.hidden = true
@@ -572,6 +583,10 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
             lessonNameField2.hidden = true
             audienceNumberField2.hidden = true
             lessonTypeButton2.hidden = true
+            
+            if lesson?.audience == "" && lesson?.name != nil {
+//                audienceNumberField.text = "нет."
+            }
         }
     }
     
@@ -650,6 +665,10 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
             cardView2.hidden = false
             visualView.hidden = true
         }
+        
+//        if lesson?.audience == "" {
+//            audienceNumberField.text = ""
+//        }
     }
     
     func getBakColorForTextFieldWhileEditing() -> UIColor {
@@ -667,6 +686,8 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
 
         pickerVC?.modalPresentationStyle = .Popover
         pickerVC?.delegate = self
+        pickerVC?.controller = "Subject"
+        pickerVC?.shouldSelectRows.append(0)
         
         if let popoverPC = pickerVC!.popoverPresentationController {
             popoverPC.sourceView = lessonTypeButton

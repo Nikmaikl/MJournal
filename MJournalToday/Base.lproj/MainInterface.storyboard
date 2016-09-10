@@ -37,14 +37,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I0S-7f-HQn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I0S-7f-HQn">
                                 <rect key="frame" x="28" y="30" width="291" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Jk-U0-Bhk">
-                                <rect key="frame" x="274" y="0.0" width="50" height="9"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Jk-U0-Bhk">
+                                <rect key="frame" x="-4" y="0.0" width="328" height="80"/>
                                 <connections>
                                     <action selector="pressedOnWidget:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="8Gt-eY-dCT"/>
                                 </connections>
@@ -53,11 +53,11 @@
                         <constraints>
                             <constraint firstItem="I0S-7f-HQn" firstAttribute="top" secondItem="4hW-Lr-iEh" secondAttribute="bottom" constant="8" id="2bO-ET-7nY"/>
                             <constraint firstItem="I0S-7f-HQn" firstAttribute="leading" secondItem="Hpl-1c-smP" secondAttribute="trailing" constant="8" id="5cf-4L-9Z0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1Jk-U0-Bhk" secondAttribute="trailing" constant="-20" id="6Nz-Oy-Hhj"/>
                             <constraint firstItem="GcN-lo-r42" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="6Vq-gs-PHe"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="1Jk-U0-Bhk" secondAttribute="trailing" constant="-24" id="FH1-Xx-ODI"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="1Jk-U0-Bhk" secondAttribute="bottom" id="AS5-av-vVI"/>
                             <constraint firstItem="GcN-lo-r42" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="8" id="Gda-Km-cdW"/>
                             <constraint firstItem="4hW-Lr-iEh" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="GsZ-p5-4pR"/>
-                            <constraint firstItem="1Jk-U0-Bhk" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" constant="254" id="GtS-dJ-3bN"/>
                             <constraint firstItem="FKl-LY-JtV" firstAttribute="top" relation="greaterThanOrEqual" secondItem="I0S-7f-HQn" secondAttribute="bottom" constant="8" id="IRN-xp-9yi"/>
                             <constraint firstItem="GcN-lo-r42" firstAttribute="centerX" secondItem="S3S-Oj-5AN" secondAttribute="centerX" id="J2S-t3-QM7"/>
                             <constraint firstItem="Hpl-1c-smP" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" id="Jxd-7H-AfC"/>
@@ -65,11 +65,11 @@
                             <constraint firstAttribute="trailing" secondItem="GcN-lo-r42" secondAttribute="trailing" id="L8K-9R-egU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="I0S-7f-HQn" secondAttribute="trailing" constant="-15" id="LFN-wN-wDf"/>
                             <constraint firstItem="Hpl-1c-smP" firstAttribute="centerY" secondItem="I0S-7f-HQn" secondAttribute="centerY" id="Lae-qQ-ZsP"/>
-                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="1Jk-U0-Bhk" secondAttribute="bottom" constant="71" id="VBi-Ex-Ngj"/>
+                            <constraint firstItem="1Jk-U0-Bhk" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" constant="-20" id="TSd-Bg-u7m"/>
                             <constraint firstItem="I0S-7f-HQn" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="30" id="WlJ-8o-Jcl"/>
                             <constraint firstItem="Hpl-1c-smP" firstAttribute="height" secondItem="I0S-7f-HQn" secondAttribute="height" id="ghl-my-KmD"/>
                             <constraint firstItem="4hW-Lr-iEh" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="8" id="m2o-Yq-l6j"/>
-                            <constraint firstItem="1Jk-U0-Bhk" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="tuP-ca-93b"/>
+                            <constraint firstItem="1Jk-U0-Bhk" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="yHT-uh-l1Z"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>

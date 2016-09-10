@@ -22,6 +22,7 @@ class SettingsTableViewController: UITableViewController {
         adButton.titleLabel?.font = UIFont.appSemiBoldFont(15)
         restoreAdButton.titleLabel?.font = UIFont.appSemiBoldFont(13)
 //        navigationController?.navigationBar.tintColor = UIColor.orangeColor()
+        tableView.tableHeaderView?.hidden = true
         clearsSelectionOnViewWillAppear = true
     }
 

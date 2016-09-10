@@ -73,7 +73,15 @@ class SecondOnboardingViewController: UIViewController, UIPickerViewDelegate, UI
     }
     
     @IBAction func mainButtonPressed(sender: AnyObject) {
-        performSegueWithIdentifier("NextStep", sender: nil)
+        UIView.animateWithDuration(0.2, animations: {
+            self.mainButton.transform = CGAffineTransformMakeScale(0.85, 0.85)
+            }, completion: { b->Void in
+                UIView.animateWithDuration(0.05, animations: {
+                    self.mainButton.transform = CGAffineTransformMakeScale(1, 1)
+                    }, completion: { b->Void in
+                        self.performSegueWithIdentifier("NextStep", sender: nil)
+                })
+        })
     }
     
     /*

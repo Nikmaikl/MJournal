@@ -23,6 +23,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     var shouldSelectRows = [Int]()
     
+    var controller: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,24 +46,36 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             presentationVC!.sourceRect = downRect
         }
         
-        for (i, row) in shouldSelectRows.enumerate() {
-            pickerView.selectRow(row, inComponent: i, animated: true)
+        if controller == "Shedule" {
+            for (i, row) in shouldSelectRows.enumerate() {
+                pickerView.selectRow(row, inComponent: i, animated: false)
+            }
+        } else {
+            for (i, row) in shouldSelectRows.enumerate() {
+                pickerView.selectRow(row, inComponent: i, animated: false)
+            }
         }
-        // Do any additional setup after loading the view.
     }
-
+    
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return nil
 
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return typeOfLesson[row]
+    }
+    
+    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView
+    {
+        let myTitle = typeOfLesson[row]
+        
+        let pickerLabel = UILabel()
+        pickerLabel.textColor = UIColor.blackColor()
+        pickerLabel.text = myTitle
+        pickerLabel.font = UIFont.appSemiBoldFont(20)
+        pickerLabel.textAlignment = NSTextAlignment.Center
+        return pickerLabel
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -75,15 +89,4 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         delegate!.saveTypeLesson?(typeOfLesson[row])
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

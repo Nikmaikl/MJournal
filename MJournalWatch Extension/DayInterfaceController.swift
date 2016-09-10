@@ -19,6 +19,9 @@ class DayInterfaceController: WKInterfaceController, WCSessionDelegate {
     @IBOutlet var noLessonsLabel: WKInterfaceLabel!
     
     var sheduleParser = SheduleParser()
+    
+    var evenLessons: [String]?
+    var notEvenlessons: [String]?
 
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
@@ -26,17 +29,6 @@ class DayInterfaceController: WKInterfaceController, WCSessionDelegate {
         noLessonsLabel.setAttributedText(NSAttributedString(string: "Нет занятий!\nМожно поспать.", attributes: [NSFontAttributeName:UIFont.appSemiBoldFont()]))
         
         noLessonsGroup.setHidden(true)
-        
-
-    }
-    
-    override func didAppear() {
-        super.didAppear()
-        
-    }
-    
-    override func willActivate() {
-        super.willActivate()
         
         if WCSession.isSupported() {
             let session = WCSession.defaultSession()
@@ -47,24 +39,60 @@ class DayInterfaceController: WKInterfaceController, WCSessionDelegate {
                 
                 session.sendMessage([:], replyHandler: {(response: [String:AnyObject]) -> Void in
                     
-                    if let lessons = response["currentDay"] as? [String] {
-                        if lessons.count == 0 {
+                    if let notEvenlessons = response["notEvenLessons"] as? [String] {
+                        if notEvenlessons.count == 0 {
                             self.noLessonsGroup.setHidden(false)
+                            NSUserDefaults.standardUserDefaults().setValue(self.notEvenlessons, forKey: "evenLessons")
+                            NSUserDefaults.standardUserDefaults().synchronize()
                         }
-                        self.table.setNumberOfRows(lessons.count, withRowType: "SubjectRow")
-                        for (i, subj) in lessons.enumerate() {
-                            let controller = self.table.rowControllerAtIndex(i) as? SubjectRowController
-                            controller?.lessonName = subj
-                        }
+                        self.updateWithLessons(notEvenlessons)
                     }
+                    
+                    if let evenLessons = response["evenLessons"] as? [String] {
+                        self.evenLessons = evenLessons
+                        NSUserDefaults.standardUserDefaults().setValue(self.evenLessons, forKey: "evenLessons")
+                        NSUserDefaults.standardUserDefaults().synchronize()
+                    }
+                    
                     }, errorHandler: nil)
             }
         }
     }
     
+    override func didAppear() {
+        super.didAppear()
+    }
+    
+    override func willActivate() {
+        super.willActivate()
+    }
+    
+    func updateWithLessons(lessons: [String]) {
+        if lessons.count == 0 {
+            self.noLessonsGroup.setHidden(false)
+        }
+        self.table.setNumberOfRows(lessons.count, withRowType: "SubjectRow")
+        for (i, subj) in lessons.enumerate() {
+            let controller = self.table.rowControllerAtIndex(i) as? SubjectRowController
+            controller?.lessonName = subj
+        }
+
+    }
+    
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
+        if let notEvenLessons = message["notEvenLessons"] as? [String] {
+            updateWithLessons(notEvenLessons)
+        }
+    }
+    
     override func contextForSegueWithIdentifier(segueIdentifier: String) -> AnyObject? {
+        
         if segueIdentifier == "More_Info_Even" {
-            
+            if notEvenlessons?.count == 0 {
+                return nil
+            } else {
+                return notEvenlessons
+            }
         }
         return nil
     }
