@@ -11,12 +11,12 @@ import CoreData
 
 class Lesson: NSManagedObject {
     
-    class var entity: NSEntityDescription {
-        return NSEntityDescription.entityForName("Lesson", inManagedObjectContext: CoreDataHelper.instance.context)!
+    class var entityDescr: NSEntityDescription {
+        return NSEntityDescription.entity(forEntityName: "Lesson", in: CoreDataHelper.instance.context)!
     }
     
     convenience init() {
-        self.init(entity: Lesson.entity, insertIntoManagedObjectContext: CoreDataHelper.instance.context)
+        self.init(entity: Lesson.entityDescr, insertInto: CoreDataHelper.instance.context)
     }
     
 //    class func allLessons() -> [Lesson] {

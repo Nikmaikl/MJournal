@@ -23,6 +23,15 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        if #available(iOS 10.0, *) {
+            nowLabel.textColor = UIColor.black
+            noCurrentShedule.textColor = UIColor.black
+            currentShedule.textColor = UIColor.black
+        } else {
+            // or use some work around
+        }
+        
         if Time.getDay() == -1 {
             showNoLessons()
             return
@@ -36,49 +45,74 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             return
         }
         
-        nowLabel.font = UIFont.appMediumFont(14)
+        nowLabel.font = UIFont.appSemiBoldFont(17)
+        currentShedule.font = UIFont.appMediumFont()
         leadingLine.backgroundColor = UIColor.getColorForCell(withRow: Time.getDay(), alpha: 1.0)
         
-        noCurrentShedule.hidden = true
-        currentShedule.hidden = false
-        leadingLine.hidden = false
-        nowLabel.hidden = false
+        noCurrentShedule.isHidden = true
+        currentShedule.isHidden = false
+        leadingLine.isHidden = false
+        nowLabel.isHidden = false
         
         currentShedule.text = ""
         
-        for (i, lesson) in notEvenLessons.enumerate() {
+        for (i, lesson) in notEvenLessons.enumerated() {
             currentShedule.text = currentShedule.text! + "\(lesson.startTime!) - \(lesson.name!)"
-            if i < evenLessons.count && evenLessons[i].id == i {
-                currentShedule.text = currentShedule.text! + " | \(evenLessons[i].name!)\n"
+            if i < evenLessons.count && Int(evenLessons[i].id!) == i && Time.isEvenWeek() {
+                currentShedule.text = "\(evenLessons[i].name!)"
+                if evenLessons[i].audience != nil && evenLessons[i].audience != "" {
+                    currentShedule.text = currentShedule.text! + "   n\(evenLessons[i].audience!)\n"
+                } else {
+                    currentShedule.text = currentShedule.text! + "\n"
+                }
             } else {
-                currentShedule.text = currentShedule.text! + "\n"
+                if notEvenLessons[i].audience != nil && notEvenLessons[i].audience != "" {
+                    currentShedule.text = currentShedule.text! + "   \(notEvenLessons[i].audience!)\n"
+                } else {
+                    currentShedule.text = currentShedule.text! + "\n"
+                }
             }
+        }
+        
+        if #available(iOSApplicationExtension 10.0, *) {
+            self.extensionContext?.widgetLargestAvailableDisplayMode = NCWidgetDisplayMode.expanded
+        } else {
         }
     }
     
     func showNoLessons() {
-        nowLabel.hidden = true
-        currentShedule.hidden = true
-        leadingLine.hidden = true
-        noCurrentShedule.hidden = false
+        nowLabel.isHidden = true
+        currentShedule.isHidden = true
+        leadingLine.isHidden = true
+        noCurrentShedule.isHidden = false
         noCurrentShedule.font = UIFont.appSemiBoldFont()
-        noCurrentShedule.textAlignment = .Center
+        noCurrentShedule.textAlignment = .center
         noCurrentShedule.text = "Сегодня занятий нет."
     }
     
-    @IBAction func pressedOnWidget(sender: AnyObject) {
-        let url = NSURL(string: "foo://")
-        extensionContext?.openURL(url!, completionHandler: nil)
+    @IBAction func pressedOnWidget(_ sender: AnyObject) {
+        let url = URL(string: "foo://")
+        extensionContext?.open(url!, completionHandler: nil)
         
     }
     
-    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
+    func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
     }
     
-    func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
+    func widgetMarginInsets(forProposedMarginInsets defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
         if Time.getDay() == -1 || notEvenLessons.count == 0 {
             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
         return UIEdgeInsets(top: 0, left: 32, bottom: 0, right: 0)
+    }
+    
+    @available(iOSApplicationExtension 10.0, *)
+    func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
+        if (activeDisplayMode == NCWidgetDisplayMode.compact) {
+            self.preferredContentSize = maxSize
+        }
+        else {
+            self.preferredContentSize = CGSize(width: maxSize.width, height: 200)
+        }
     }
 }

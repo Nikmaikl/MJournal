@@ -25,15 +25,15 @@ class SubjectInfoTableViewController: UIViewController, UITextViewDelegate, UIPo
     
     var lesson: Lesson? {
         didSet {
-            self.title = lesson?.name
+            //self.title = lesson?.name
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        trashBarButton = UIBarButtonItem(image: UIImage(named: "Trash_can"), style: .Plain, target: self, action: #selector(trashIt))
-        doneBarButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(doneIt))//(image: 
+        trashBarButton = UIBarButtonItem(image: UIImage(named: "Trash_can"), style: .plain, target: self, action: #selector(trashIt))
+        doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneIt))//(image: 
         
         noteTextField.delegate = self
         noteTextField.font = UIFont.appMediumFont(17)
@@ -42,62 +42,68 @@ class SubjectInfoTableViewController: UIViewController, UITextViewDelegate, UIPo
         self.noteTextField.alwaysBounceVertical = true
         self.noteTextField.text = lesson?.notes
         
-        if noteTextField.text == "" {
-            noteTextField.becomeFirstResponder()
-            navigationItem.rightBarButtonItem = doneBarButton
-        } else {
-            navigationItem.rightBarButtonItem = trashBarButton
-        }
+        navigationItem.rightBarButtonItems = [doneBarButton, trashBarButton]
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        noteTextField.becomeFirstResponder()
     }
     
     func trashIt() {
-        let deleteVC = navigationController!.storyboard?.instantiateViewControllerWithIdentifier("DeleteVC") as? DeleteViewController
+        let deleteVC = navigationController!.storyboard?.instantiateViewController(withIdentifier: "DeleteVC") as? DeleteViewController
         
-        deleteVC?.modalPresentationStyle = .Popover
+        deleteVC?.modalPresentationStyle = .popover
         deleteVC?.deleteDelegate = self
         deleteVC?.currentDay = lesson!.day
         deleteVC?.lesson = lesson
         
         if let popoverPC = deleteVC!.popoverPresentationController {
-            let sourceView = navigationItem.rightBarButtonItem?.valueForKey("view") as? UIView
+            let sourceView: UIView!
+            if navigationItem.rightBarButtonItems?.count == 2 {
+                sourceView = navigationItem.rightBarButtonItems?[1].value(forKey: "view") as? UIView
+            } else {
+                sourceView = navigationItem.rightBarButtonItems?[0].value(forKey: "view") as? UIView
+            }
+
             popoverPC.sourceView = sourceView
             
-            popoverPC.sourceRect = CGRectMake(CGRectGetMidX(sourceView!.bounds)-10, sourceView!.bounds.height,0,0)
-            popoverPC.permittedArrowDirections = .Up
+            popoverPC.sourceRect = CGRect(x: sourceView!.bounds.midX-10, y: sourceView!.bounds.height,width: 0,height: 0)
+            popoverPC.permittedArrowDirections = .up
             
             popoverPC.delegate = self
             deleteVC!.preferredContentSize = CGSize(width: 280, height: 55)
         }
         
-        navigationController!.presentViewController(deleteVC!, animated: true, completion: {
+        navigationController!.present(deleteVC!, animated: true, completion: {
         })
     }
     
     func doneIt() {
-        FIRAnalytics.logEventWithName("savedNote", parameters: ["text": noteTextField.text])
+        FIRAnalytics.logEvent(withName: "savedNote", parameters: ["text": noteTextField.text as NSObject])
         noteTextField.resignFirstResponder()
-        navigationItem.rightBarButtonItem = trashBarButton
+        navigationItem.rightBarButtonItems?.removeFirst()
     }
     
-    func textViewDidChange(textView: UITextView) {
+    func textViewDidChange(_ textView: UITextView) {
         lesson?.notes = textView.text
         CoreDataHelper.instance.save()
     }
     
-    func textViewDidBeginEditing(textView: UITextView) {
-        navigationItem.rightBarButtonItem = doneBarButton
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        navigationItem.rightBarButtonItems = [doneBarButton, trashBarButton]
     }
     
-    @IBAction func rightBarButtonPressed(sender: AnyObject) {
+    @IBAction func rightBarButtonPressed(_ sender: AnyObject) {
         
     }
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.None
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
     
     func delete() {
-        navigationController?.popViewControllerAnimated(true)
+        navigationController?.popViewController(animated: true)
         refreshDelegate.refresh()
     }
 }

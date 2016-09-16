@@ -11,8 +11,8 @@ import Foundation
 class RoomParser {
     static var rooms = RoomParser.getRooms()
     
-    private class func getRooms() -> NSMutableDictionary {
-        let file = NSMutableDictionary(contentsOfFile: NSBundle.mainBundle().pathForResource("Rooms", ofType: "plist")!)!
+    fileprivate class func getRooms() -> NSMutableDictionary {
+        let file = NSMutableDictionary(contentsOfFile: Bundle.main.path(forResource: "Rooms", ofType: "plist")!)!
         return file
     }
 }

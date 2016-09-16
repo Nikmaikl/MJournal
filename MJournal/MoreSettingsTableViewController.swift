@@ -24,22 +24,22 @@ class MoreSettingsTableViewController: UITableViewController, PickerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.titleTextAttributes = ["NSFontAttributeName": UIFont.appBoldFont(), "NSForegroundColorAttributeName": UIColor.whiteColor()]
+        navigationController?.navigationBar.titleTextAttributes = ["NSFontAttributeName": UIFont.appBoldFont(), "NSForegroundColorAttributeName": UIColor.white]
         
         navigationItem.rightBarButtonItem = nil
         
         footerButton.titleLabel!.font = UIFont.appMediumFont()
         
-        oneLessonTime = NSUserDefaults.standardUserDefaults().integerForKey("OneLessonTime")
+        oneLessonTime = UserDefaults.standard.integer(forKey: "OneLessonTime")
         
-        navigationItem.rightBarButtonItem = !NSUserDefaults.standardUserDefaults().boolForKey("PassedOnboarding") ? UIBarButtonItem(image: UIImage(named: "rightArrow_icon"), style: .Plain, target: self, action: #selector(nextStep)) : nil
+        navigationItem.rightBarButtonItem = !UserDefaults.standard.bool(forKey: "PassedOnboarding") ? UIBarButtonItem(image: UIImage(named: "rightArrow_icon"), style: .plain, target: self, action: #selector(nextStep)) : nil
 
         tableView.tableFooterView = nil
         
         var startTime = 60*8+30
         var endTime = startTime+oneLessonTime
         
-        if let tt = NSUserDefaults.standardUserDefaults().valueForKey("Timetable") as? [[String]] {
+        if let tt = UserDefaults.standard.value(forKey: "Timetable") as? [[String]] {
             timeTable = tt
         } else {
             for _ in 0 ..< 7 {
@@ -57,59 +57,59 @@ class MoreSettingsTableViewController: UITableViewController, PickerDelegate {
                 startTime = endTime
                 endTime += oneLessonTime
             }
-            NSUserDefaults.standardUserDefaults().setValue(timeTable, forKey: "Timetable")
-            NSUserDefaults.standardUserDefaults().synchronize()
+            UserDefaults.standard.setValue(timeTable, forKey: "Timetable")
+            UserDefaults.standard.synchronize()
         }
         
-        tableView.registerNib(UINib(nibName: "SheduleTableViewCell", bundle: nil), forCellReuseIdentifier: "SheduleCell")
+        tableView.register(UINib(nibName: "SheduleTableViewCell", bundle: nil), forCellReuseIdentifier: "SheduleCell")
     }
     
     func nextStep() {
-        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "PassedOnboarding")
-        NSUserDefaults.standardUserDefaults().synchronize()
-        performSegueWithIdentifier("GoToShedule", sender: nil)
+        UserDefaults.standard.set(true, forKey: "PassedOnboarding")
+        UserDefaults.standard.synchronize()
+        performSegue(withIdentifier: "GoToShedule", sender: nil)
     }
     
-    @IBAction func footerButtonPressed(sender: AnyObject) {
-        FIRAnalytics.logEventWithName("didPassWelcome", parameters: nil)
-        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "PassedOnboarding")
-        NSUserDefaults.standardUserDefaults().synchronize()
-        performSegueWithIdentifier("GoToShedule", sender: nil)
+    @IBAction func footerButtonPressed(_ sender: AnyObject) {
+        FIRAnalytics.logEvent(withName: "didPassWelcome", parameters: nil)
+        UserDefaults.standard.set(true, forKey: "PassedOnboarding")
+        UserDefaults.standard.synchronize()
+        performSegue(withIdentifier: "GoToShedule", sender: nil)
     }
     
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return timeTable.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SheduleCell", forIndexPath: indexPath) as? SheduleTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SheduleCell", for: indexPath) as? SheduleTableViewCell
         
-        timeTable = NSUserDefaults.standardUserDefaults().valueForKey("Timetable") as! [[String]]
+        timeTable = UserDefaults.standard.value(forKey: "Timetable") as! [[String]]
 
         
-        cell?.titleLabel.text = "\(titlesForLessons[indexPath.row]) пара"
+        cell?.titleLabel.text = "\(titlesForLessons[(indexPath as NSIndexPath).row]) пара"
 
-        cell?.id = indexPath.row
+        cell?.id = (indexPath as NSIndexPath).row
         cell?.navigationController = self
 
         return cell!
     }
 
-    @IBAction func addButtonPressed(sender: AnyObject) {
+    @IBAction func addButtonPressed(_ sender: AnyObject) {
         timeTable.append(["23:50", "23:55"])
-        NSUserDefaults.standardUserDefaults().setObject(timeTable, forKey: "Timetable")
-        NSUserDefaults.standardUserDefaults().synchronize()
-        print(NSUserDefaults.standardUserDefaults().valueForKey("Timetable") as! [[String]])
+        UserDefaults.standard.set(timeTable, forKey: "Timetable")
+        UserDefaults.standard.synchronize()
+        print(UserDefaults.standard.value(forKey: "Timetable") as! [[String]])
         tableView.reloadData()
-        if tableView.numberOfRowsInSection(0)+1 > 7 {
+        if tableView.numberOfRows(inSection: 0)+1 > 7 {
             navigationItem.rightBarButtonItem = nil
         }
     }

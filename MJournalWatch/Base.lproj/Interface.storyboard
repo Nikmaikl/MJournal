@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="awr-ST-mAh">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="awr-ST-mAh">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="10032"/>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11077"/>
     </dependencies>
     <scenes>
         <!--Сегодня-->
@@ -22,9 +23,10 @@
                                 <tableRow identifier="SubjectRow" selectable="NO" id="0aD-Be-lUb" customClass="SubjectRowController" customModule="MJournalWatch_Extension">
                                     <group key="rootItem" width="1" alignment="left" id="F7S-7u-XbM">
                                         <items>
-                                            <label alignment="left" verticalAlignment="center" textAlignment="left" numberOfLines="2" id="t9b-KU-rJe"/>
+                                            <label alignment="left" verticalAlignment="center" text="test" textAlignment="left" numberOfLines="2" id="t9b-KU-rJe"/>
+                                            <label alignment="right" verticalAlignment="center" text="test2" textAlignment="left" id="S66-DB-kHS"/>
                                         </items>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </group>
                                     <connections>
                                         <outlet property="label" destination="t9b-KU-rJe" id="ghh-OV-8gX"/>
@@ -38,49 +40,10 @@
                         <outlet property="noLessonsGroup" destination="bbZ-tM-GfD" id="KoV-xI-Ge0"/>
                         <outlet property="noLessonsLabel" destination="MSo-yt-F8G" id="4eP-Bt-DXu"/>
                         <outlet property="table" destination="46Z-da-8k0" id="kIy-D8-hbp"/>
-                        <segue destination="GcE-Ey-gTp" kind="relationship" relationship="nextPage" id="aWS-Ry-KU9"/>
                     </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="164" y="207"/>
-        </scene>
-        <!--Сегодня-->
-        <scene sceneID="0HF-00-CQ1">
-            <objects>
-                <controller identifier="More_Info_Even" title="Сегодня" id="GcE-Ey-gTp" customClass="EvenDayInterfaceController" customModule="MJournalWatch_Extension">
-                    <items>
-                        <group width="1" alignment="left" verticalAlignment="center" hidden="YES" layout="vertical" spacing="8" id="gtb-gW-umx">
-                            <items>
-                                <imageView alignment="center" image="Bed_icon" id="rVc-nl-tVt"/>
-                                <label alignment="center" verticalAlignment="bottom" text="Нет занятий! Можно поспать." textAlignment="center" numberOfLines="0" id="p3Z-pJ-7tu"/>
-                            </items>
-                            <edgeInsets key="margins" left="0.0" right="0.0" top="8" bottom="0.0"/>
-                        </group>
-                        <table alignment="left" id="7Hp-cJ-992">
-                            <items>
-                                <tableRow identifier="EvenSubjectRow" selectable="NO" id="Vtn-1I-OdG" customClass="EvenSubjectRowController" customModule="MJournalWatch_Extension">
-                                    <group key="rootItem" width="1" alignment="left" id="IVe-dT-1VQ">
-                                        <items>
-                                            <label alignment="left" verticalAlignment="center" numberOfLines="2" id="Y7I-a4-bz9"/>
-                                        </items>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    </group>
-                                    <connections>
-                                        <outlet property="label" destination="Y7I-a4-bz9" id="Bc3-bv-KEL"/>
-                                        <outlet property="subjectGroup" destination="IVe-dT-1VQ" id="grw-kv-auy"/>
-                                    </connections>
-                                </tableRow>
-                            </items>
-                        </table>
-                    </items>
-                    <connections>
-                        <outlet property="noLessonsGroup" destination="gtb-gW-umx" id="MF9-fT-FUD"/>
-                        <outlet property="noLessonsLabel" destination="p3Z-pJ-7tu" id="WIb-5S-bSp"/>
-                        <outlet property="table" destination="7Hp-cJ-992" id="epR-KD-eLI"/>
-                    </connections>
-                </controller>
-            </objects>
-            <point key="canvasLocation" x="392" y="207"/>
         </scene>
     </scenes>
 </document>

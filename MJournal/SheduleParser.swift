@@ -12,9 +12,9 @@ class SheduleParser {
     
     static var shedule = SheduleParser.getShedule()
     
-    private class func getShedule() -> [NSMutableArray] {
+    fileprivate class func getShedule() -> [NSMutableArray] {
         var result = [NSMutableArray]()
-        let arr = NSMutableArray(contentsOfFile: NSBundle.mainBundle().pathForResource("Shedule", ofType: "plist")!)
+        let arr = NSMutableArray(contentsOfFile: Bundle.main.path(forResource: "Shedule", ofType: "plist")!)
         
         for a in arr! {
             result.append(a as! NSMutableArray)

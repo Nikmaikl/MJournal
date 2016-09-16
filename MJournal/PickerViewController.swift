@@ -25,6 +25,8 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     var controller: String!
     
+    var shouldSelectTypeOfLesson = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,53 +42,57 @@ class PickerViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         let presentationVC = self.popoverPresentationController
         
-        if presentationVC!.arrowDirection == .Up {
+        if presentationVC!.arrowDirection == .up {
             presentationVC!.sourceRect = upRect
-        } else if presentationVC!.arrowDirection == .Down {
+        } else if presentationVC!.arrowDirection == .down {
             presentationVC!.sourceRect = downRect
         }
         
         if controller == "Shedule" {
-            for (i, row) in shouldSelectRows.enumerate() {
+            for (i, row) in shouldSelectRows.enumerated() {
                 pickerView.selectRow(row, inComponent: i, animated: false)
             }
         } else {
-            for (i, row) in shouldSelectRows.enumerate() {
-                pickerView.selectRow(row, inComponent: i, animated: false)
+            for (i, lessonType) in typeOfLesson.enumerated() {
+                if shouldSelectTypeOfLesson == lessonType {
+                    pickerView.selectRow(i, inComponent: 0, animated: false)
+                }
             }
         }
+        
+        
     }
     
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return nil
 
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return typeOfLesson[row]
     }
     
-    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView
     {
         let myTitle = typeOfLesson[row]
         
         let pickerLabel = UILabel()
-        pickerLabel.textColor = UIColor.blackColor()
+        pickerLabel.textColor = UIColor.black
         pickerLabel.text = myTitle
         pickerLabel.font = UIFont.appSemiBoldFont(20)
-        pickerLabel.textAlignment = NSTextAlignment.Center
+        pickerLabel.textAlignment = NSTextAlignment.center
         return pickerLabel
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return typeOfLesson.count
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         delegate!.saveTypeLesson?(typeOfLesson[row])
     }
 }

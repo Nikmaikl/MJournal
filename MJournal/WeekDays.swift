@@ -11,7 +11,7 @@ import Foundation
 class WeekDays {
     static var days = WeekDays.getDays()
     
-    private class func getDays() -> Array<String> {
+    fileprivate class func getDays() -> Array<String> {
         return Array(arrayLiteral:
             "Monday",
             "Tuesday",

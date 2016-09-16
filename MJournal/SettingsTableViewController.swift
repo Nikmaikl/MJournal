@@ -22,18 +22,18 @@ class SettingsTableViewController: UITableViewController {
         adButton.titleLabel?.font = UIFont.appSemiBoldFont(15)
         restoreAdButton.titleLabel?.font = UIFont.appSemiBoldFont(13)
 //        navigationController?.navigationBar.tintColor = UIColor.orangeColor()
-        tableView.tableHeaderView?.hidden = true
+        tableView.tableHeaderView?.isHidden = true
         clearsSelectionOnViewWillAppear = true
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
             return mainSettings.count
@@ -42,17 +42,17 @@ class SettingsTableViewController: UITableViewController {
         }
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let mainSettingsCell = tableView.dequeueReusableCellWithIdentifier("MainSettings", forIndexPath: indexPath) as? SettingsTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let mainSettingsCell = tableView.dequeueReusableCell(withIdentifier: "MainSettings", for: indexPath) as? SettingsTableViewCell
             
             let backgroundView = UIView()
             backgroundView.backgroundColor = UIColor.darkBackgroundSelectionCell()
             mainSettingsCell!.selectedBackgroundView = backgroundView
             
-            mainSettingsCell?.nameLabel.text = mainSettings[indexPath.row]
+            mainSettingsCell?.nameLabel.text = mainSettings[(indexPath as NSIndexPath).row]
             var iconImage: UIImage!
             
-            switch indexPath.row {
+            switch (indexPath as NSIndexPath).row {
             case 0:
                 iconImage = UIImage(named: "Clock_icon")!
             case 1:
@@ -68,7 +68,7 @@ class SettingsTableViewController: UITableViewController {
             return mainSettingsCell!
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
             return "Общие"

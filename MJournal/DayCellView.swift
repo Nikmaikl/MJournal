@@ -10,14 +10,14 @@ import UIKit
 
 class DayCellView: UIView {
     
-    var colorForBezel: UIColor! = UIColor.whiteColor()
-    var colorForFill: UIColor! = UIColor.whiteColor() {
+    var colorForBezel: UIColor! = UIColor.white
+    var colorForFill: UIColor! = UIColor.white {
         didSet {
             self.setNeedsDisplay()
         }
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         let lineWidth = rect.width/44.0
         let cornerRadius = rect.width/16.0
         let tileRect = rect.insetBy(dx: lineWidth/1.0, dy: lineWidth/1.0)

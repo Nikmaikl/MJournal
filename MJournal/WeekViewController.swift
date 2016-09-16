@@ -14,15 +14,27 @@ import WatchConnectivity
 private let reuseIdentifier = "CellDay"
 
 class WeekCollectionViewController: UICollectionViewController, WCSessionDelegate {
+    /** Called when all delegate callbacks for the previously selected watch has occurred. The session can be re-activated for the now selected watch using activateSession. */
+    @available(iOS 9.3, *)
+    public func sessionDidDeactivate(_ session: WCSession) {
+        
+    }
+
+    /** Called when the session can no longer be used to modify or add any new transfers and, all interactive messages will be cancelled, but delegate callbacks for background transfers can still occur. This will happen when the selected watch is being changed. */
+    @available(iOS 9.3, *)
+    public func sessionDidBecomeInactive(_ session: WCSession) {
+        
+    }
+
 
     var dayNumber: Int = 0
-    var colorForCell: UIColor = UIColor.blackColor()
-    let currentDayIndex = NSIndexPath(forRow: Time.getDay(), inSection: 0)
+    var colorForCell: UIColor = UIColor.black
+    let currentDayIndex = IndexPath(row: Time.getDay(), section: 0)
     
-    var currentLongPressingRow:NSIndexPath? = nil
+    var currentLongPressingRow:IndexPath? = nil
     
     var screenSize: CGSize {
-        return UIScreen.mainScreen().bounds.size
+        return UIScreen.main.bounds.size
     }
     
     let defaultCornerRadius: CGFloat = 10.0
@@ -39,16 +51,20 @@ class WeekCollectionViewController: UICollectionViewController, WCSessionDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = UIColor.darkBackground()
+        
+        Time.daysForTheWeek()
+        
         navigationController?.navigationBar.titleTextAttributes = ["NSFontAttributeName": UIFont.appBoldFont()]
         
         navigationController?.navigationBar.setBackgroundImage(
             UIImage(),
-            forBarPosition: .Any,
-            barMetrics: .Default)
+            for: .any,
+            barMetrics: .default)
         
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.barTintColor = UIColor.darkBackground()
-        navigationController?.navigationBar.translucent = false
+        navigationController?.navigationBar.isTranslucent = false
         
         if days.count == 0 {
             for d in WeekDays.days {
@@ -60,9 +76,9 @@ class WeekCollectionViewController: UICollectionViewController, WCSessionDelegat
         
         if #available(iOS 9.0, *) {
             if WCSession.isSupported() {
-                let session = WCSession.defaultSession()
+                let session = WCSession.default()
                 session.delegate = self
-                session.activateSession()
+                session.activate()
             }
         }
         
@@ -84,7 +100,7 @@ class WeekCollectionViewController: UICollectionViewController, WCSessionDelegat
     }
     
     @available(iOS 9.0, *)
-    func session(session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+    private func session(_ session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
         var notEvenLessons = [String]()
         var evenLessons = [String]()
         for lesson in Day.allDays()[Time.getDay()].allNotEvenLessons() {
@@ -93,21 +109,27 @@ class WeekCollectionViewController: UICollectionViewController, WCSessionDelegat
         for lesson in Day.allDays()[Time.getDay()].allEvenLessons() {
             evenLessons.append(lesson.name!)
         }
-        replyHandler(["notEvenLessons": notEvenLessons, "evenLessons": evenLessons])
+        replyHandler(["notEvenLessons": notEvenLessons as AnyObject, "evenLessons": evenLessons as AnyObject])
+    }
+    
+    /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
+    @available(iOS 9.3, *)
+    public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
     }
     
     func setupGoogleAdToolbar() {
-        banner = GADBannerView(frame: CGRectMake(collectionView!.frame.width/2-kGADAdSizeBanner.size.width/2 ,0, kGADAdSizeBanner.size.width, 44))
+        banner = GADBannerView(frame: CGRect(x: collectionView!.frame.width/2-kGADAdSizeBanner.size.width/2 ,y: 0, width: kGADAdSizeBanner.size.width, height: 44))
         banner.adUnitID = "ca-app-pub-9919730864492896/4325157365"
         banner.rootViewController = self
         
         self.navigationController?.setToolbarHidden(false, animated: false)
         
         navigationController?.toolbar.setBackgroundImage(UIImage(),
-                                                         forToolbarPosition: UIBarPosition.Any,
-                                                         barMetrics: UIBarMetrics.Default)
+                                                         forToolbarPosition: UIBarPosition.any,
+                                                         barMetrics: UIBarMetrics.default)
         navigationController?.toolbar.setShadowImage(UIImage(),
-                                                     forToolbarPosition: UIBarPosition.Any)
+                                                     forToolbarPosition: UIBarPosition.any)
         
         self.navigationController?.toolbar.backgroundColor = UIColor.darkBackground()
         self.navigationController?.toolbar.addSubview(banner)
@@ -115,112 +137,126 @@ class WeekCollectionViewController: UICollectionViewController, WCSessionDelegat
         let request = GADRequest()
         request.testDevices = [kGADSimulatorID]
         
-        banner.loadRequest(request)
+        banner.load(request)
     }
     
-    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionFooter, withReuseIdentifier: "bannerView", forIndexPath: indexPath)
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "bannerView", for: indexPath)
         // configure footer view
         return view
     }
     
-    func handleLongPress(lgr: UILongPressGestureRecognizer) {
-        let p = lgr.locationInView(self.collectionView)
-        let indexPath = self.collectionView?.indexPathForItemAtPoint(p)
+    func handleLongPress(_ lgr: UILongPressGestureRecognizer) {
+        let p = lgr.location(in: self.collectionView)
+        let indexPath = self.collectionView?.indexPathForItem(at: p)
         
-        if indexPath != nil && (currentLongPressingRow?.row == indexPath!.row || currentLongPressingRow == nil) {
+        if indexPath != nil && ((currentLongPressingRow as NSIndexPath?)?.row == (indexPath! as NSIndexPath).row || currentLongPressingRow == nil) {
             currentLongPressingRow = indexPath
-            let cell = collectionView!.cellForItemAtIndexPath(indexPath!)
-            UIView.animateWithDuration(0.2, animations: {
-                if lgr.state == .Ended {
-                    cell!.transform = CGAffineTransformMakeScale(1, 1)
+            let cell = collectionView!.cellForItem(at: indexPath!)
+            UIView.animate(withDuration: 0.2, animations: {
+                if lgr.state == .ended {
+                    cell!.transform = CGAffineTransform(scaleX: 1, y: 1)
                 } else {
-                    cell!.transform = CGAffineTransformMakeScale(0.85, 0.85)
+                    cell!.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
                 }
                 }, completion: { b->Void in
-                    if lgr.state == .Ended {
+                    if lgr.state == .ended {
                         self.currentLongPressingRow = nil
                     }
             })
-        } else if (currentLongPressingRow != nil && (currentLongPressingRow?.row != indexPath?.row ||
+        } else if (currentLongPressingRow != nil && ((currentLongPressingRow as NSIndexPath?)?.row != (indexPath as NSIndexPath?)?.row ||
         indexPath == nil)) {
-            let cell = collectionView!.cellForItemAtIndexPath(currentLongPressingRow!)
-            UIView.animateWithDuration(0.2, animations: {
-                cell!.transform = CGAffineTransformMakeScale(1, 1)
+            let cell = collectionView!.cellForItem(at: currentLongPressingRow!)
+            UIView.animate(withDuration: 0.2, animations: {
+                cell!.transform = CGAffineTransform(scaleX: 1, y: 1)
                 self.currentLongPressingRow = nil
                 })
 
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()//UIColor(red: 105/255, green: 141/255, blue: 169/225, alpha: 1.0)//UIColor(red: 69/255, green: 121/255, blue: 188/255, alpha: 1.0)
-        self.navigationController?.navigationBar.barStyle = .Black
+        self.collectionView?.alpha = 1.0
+        self.navigationController?.navigationBar.tintColor = UIColor.white//UIColor(red: 105/255, green: 141/255, blue: 169/225, alpha: 1.0)//UIColor(red: 69/255, green: 121/255, blue: 188/255, alpha: 1.0)
+        self.navigationController?.navigationBar.barStyle = .black
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     
     func highlightCurrentDay() {
-        let currentCell = collectionView?.cellForItemAtIndexPath(currentDayIndex) as? DayCell
+        let currentCell = collectionView?.cellForItem(at: currentDayIndex) as? DayCell
         
-        currentCell?.mainView.colorForFill = UIColor.getColorForCell(withRow: currentDayIndex.row, alpha: 0.2)
+        currentCell?.mainView.colorForFill = UIColor.getColorForCell(withRow: (currentDayIndex as NSIndexPath).row, alpha: 0.2)
     }
     
     // MARK: - Navigation
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let moreInfo = segue.destinationViewController as? DaySheduleViewController {
-            moreInfo.dayNumber = self.dayNumber
-            moreInfo.currentDay = days[dayNumber]
-            moreInfo.colorForBar = self.colorForCell
-            if dayNumber == currentDayIndex.row {
-                moreInfo.title = NSLocalizedString("Today", comment: "Today")
-            } else {
-                moreInfo.title = NSLocalizedString(WeekDays.days[dayNumber], comment: "Day")
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let navVC = segue.destination as? UINavigationController {
+            if let moreInfo = navVC.childViewControllers[0] as? DaySheduleContainerViewController {
+                moreInfo.dayNumber = self.dayNumber
+                moreInfo.weekDayNumber = Time.daysForTheWeek()[dayNumber]["day"] as! Int
+                moreInfo.currentDay = days[dayNumber]
+                moreInfo.colorForBar = self.colorForCell
+                if dayNumber == (currentDayIndex as NSIndexPath).row {
+                    moreInfo.title = NSLocalizedString("Today", comment: "Today")
+                } else {
+                    moreInfo.title = NSLocalizedString(WeekDays.days[dayNumber], comment: "Day")
+                }
             }
-            
         }
     }
 
     // MARK: UICollectionViewDataSource
 
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return WeekDays.days.count
     }
+    
+    var dayForCell: Int!
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as? DayCell
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? DayCell
         
-        if currentDayIndex.row == indexPath.row {
+        if (currentDayIndex as NSIndexPath).row == (indexPath as NSIndexPath).row {
             cell?.todayDay = true
         }
         
-        cell?.day = WeekDays.days[indexPath.row]
-        cell?.mainView.colorForBezel = UIColor.getColorForCell(withRow: indexPath.row, alpha: 1)
-
+        
+        if Time.getDay() > indexPath.row {
+            dayForCell = (Time.getActualDay()-(abs(Time.getDay()-indexPath.row)))
+        } else {
+            dayForCell = (Time.getActualDay()+(abs(Time.getDay()-indexPath.row)))
+        }
+        
+        cell?.dayNumber = Time.daysForTheWeek()[indexPath.row]["day"] as! Int
+        cell?.dayId = (indexPath as NSIndexPath).row
+        cell?.day = WeekDays.days[(indexPath as NSIndexPath).row]
+        cell?.mainView.colorForBezel = UIColor.getColorForCell(withRow: (indexPath as NSIndexPath).row, alpha: 1)
+        
         
         return cell!
     }
 
     // MARK: UICollectionViewDelegate
     
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let _ = collectionView.cellForItemAtIndexPath(indexPath) as? DayCell
-        dayNumber = indexPath.row
-        colorForCell = UIColor.getColorForCell(withRow: indexPath.row, alpha: 1)
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let _ = collectionView.cellForItem(at: indexPath) as? DayCell
+        dayNumber = (indexPath as NSIndexPath).row
+        colorForCell = UIColor.getColorForCell(withRow: (indexPath as NSIndexPath).row, alpha: 1)
         
-        let cell = collectionView.cellForItemAtIndexPath(indexPath)
+        let cell = collectionView.cellForItem(at: indexPath)
         if let dayCell = cell as? DayCell {
-            UIView.animateWithDuration(0.2, animations: {
-                dayCell.transform = CGAffineTransformMakeScale(0.8, 0.8)
+            UIView.animate(withDuration: 0.2, animations: {
+                dayCell.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
                 }, completion: { b->Void in
-                    UIView.animateWithDuration(0.05, animations: {
-                        dayCell.transform = CGAffineTransformMakeScale(1, 1)
+                    UIView.animate(withDuration: 0.05, animations: {
+                        dayCell.transform = CGAffineTransform(scaleX: 1, y: 1)
+                        self.performSegue(withIdentifier: "MoreInfo", sender: self)
                         }, completion: { b->Void in
-                            self.performSegueWithIdentifier("MoreInfo", sender: self)
                     })
             })
         }
@@ -228,10 +264,10 @@ class WeekCollectionViewController: UICollectionViewController, WCSessionDelegat
 
     }
     
-    override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as? DayCell
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as? DayCell
         
-        cell?.mainView?.colorForFill = UIColor.whiteColor()
+        cell?.mainView?.colorForFill = UIColor.white
         cell?.mainView.setNeedsDisplay()
         
     }

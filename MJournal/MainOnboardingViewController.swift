@@ -31,14 +31,14 @@ class MainOnboardingViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func mainButtonPressed(sender: AnyObject) {
-        UIView.animateWithDuration(0.2, animations: {
-            self.mainButton.transform = CGAffineTransformMakeScale(0.85, 0.85)
+    @IBAction func mainButtonPressed(_ sender: AnyObject) {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.mainButton.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
             }, completion: { b->Void in
-                UIView.animateWithDuration(0.05, animations: {
-                    self.mainButton.transform = CGAffineTransformMakeScale(1, 1)
+                UIView.animate(withDuration: 0.05, animations: {
+                    self.mainButton.transform = CGAffineTransform(scaleX: 1, y: 1)
                     }, completion: { b->Void in
-                        self.performSegueWithIdentifier("NextStep", sender: nil)
+                        self.performSegue(withIdentifier: "NextStep", sender: nil)
                 })
         })
     }

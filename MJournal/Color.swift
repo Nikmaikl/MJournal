@@ -24,7 +24,7 @@ extension UIColor {
         case "Saturday":
             return UIColor(red: 76/255, green: 86/255, blue: 108/225, alpha: alpha)
         default:
-            return UIColor.whiteColor()
+            return UIColor.white
         }
     }
     

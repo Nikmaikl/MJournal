@@ -14,19 +14,19 @@ class CoreDataHelper: NSObject {
     let model: NSManagedObjectModel
     let context: NSManagedObjectContext
     
-    private override init() {
-        let modelURL = NSBundle.mainBundle()
-            .URLForResource("Model",
+    fileprivate override init() {
+        let modelURL = Bundle.main
+            .url(forResource: "Model",
                             withExtension: "momd")!
         model = NSManagedObjectModel(
-            contentsOfURL: modelURL)!
+            contentsOf: modelURL)!
         
-        let fileManager = NSFileManager.defaultManager()
+        let fileManager = FileManager.default
 //        let docsURL = fileManager.URLsForDirectory(
 //                    .DocumentDirectory, inDomains: .UserDomainMask).last
-        let docsURL = fileManager.containerURLForSecurityApplicationGroupIdentifier("group.minikov.MJournal")
+        let docsURL = fileManager.containerURL(forSecurityApplicationGroupIdentifier: "group.minikov.MJournal")
         let storeURL = docsURL!
-            .URLByAppendingPathComponent("base.sqlite")
+            .appendingPathComponent("base.sqlite")
         
         coordinator = NSPersistentStoreCoordinator(
             managedObjectModel: model)
@@ -34,7 +34,7 @@ class CoreDataHelper: NSObject {
         var store : NSPersistentStore? = nil
         
         do {
-            store = try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
+            store = try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: nil)
             
         } catch {
             print(error)
@@ -44,7 +44,7 @@ class CoreDataHelper: NSObject {
             abort()
         }
         
-        context = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
+        context = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.mainQueueConcurrencyType)
         context.persistentStoreCoordinator = coordinator
         super.init()
     }

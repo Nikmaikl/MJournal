@@ -19,16 +19,16 @@ class DeleteViewController: UIViewController {
     
     weak var deleteDelegate: DeleteLessonDelegate!
 
-    @IBAction func deleteLesson(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: { self.deleteDelegate.delete() })
+    @IBAction func deleteLesson(_ sender: AnyObject) {
+        dismiss(animated: true, completion: { self.deleteDelegate.delete() })
         
         var lessons = currentDay.allNotEvenLessons()
         
-        lessons.removeAtIndex(Int(lesson.id!))
+        lessons.remove(at: Int(lesson.id!))
         var evenLessons = currentDay.allEvenLessons()
         
         if currentDay.getEvenLesson(Int(lesson.id!)) != nil {
-            evenLessons.removeAtIndex(Int(lesson.id!))
+            evenLessons.remove(at: Int(lesson.id!))
         }
         lessons += evenLessons
         currentDay.lessons = NSMutableSet(array: lessons)

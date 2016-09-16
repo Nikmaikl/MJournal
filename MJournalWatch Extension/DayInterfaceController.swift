@@ -12,6 +12,7 @@ import WatchConnectivity
 
 class DayInterfaceController: WKInterfaceController, WCSessionDelegate {
 
+
     @IBOutlet var table: WKInterfaceTable!
     
     @IBOutlet var noLessonsGroup: WKInterfaceGroup!
@@ -23,41 +24,52 @@ class DayInterfaceController: WKInterfaceController, WCSessionDelegate {
     var evenLessons: [String]?
     var notEvenlessons: [String]?
 
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
+    override func awake(withContext context: Any?) {
+        super.awake(withContext: context)
 
         noLessonsLabel.setAttributedText(NSAttributedString(string: "Нет занятий!\nМожно поспать.", attributes: [NSFontAttributeName:UIFont.appSemiBoldFont()]))
         
-        noLessonsGroup.setHidden(true)
-        
-        if WCSession.isSupported() {
-            let session = WCSession.defaultSession()
-            session.delegate = self
-            session.activateSession()
-            
-            if session.reachable {
-                
-                session.sendMessage([:], replyHandler: {(response: [String:AnyObject]) -> Void in
-                    
-                    if let notEvenlessons = response["notEvenLessons"] as? [String] {
-                        if notEvenlessons.count == 0 {
-                            self.noLessonsGroup.setHidden(false)
-                            NSUserDefaults.standardUserDefaults().setValue(self.notEvenlessons, forKey: "evenLessons")
-                            NSUserDefaults.standardUserDefaults().synchronize()
-                        }
-                        self.updateWithLessons(notEvenlessons)
-                    }
-                    
-                    if let evenLessons = response["evenLessons"] as? [String] {
-                        self.evenLessons = evenLessons
-                        NSUserDefaults.standardUserDefaults().setValue(self.evenLessons, forKey: "evenLessons")
-                        NSUserDefaults.standardUserDefaults().synchronize()
-                    }
-                    
-                    }, errorHandler: nil)
-            }
-        }
+        noLessonsGroup.setHidden(false)
+//        if WCSession.isSupported() {
+//            let session = WCSession.default()
+//            session.delegate = self
+//            session.activate()
+//            if session.isReachable {
+//            }
+//        }
+//        if WCSession.isSupported() {
+//            let session = WCSession.default()
+//            session.delegate = self
+//            session.activate()
+//            if session.isReachable {
+//                session.sendMessage([:], replyHandler: {(response: [String:Any]) -> Void in
+//                    
+//                    if let notEvenlessons = response["notEvenLessons"] as? [String] {
+//                        if notEvenlessons.count == 0 {
+//                            self.noLessonsGroup.setHidden(false)
+//                            UserDefaults.standard.setValue(self.notEvenlessons, forKey: "evenLessons")
+//                            UserDefaults.standard.synchronize()
+//                        }
+//                        self.updateWithLessons(notEvenlessons)
+//                    }
+//                    
+//                    if let evenLessons = response["evenLessons"] as? [String] {
+//                        self.evenLessons = evenLessons
+//                        UserDefaults.standard.setValue(self.evenLessons, forKey: "evenLessons")
+//                        UserDefaults.standard.synchronize()
+//                    }
+//                    
+//                    }, errorHandler: nil)
+//            }
+//        }
     }
+    
+    /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
+    @available(watchOS 2.2, *)
+    public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+    }
+
     
     override func didAppear() {
         super.didAppear()
@@ -67,25 +79,25 @@ class DayInterfaceController: WKInterfaceController, WCSessionDelegate {
         super.willActivate()
     }
     
-    func updateWithLessons(lessons: [String]) {
+    func updateWithLessons(_ lessons: [String]) {
         if lessons.count == 0 {
             self.noLessonsGroup.setHidden(false)
         }
         self.table.setNumberOfRows(lessons.count, withRowType: "SubjectRow")
-        for (i, subj) in lessons.enumerate() {
-            let controller = self.table.rowControllerAtIndex(i) as? SubjectRowController
+        for (i, subj) in lessons.enumerated() {
+            let controller = self.table.rowController(at: i) as? SubjectRowController
             controller?.lessonName = subj
         }
 
     }
     
-    func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
+    private func session(_ session: WCSession, didReceiveMessage message: [String : AnyObject]) {
         if let notEvenLessons = message["notEvenLessons"] as? [String] {
             updateWithLessons(notEvenLessons)
         }
     }
     
-    override func contextForSegueWithIdentifier(segueIdentifier: String) -> AnyObject? {
+    override func contextForSegue(withIdentifier segueIdentifier: String) -> Any? {
         
         if segueIdentifier == "More_Info_Even" {
             if notEvenlessons?.count == 0 {

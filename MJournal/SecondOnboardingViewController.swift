@@ -21,19 +21,19 @@ class SecondOnboardingViewController: UIViewController, UIPickerViewDelegate, UI
         super.viewDidLoad()
         
         self.setNeedsStatusBarAppearanceUpdate()
-        self.navigationController?.navigationBar.barStyle = .Black
+        self.navigationController?.navigationBar.barStyle = .black
         
-        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        navigationController?.navigationBar.tintColor = UIColor.white
         
         navigationController?.navigationBar.setBackgroundImage(
             UIImage(),
-            forBarPosition: .Any,
-            barMetrics: .Default)
+            for: .any,
+            barMetrics: .default)
         
         
         navigationController?.navigationBar.shadowImage = UIImage()
         navigationController?.navigationBar.barTintColor = UIColor.darkBackground()
-        navigationController?.navigationBar.translucent = false
+        navigationController?.navigationBar.isTranslucent = false
         
         titleLabel.font = UIFont.appMediumFont(20)
         mainButton.titleLabel?.font = UIFont.appSemiBoldFont()
@@ -45,8 +45,8 @@ class SecondOnboardingViewController: UIViewController, UIPickerViewDelegate, UI
         }
         
         pickerView.selectRow(timeArray.count-2, inComponent: 0, animated: true)
-        NSUserDefaults.standardUserDefaults().setInteger(timeArray[timeArray.count-2], forKey: "OneLessonTime")
-        NSUserDefaults.standardUserDefaults().synchronize()
+        UserDefaults.standard.set(timeArray[timeArray.count-2], forKey: "OneLessonTime")
+        UserDefaults.standard.synchronize()
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,32 +54,32 @@ class SecondOnboardingViewController: UIViewController, UIPickerViewDelegate, UI
         // Dispose of any resources that can be recreated.
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return 12
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let myTitle = NSAttributedString(string: "\(timeArray[row]) минут", attributes: [NSFontAttributeName:UIFont.appMediumFont(),NSForegroundColorAttributeName:UIColor.whiteColor()])
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let myTitle = NSAttributedString(string: "\(timeArray[row]) минут", attributes: [NSFontAttributeName:UIFont.appMediumFont(),NSForegroundColorAttributeName:UIColor.white])
         return myTitle
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        NSUserDefaults.standardUserDefaults().setInteger(timeArray[row], forKey: "OneLessonTime")
-        NSUserDefaults.standardUserDefaults().synchronize()
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        UserDefaults.standard.set(timeArray[row], forKey: "OneLessonTime")
+        UserDefaults.standard.synchronize()
     }
     
-    @IBAction func mainButtonPressed(sender: AnyObject) {
-        UIView.animateWithDuration(0.2, animations: {
-            self.mainButton.transform = CGAffineTransformMakeScale(0.85, 0.85)
+    @IBAction func mainButtonPressed(_ sender: AnyObject) {
+        UIView.animate(withDuration: 0.2, animations: {
+            self.mainButton.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
             }, completion: { b->Void in
-                UIView.animateWithDuration(0.05, animations: {
-                    self.mainButton.transform = CGAffineTransformMakeScale(1, 1)
+                UIView.animate(withDuration: 0.05, animations: {
+                    self.mainButton.transform = CGAffineTransform(scaleX: 1, y: 1)
                     }, completion: { b->Void in
-                        self.performSegueWithIdentifier("NextStep", sender: nil)
+                        self.performSegue(withIdentifier: "NextStep", sender: nil)
                 })
         })
     }
@@ -94,8 +94,8 @@ class SecondOnboardingViewController: UIViewController, UIPickerViewDelegate, UI
     }
     */
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return .lightContent
     }
 
 }

@@ -32,19 +32,19 @@ class SheduleTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewD
     
     var startTime: String! {
         didSet {
-            startTimeButton.setTitle(startTime, forState: .Normal)
+            startTimeButton.setTitle(startTime, for: UIControlState())
         }
     }
     
     var endTime: String! {
         didSet {
-            endTimeButtom.setTitle(endTime, forState: .Normal)
+            endTimeButtom.setTitle(endTime, for: UIControlState())
         }
     }
     
-    private let pickerViewRows = 10000
-    private var pickerViewMiddleHours: Int!
-    private var pickerViewMiddleMinutes: Int!
+    fileprivate let pickerViewRows = 10000
+    fileprivate var pickerViewMiddleHours: Int!
+    fileprivate var pickerViewMiddleMinutes: Int!
     
     
     var timeTable: [[String]]!
@@ -60,7 +60,7 @@ class SheduleTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewD
         startTimeButton.titleLabel!.font = UIFont.appSemiBoldFont()
         endTimeButtom.titleLabel!.font = UIFont.appSemiBoldFont()
         
-        timeTable = NSUserDefaults.standardUserDefaults().valueForKey("Timetable") as! [[String]]
+        timeTable = UserDefaults.standard.value(forKey: "Timetable") as! [[String]]
         
         for i in 1...23 {
             var hour = ""
@@ -82,7 +82,7 @@ class SheduleTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewD
         pickerViewMiddleMinutes = ((pickerViewRows / minutes.count) / 2) * minutes.count
     }
     
-    func valueForRowInComponent(row: Int, component: Int) -> String {
+    func valueForRowInComponent(_ row: Int, component: Int) -> String {
         if component == 0 {
             return hours[row % hours.count]
         } else {
@@ -90,7 +90,7 @@ class SheduleTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewD
         }
     }
     
-    func rowForValue(value: Int, component: Int) -> Int {
+    func rowForValue(_ value: Int, component: Int) -> Int {
         if component == 0 {
             return pickerViewMiddleHours + value
         } else {
@@ -99,43 +99,36 @@ class SheduleTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewD
     }
 
     
-    @IBAction func timeButtonPressed(sender: UIButton) {
-        UIView.animateWithDuration(0.15, animations: {
-            sender.transform = CGAffineTransformMakeScale(0.6, 0.6)
-            }, completion: { b->Void in
-                UIView.animateWithDuration(0.05, animations: {
-                    sender.transform = CGAffineTransformMakeScale(1, 1)
-                    }, completion: { b->Void in
-                        let pickerVC = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateViewControllerWithIdentifier("PickerVC") as? PickerViewController
-                        
+    @IBAction func timeButtonPressed(_ sender: UIButton) {
+                        let pickerVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PickerVC") as? PickerViewController
                         
                         self.pressedButton = sender
                         
-                        pickerVC!.modalPresentationStyle = .Popover
+                        pickerVC!.modalPresentationStyle = .popover
                         pickerVC!.pickerDelegate = self
                         pickerVC!.pickerDataSource = self
                         pickerVC!.delegate = self
                         pickerVC?.controller = "Shedule"
                         
                         let buttonText = sender.titleLabel!.text!
-                        let buttonTimeHours = buttonText.substringWithRange(buttonText.startIndex..<buttonText.startIndex.advancedBy(2))
-                        let buttonTimeMinutes = buttonText.substringWithRange(buttonText.startIndex.advancedBy(3)..<buttonText.startIndex.advancedBy(5))
+                        let buttonTimeHours = buttonText.substring(with: buttonText.startIndex..<buttonText.characters.index(buttonText.startIndex, offsetBy: 2))
+                        let buttonTimeMinutes = buttonText.substring(with: buttonText.characters.index(buttonText.startIndex, offsetBy: 3)..<buttonText.characters.index(buttonText.startIndex, offsetBy: 5))
                         
                         if buttonTimeHours.characters.count == 2 {
-                            if buttonTimeHours.substringWithRange(buttonText.startIndex..<buttonText.startIndex.advancedBy(1)) == "0" {
-                                pickerVC?.shouldSelectRows.append(self.rowForValue(Int(buttonText.substringWithRange(buttonText.startIndex.advancedBy(1)..<buttonText.startIndex.advancedBy(2)))!-1, component: 0))
+                            if buttonTimeHours.substring(with: buttonText.startIndex..<buttonText.characters.index(buttonText.startIndex, offsetBy: 1)) == "0" {
+                                pickerVC?.shouldSelectRows.append(self.rowForValue(Int(buttonText.substring(with: buttonText.characters.index(buttonText.startIndex, offsetBy: 1)..<buttonText.characters.index(buttonText.startIndex, offsetBy: 2)))!-1, component: 0))
                             } else {
-                                pickerVC?.shouldSelectRows.append(self.rowForValue(Int(buttonText.substringWithRange(buttonText.startIndex..<buttonText.startIndex.advancedBy(2)))!-1, component: 0))
+                                pickerVC?.shouldSelectRows.append(self.rowForValue(Int(buttonText.substring(with: buttonText.startIndex..<buttonText.characters.index(buttonText.startIndex, offsetBy: 2)))!-1, component: 0))
                             }
                         } else {
-                            pickerVC?.shouldSelectRows.append(self.rowForValue(Int(buttonText.substringWithRange(buttonText.startIndex..<buttonText.startIndex.advancedBy(1)))!-1, component: 0))
+                            pickerVC?.shouldSelectRows.append(self.rowForValue(Int(buttonText.substring(with: buttonText.startIndex..<buttonText.characters.index(buttonText.startIndex, offsetBy: 1)))!-1, component: 0))
                         }
                         
-                        if buttonTimeMinutes.substringWithRange(buttonTimeMinutes.startIndex..<buttonTimeMinutes.startIndex.advancedBy(1)) == "0" {
-                            if buttonTimeMinutes.substringWithRange(buttonTimeMinutes.startIndex.advancedBy(1)..<buttonTimeMinutes.startIndex.advancedBy(2)) == "0" {
+                        if buttonTimeMinutes.substring(with: buttonTimeMinutes.startIndex..<buttonTimeMinutes.characters.index(buttonTimeMinutes.startIndex, offsetBy: 1)) == "0" {
+                            if buttonTimeMinutes.substring(with: buttonTimeMinutes.characters.index(buttonTimeMinutes.startIndex, offsetBy: 1)..<buttonTimeMinutes.characters.index(buttonTimeMinutes.startIndex, offsetBy: 2)) == "0" {
                                 pickerVC?.shouldSelectRows.append(self.rowForValue(0, component: 1))
                             } else {
-                                pickerVC?.shouldSelectRows.append(self.rowForValue((Int(buttonTimeMinutes.substringWithRange(buttonTimeMinutes.startIndex.advancedBy(1)..<buttonTimeMinutes.startIndex.advancedBy(2)))!%5)+1, component: 1))
+                                pickerVC?.shouldSelectRows.append(self.rowForValue((Int(buttonTimeMinutes.substring(with: buttonTimeMinutes.characters.index(buttonTimeMinutes.startIndex, offsetBy: 1)..<buttonTimeMinutes.characters.index(buttonTimeMinutes.startIndex, offsetBy: 2)))!%5)+1, component: 1))
                             }
                             
                         } else {
@@ -145,42 +138,29 @@ class SheduleTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewD
                         if let popoverPC = pickerVC!.popoverPresentationController {
                             popoverPC.sourceView = sender
                             
-                            popoverPC.sourceRect = CGRectMake(CGRectGetMidX(sender.bounds), sender.bounds.height/2,0,0)
+                            popoverPC.sourceRect = CGRect(x: sender.bounds.midX, y: sender.bounds.height/2,width: 0,height: 0)
                             
                             popoverPC.delegate = self
                             
                             pickerVC!.preferredContentSize = CGSize(width: 120, height: 200)
                         }
                         
-                        self.navigationController.presentViewController(pickerVC!, animated: true, completion: {})
-                })
-        })
+                        self.navigationController.present(pickerVC!, animated: true, completion: {})
     }
     
-    func saveTimetable(time: String, typeOfButton: Int, id: Int) {
-        timeTable = NSUserDefaults.standardUserDefaults().valueForKey("Timetable") as! [[String]]
+    func saveTimetable(_ time: String, typeOfButton: Int, id: Int) {
+        timeTable = UserDefaults.standard.value(forKey: "Timetable") as! [[String]]
         timeTable[id][typeOfButton] = time
-        NSUserDefaults.standardUserDefaults().setValue(timeTable, forKey: "Timetable")
-        NSUserDefaults.standardUserDefaults().synchronize()
-        print(NSUserDefaults.standardUserDefaults().valueForKey("Timetable") as! [[String]])
+        UserDefaults.standard.setValue(timeTable, forKey: "Timetable")
+        UserDefaults.standard.synchronize()
     }
 
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.None
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
     
-//    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-//        var myTitle = ""
-//        if component == 1 {
-//            myTitle = minutes[row]
-//        } else {
-//            myTitle = hours[row]
-//        }
-//        return NSAttributedString(string: myTitle, attributes: [NSFontAttributeName:UIFont.appBoldFont()])
-//    }
-    
-    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView
     {
         var myTitle = ""
         if component == 1 {
@@ -190,27 +170,27 @@ class SheduleTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewD
         }
         
         let pickerLabel = UILabel()
-        pickerLabel.textColor = UIColor.blackColor()
+        pickerLabel.textColor = UIColor.black
         pickerLabel.text = myTitle
         pickerLabel.font = UIFont.appSemiBoldFont(20)
-        pickerLabel.textAlignment = NSTextAlignment.Center
+        pickerLabel.textAlignment = NSTextAlignment.center
         return pickerLabel
     }
     
-    func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 40
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 2
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if component == 1 { return pickerViewRows}
         return pickerViewRows
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
         var sourceText = pressedButton.titleLabel!.text!
         if component == 0 {
@@ -218,19 +198,45 @@ class SheduleTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewD
             if hour.characters.count == 1 {
                 hour = "0"+hour
             }
-            sourceText.replaceRange(sourceText.startIndex..<sourceText.startIndex.advancedBy(2), with: hour)
+            sourceText.replaceSubrange(sourceText.startIndex..<sourceText.characters.index(sourceText.startIndex, offsetBy: 2), with: hour)
         } else {
             let minute = minutes[row%minutes.count]
 
-            sourceText.replaceRange(sourceText.startIndex.advancedBy(3)..<sourceText.startIndex.advancedBy(3+2), with: minute)
+            sourceText.replaceSubrange(sourceText.characters.index(sourceText.startIndex, offsetBy: 3)..<sourceText.characters.index(sourceText.startIndex, offsetBy: 3+2), with: minute)
         }
         
         UIView.performWithoutAnimation({
-            self.pressedButton.setTitle(sourceText, forState: .Normal)
+            self.pressedButton.setTitle(sourceText, for: UIControlState())
             self.pressedButton.layoutIfNeeded()
             
             if self.pressedButton == self.startTimeButton {
+                
                 self.saveTimetable(sourceText, typeOfButton: 0, id: self.id)
+                
+                var buttonTimeHours = sourceText.substring(with: sourceText.startIndex..<sourceText.characters.index(sourceText.startIndex, offsetBy: 2))
+                var buttonTimeMinutes = sourceText.substring(with: sourceText.characters.index(sourceText.startIndex, offsetBy: 3)..<sourceText.characters.index(sourceText.startIndex, offsetBy: 5))
+                if buttonTimeHours.characters.count == 2 && buttonTimeHours.substring(with: buttonTimeHours.characters.index(buttonTimeHours.startIndex, offsetBy: 0)..<buttonTimeHours.characters.index(buttonTimeHours.startIndex, offsetBy: 1)) == "0"{
+                    buttonTimeHours = buttonTimeHours.substring(with: buttonTimeHours.characters.index(buttonTimeHours.startIndex, offsetBy: 1)..<buttonTimeHours.characters.index(buttonTimeHours.startIndex, offsetBy: 2))
+                }
+                if buttonTimeMinutes.characters.count == 2 && buttonTimeMinutes.substring(with: buttonTimeMinutes.characters.index(buttonTimeMinutes.startIndex, offsetBy: 0)..<buttonTimeMinutes.characters.index(buttonTimeMinutes.startIndex, offsetBy: 1)) == "0"{
+                    buttonTimeHours = buttonTimeMinutes.substring(with: buttonTimeMinutes.characters.index(buttonTimeMinutes.startIndex, offsetBy: 1)..<buttonTimeMinutes.characters.index(buttonTimeMinutes.startIndex, offsetBy: 2))
+                }
+                
+                var finalEndTime = Int(buttonTimeHours)! * 60 + Int(buttonTimeMinutes)!
+                finalEndTime += UserDefaults.standard.integer(forKey: "OneLessonTime")
+                
+                buttonTimeHours = "\(finalEndTime/60)"
+                buttonTimeMinutes = "\(finalEndTime%60)"
+                
+                if buttonTimeHours.characters.count == 1 {
+                    buttonTimeHours = "0" + buttonTimeHours
+                }
+                if buttonTimeMinutes.characters.count == 1 {
+                    buttonTimeMinutes = "0" + buttonTimeMinutes
+                }
+                endTime = buttonTimeHours+":"+buttonTimeMinutes
+                self.endTimeButtom.titleLabel?.text = endTime
+                self.saveTimetable(endTime, typeOfButton: 1, id: self.id)
             } else {
                 self.saveTimetable(sourceText, typeOfButton: 1, id: self.id)
             }
@@ -248,7 +254,7 @@ class SheduleTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewD
     }
     
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
 

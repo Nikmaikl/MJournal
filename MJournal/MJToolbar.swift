@@ -11,7 +11,7 @@ import UIKit
 class MJToolbar: UIToolbar {
 
     
-    override func sizeThatFits(size: CGSize) -> CGSize {
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
         var size = super.sizeThatFits(size)
         size.height = 52
         return size

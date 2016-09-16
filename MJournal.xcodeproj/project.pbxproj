@@ -22,6 +22,7 @@
 		4C71A78B1C2B2E89006570CF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C71A7891C2B2DDF006570CF /* Localizable.strings */; };
 		4C71A78C1C2B2E8B006570CF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C71A7891C2B2DDF006570CF /* Localizable.strings */; };
 		4C71A78D1C2B2E8B006570CF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C71A7891C2B2DDF006570CF /* Localizable.strings */; };
+		4C86B98B1D846880003EC244 /* DaySheduleContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C86B98A1D846880003EC244 /* DaySheduleContainerViewController.swift */; };
 		4C8A1D981D745EA400D2AFD2 /* SubjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C8A1D971D745EA400D2AFD2 /* SubjectTableViewCell.xib */; };
 		4C8A1D9A1D74613400D2AFD2 /* SheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C8A1D991D74613400D2AFD2 /* SheduleTableViewCell.xib */; };
 		4C9564E91D5BD90600653091 /* Day+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA571D535CEE00514A04 /* Day+CoreDataProperties.swift */; };
@@ -32,6 +33,7 @@
 		4C9564EE1D5BD91900653091 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA601D53867A00514A04 /* CoreDataHelper.swift */; };
 		4C9E29251D5E73B700511136 /* MoreSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9E29241D5E73B700511136 /* MoreSettingsTableViewController.swift */; };
 		4C9E29271D5E792600511136 /* SheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9E29261D5E792600511136 /* SheduleTableViewCell.swift */; };
+		4CA61BBE1D834DE3008AAEFF /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA61BBD1D834DE3008AAEFF /* String.swift */; };
 		4CAADD1C1D560EF8005D53A6 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAADD1B1D560EF8005D53A6 /* Font.swift */; };
 		4CBEC5AF1D47F8A80042EAD2 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBEC5AE1D47F8A80042EAD2 /* SettingsTableViewCell.swift */; };
 		4CBEC5B11D47FC590042EAD2 /* SubjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBEC5B01D47FC590042EAD2 /* SubjectTableViewCell.swift */; };
@@ -47,8 +49,6 @@
 		4CD6DA5C1D535CEE00514A04 /* Lesson+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA591D535CEE00514A04 /* Lesson+CoreDataProperties.swift */; };
 		4CD6DA5E1D535D6700514A04 /* Lesson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA5D1D535D6700514A04 /* Lesson.swift */; };
 		4CD6DA611D53867A00514A04 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DA601D53867A00514A04 /* CoreDataHelper.swift */; };
-		4CD8408D1D4D0ED300ABD11F /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD8408C1D4D0ED300ABD11F /* SelectionViewController.swift */; };
-		4CDD11471D762FD300072528 /* EvenDayInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDD11461D762FD300072528 /* EvenDayInterfaceController.swift */; };
 		4CEDA9C51D4410F800ED4E14 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEDA9C41D4410F800ED4E14 /* SettingsTableViewController.swift */; };
 		4CF78A801D6A11950085F1B0 /* MJToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF78A7F1D6A11950085F1B0 /* MJToolbar.swift */; };
 		4CF8BA101D80513B00943F78 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7926F11C14C82700CCB672 /* Color.swift */; };
@@ -84,9 +84,7 @@
 		CEBD70A81C15FB4E0076E708 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEBD70A61C15FB4E0076E708 /* Interface.storyboard */; };
 		CEBD70AA1C15FB4E0076E708 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEBD70A91C15FB4E0076E708 /* Assets.xcassets */; };
 		CEBD70B11C15FB4E0076E708 /* MJournalWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CEBD70B01C15FB4E0076E708 /* MJournalWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		CEBD70B61C15FB4E0076E708 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBD70B51C15FB4E0076E708 /* InterfaceController.swift */; };
 		CEBD70B81C15FB4E0076E708 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBD70B71C15FB4E0076E708 /* ExtensionDelegate.swift */; };
-		CEBD70BA1C15FB4E0076E708 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBD70B91C15FB4E0076E708 /* GlanceController.swift */; };
 		CEBD70BC1C15FB4E0076E708 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBD70BB1C15FB4E0076E708 /* ComplicationController.swift */; };
 		CEBD70BE1C15FB4E0076E708 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEBD70BD1C15FB4E0076E708 /* Assets.xcassets */; };
 		CEBD70C21C15FB4E0076E708 /* MJournalWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = CEBD70A41C15FB4E0076E708 /* MJournalWatch.app */; };
@@ -172,6 +170,7 @@
 		4C43D0961D575E02001D7B5C /* BannerCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerCollectionReusableView.swift; sourceTree = "<group>"; };
 		4C71A7881C2B2DDF006570CF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4C71A78A1C2B2DE3006570CF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4C86B98A1D846880003EC244 /* DaySheduleContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DaySheduleContainerViewController.swift; sourceTree = "<group>"; };
 		4C8A04361C1E09CB006DEEA5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		4C8A04371C1E09CB006DEEA5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MainInterface.strings; sourceTree = "<group>"; };
 		4C8A04381C1E09CB006DEEA5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Interface.strings; sourceTree = "<group>"; };
@@ -179,6 +178,7 @@
 		4C8A1D991D74613400D2AFD2 /* SheduleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SheduleTableViewCell.xib; sourceTree = "<group>"; };
 		4C9E29241D5E73B700511136 /* MoreSettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreSettingsTableViewController.swift; sourceTree = "<group>"; };
 		4C9E29261D5E792600511136 /* SheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SheduleTableViewCell.swift; sourceTree = "<group>"; };
+		4CA61BBD1D834DE3008AAEFF /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		4CAADD1B1D560EF8005D53A6 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		4CBEC5AE1D47F8A80042EAD2 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		4CBEC5B01D47FC590042EAD2 /* SubjectTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectTableViewCell.swift; sourceTree = "<group>"; };
@@ -191,8 +191,6 @@
 		4CD6DA591D535CEE00514A04 /* Lesson+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Lesson+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4CD6DA5D1D535D6700514A04 /* Lesson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lesson.swift; sourceTree = "<group>"; };
 		4CD6DA601D53867A00514A04 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
-		4CD8408C1D4D0ED300ABD11F /* SelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
-		4CDD11461D762FD300072528 /* EvenDayInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvenDayInterfaceController.swift; sourceTree = "<group>"; };
 		4CEDA9C41D4410F800ED4E14 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		4CF78A7F1D6A11950085F1B0 /* MJToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MJToolbar.swift; sourceTree = "<group>"; };
 		4CF8C2871D6CEB2B000BFB80 /* MJournalWatch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "MJournalWatch Extension.entitlements"; sourceTree = "<group>"; };
@@ -225,9 +223,7 @@
 		CEBD70A91C15FB4E0076E708 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEBD70AB1C15FB4E0076E708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEBD70B01C15FB4E0076E708 /* MJournalWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "MJournalWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEBD70B51C15FB4E0076E708 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		CEBD70B71C15FB4E0076E708 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		CEBD70B91C15FB4E0076E708 /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
 		CEBD70BB1C15FB4E0076E708 /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
 		CEBD70BD1C15FB4E0076E708 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEBD70BF1C15FB4E0076E708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -453,11 +449,8 @@
 			isa = PBXGroup;
 			children = (
 				4CF8C2871D6CEB2B000BFB80 /* MJournalWatch Extension.entitlements */,
-				CEBD70B51C15FB4E0076E708 /* InterfaceController.swift */,
 				CEBD70CE1C1620F50076E708 /* DayInterfaceController.swift */,
-				4CDD11461D762FD300072528 /* EvenDayInterfaceController.swift */,
 				CEBD70B71C15FB4E0076E708 /* ExtensionDelegate.swift */,
-				CEBD70B91C15FB4E0076E708 /* GlanceController.swift */,
 				CEBD70BB1C15FB4E0076E708 /* ComplicationController.swift */,
 				CEBD70BD1C15FB4E0076E708 /* Assets.xcassets */,
 				CEBD70BF1C15FB4E0076E708 /* Info.plist */,
@@ -470,6 +463,7 @@
 			children = (
 				CE7926F11C14C82700CCB672 /* Color.swift */,
 				4CAADD1B1D560EF8005D53A6 /* Font.swift */,
+				4CA61BBD1D834DE3008AAEFF /* String.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -480,10 +474,10 @@
 				4C004FBA1D4BFB2500CD71CE /* Cells */,
 				4C004FBB1D4BFBE800CD71CE /* Views */,
 				CEE427F31C11EFD3008637C2 /* WeekViewController.swift */,
+				4C86B98A1D846880003EC244 /* DaySheduleContainerViewController.swift */,
 				CE3DF42A1C1327AF004B9D42 /* DaySheduleViewController.swift */,
 				4CC582E81D4A38190001148F /* SubjectInfoTableViewController.swift */,
 				4CEDA9C41D4410F800ED4E14 /* SettingsTableViewController.swift */,
-				4CD8408C1D4D0ED300ABD11F /* SelectionViewController.swift */,
 				4C9E29241D5E73B700511136 /* MoreSettingsTableViewController.swift */,
 				4C0C6F4F1D63948800F2E1C0 /* PickerViewController.swift */,
 				4C29AC1F1D70E22500BD099E /* DeleteViewController.swift */,
@@ -592,7 +586,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Ocode;
 				TargetAttributes = {
 					CE43E3131C10D45C006F1D95 = {
@@ -768,6 +762,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE3DF42B1C1327AF004B9D42 /* DaySheduleViewController.swift in Sources */,
+				4C86B98B1D846880003EC244 /* DaySheduleContainerViewController.swift in Sources */,
 				4CD6DA611D53867A00514A04 /* CoreDataHelper.swift in Sources */,
 				CE43E3181C10D45C006F1D95 /* AppDelegate.swift in Sources */,
 				4C1B565A1D686233004EACDC /* MainOnboardingViewController.swift in Sources */,
@@ -787,7 +782,6 @@
 				4CC582E91D4A38190001148F /* SubjectInfoTableViewController.swift in Sources */,
 				4CBEC5B11D47FC590042EAD2 /* SubjectTableViewCell.swift in Sources */,
 				4CD6DA5B1D535CEE00514A04 /* Day.swift in Sources */,
-				4CD8408D1D4D0ED300ABD11F /* SelectionViewController.swift in Sources */,
 				CEBF44C31C12246B00598EF3 /* DayCellView.swift in Sources */,
 				CE3DF4271C132409004B9D42 /* SheduleParser.swift in Sources */,
 				4C43D0971D575E02001D7B5C /* BannerCollectionReusableView.swift in Sources */,
@@ -798,6 +792,7 @@
 				CE7926EB1C14B40C00CCB672 /* RoomParser.swift in Sources */,
 				4C9E29271D5E792600511136 /* SheduleTableViewCell.swift in Sources */,
 				4C0C6F501D63948800F2E1C0 /* PickerViewController.swift in Sources */,
+				4CA61BBE1D834DE3008AAEFF /* String.swift in Sources */,
 				4CD6DA5E1D535D6700514A04 /* Lesson.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -838,12 +833,9 @@
 				4C6DF2EE1D6344A1009F460B /* Day.swift in Sources */,
 				CEBD70CD1C161A5F0076E708 /* WeekDays.swift in Sources */,
 				CEBD70D11C1622590076E708 /* TimetableParser.swift in Sources */,
-				CEBD70B61C15FB4E0076E708 /* InterfaceController.swift in Sources */,
 				4CD3DD2C1D74851700E77813 /* Font.swift in Sources */,
 				4C6DF2F11D6344B3009F460B /* CoreDataHelper.swift in Sources */,
-				CEBD70BA1C15FB4E0076E708 /* GlanceController.swift in Sources */,
 				CEBD70D01C1622570076E708 /* SheduleParser.swift in Sources */,
-				4CDD11471D762FD300072528 /* EvenDayInterfaceController.swift in Sources */,
 				CEBD70D21C16225C0076E708 /* RoomParser.swift in Sources */,
 				4C3D97541D74D8890016EE0F /* Color.swift in Sources */,
 			);
@@ -922,6 +914,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -931,8 +924,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -967,6 +962,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -976,8 +972,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -996,6 +994,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1005,11 +1004,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1ADDF86CA1CCA1739C5F43F0 /* Pods-MJournal.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MJournal/MJournal.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = 63B76Z84QJ;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = MJournal/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1017,7 +1017,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.minikov.MJournal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1026,11 +1026,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B7262A72468E3A2892E82F0A /* Pods-MJournal.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MJournal/MJournal.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				DEVELOPMENT_TEAM = 63B76Z84QJ;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = MJournal/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1038,7 +1039,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.minikov.MJournal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1055,7 +1056,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1071,7 +1072,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1089,7 +1090,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -1109,7 +1110,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -1118,17 +1119,17 @@
 		CEBD70C81C15FB4E0076E708 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = MJournalWatch_Extension;
 				INFOPLIST_FILE = MJournalWatch/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = com.minikov.MJournal.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -1137,17 +1138,17 @@
 		CEBD70C91C15FB4E0076E708 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = MJournalWatch_Extension;
 				INFOPLIST_FILE = MJournalWatch/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = com.minikov.MJournal.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
