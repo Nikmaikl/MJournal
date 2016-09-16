@@ -9,38 +9,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MJournalWatch Extension/DayInterfaceController.swift"
-            timestampString = "495656419.818506"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "awake(withContext:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MJournal/WeekViewController.swift"
-            timestampString = "495556293.029696"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "session(_:activationDidCompleteWith:error:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "MJournal/SubjectTableViewCell.swift"
             timestampString = "495569166.181761"
             startingColumnNumber = "9223372036854775807"
@@ -298,13 +266,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MJournalWatch Extension/DayInterfaceController.swift"
-            timestampString = "495655607.01622"
+            timestampString = "495749208.662882"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "awake(withContext:)"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "didAppear()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MJournalWatch Extension/DayInterfaceController.swift"
+            timestampString = "495749208.662882"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "didAppear()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MJournalWatch_Extension.DayInterfaceController.(didAppear () -&gt; ()).(closure #1)"
+                  moduleName = "MJournalWatch Extension"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Michael/Documents/XCodeProjects/MJournal/MJournalWatch%20Extension/DayInterfaceController.swift"
+                  timestampString = "495751908.689778"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "24">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MJournalWatch_Extension.DayInterfaceController.(didAppear () -&gt; ()).(closure #1)"
+                  moduleName = "MJournalWatch Extension"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Michael/Documents/XCodeProjects/MJournal/MJournalWatch%20Extension/DayInterfaceController.swift"
+                  timestampString = "495751908.693077"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "316">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

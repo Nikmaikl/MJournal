@@ -9,23 +9,10 @@
 import UIKit
 import Firebase
 import GoogleMobileAds
-import WatchConnectivity
 
 private let reuseIdentifier = "CellDay"
 
-class WeekCollectionViewController: UICollectionViewController, WCSessionDelegate {
-    /** Called when all delegate callbacks for the previously selected watch has occurred. The session can be re-activated for the now selected watch using activateSession. */
-    @available(iOS 9.3, *)
-    public func sessionDidDeactivate(_ session: WCSession) {
-        
-    }
-
-    /** Called when the session can no longer be used to modify or add any new transfers and, all interactive messages will be cancelled, but delegate callbacks for background transfers can still occur. This will happen when the selected watch is being changed. */
-    @available(iOS 9.3, *)
-    public func sessionDidBecomeInactive(_ session: WCSession) {
-        
-    }
-
+class WeekCollectionViewController: UICollectionViewController {
 
     var dayNumber: Int = 0
     var colorForCell: UIColor = UIColor.black
@@ -74,14 +61,6 @@ class WeekCollectionViewController: UICollectionViewController, WCSessionDelegat
             }
         }
         
-        if #available(iOS 9.0, *) {
-            if WCSession.isSupported() {
-                let session = WCSession.default()
-                session.delegate = self
-                session.activate()
-            }
-        }
-        
         let numberOfItemsPerSmallerSide: CGFloat = 2
         let width = (min(screenSize.height, screenSize.width) - defaultSpace * 3) / numberOfItemsPerSmallerSide
         
@@ -99,24 +78,20 @@ class WeekCollectionViewController: UICollectionViewController, WCSessionDelegat
         setupGoogleAdToolbar()
     }
     
-    @available(iOS 9.0, *)
-    private func session(_ session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
-        var notEvenLessons = [String]()
-        var evenLessons = [String]()
-        for lesson in Day.allDays()[Time.getDay()].allNotEvenLessons() {
-            notEvenLessons.append(lesson.name!)
-        }
-        for lesson in Day.allDays()[Time.getDay()].allEvenLessons() {
-            evenLessons.append(lesson.name!)
-        }
-        replyHandler(["notEvenLessons": notEvenLessons as AnyObject, "evenLessons": evenLessons as AnyObject])
-    }
-    
-    /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
-    @available(iOS 9.3, *)
-    public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        
-    }
+//    @available(iOS 9.0, *)
+//    private func session(_ session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
+//        var notEvenLessons = [String]()
+//        var evenLessons = [String]()
+//        for lesson in Day.allDays()[Time.getDay()].allNotEvenLessons() {
+//            notEvenLessons.append(lesson.name!)
+//        }
+//        for lesson in Day.allDays()[Time.getDay()].allEvenLessons() {
+//            evenLessons.append(lesson.name!)
+//        }
+//        replyHandler(["notEvenLessons": notEvenLessons as AnyObject, "evenLessons": evenLessons as AnyObject])
+//    }
+//    
+//    /** Called when the session has completed activation. If session state is WCSessionActivationStateNotActivated there will be an error with more details. */
     
     func setupGoogleAdToolbar() {
         banner = GADBannerView(frame: CGRect(x: collectionView!.frame.width/2-kGADAdSizeBanner.size.width/2 ,y: 0, width: kGADAdSizeBanner.size.width, height: 44))
