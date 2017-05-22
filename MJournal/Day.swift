@@ -38,13 +38,6 @@ class Day: NSManagedObject {
         return results as! [Day]
     }
     
-//    func allLessons() -> [Lesson] {
-//        let descriptor = NSSortDescriptor(key: "id", ascending: true)
-//        return lessons?.sortedArrayUsingDescriptors([descriptor]) as! [Lesson]
-//    }
-    
-    
-    
     func allEvenLessons() -> [Lesson] {
         let descriptor = NSSortDescriptor(key: "id", ascending: true)
         let lessonsArray = lessons?.sortedArray(using: [descriptor]) as! [Lesson]

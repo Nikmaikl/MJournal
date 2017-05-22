@@ -10,7 +10,6 @@ import UIKit
 
 @objc protocol PickerDelegate: class {
     @objc optional func saveTypeLesson(_ type: String)
-//    optional func saveTime(time: String)
 }
 
 protocol CardDelegate: class {
@@ -18,6 +17,8 @@ protocol CardDelegate: class {
 }
 
 class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPresentationControllerDelegate, PickerDelegate, CardDelegate {
+    
+    @IBOutlet weak var mainView2: UIView!
     
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var mainView: UIView!
@@ -139,7 +140,7 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
             timeTable = UserDefaults.standard.value(forKey: "Timetable") as! [[String]]
             
             lessonNameField.text = lesson!.name
-
+            
             lessonNameField.font = UIFont.appSemiBoldFont()
             lessonNameField2.font = lessonNameField.font
             startTimeHour.font = UIFont.appSemiBoldFont()
@@ -175,7 +176,7 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
             if lesson?.audience != nil {
                 audienceNumberField.text = lesson?.audience
             } else {
-//                audienceNumberField.text = "нет."
+                //                audienceNumberField.text = "нет."
             }
             professorNameTextField.text = lesson?.professor
             lessonTypeButton.setTitle(lesson?.type?.uppercased(), for: UIControlState())
@@ -199,10 +200,22 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
             if !isEditing {
                 lessonNameField.backgroundColor = UIColor.clear
                 lessonNameField2.backgroundColor = UIColor.clear
+            }
+            
+            self.contentView.backgroundColor = UIColor.darkBackground()
+            
+            if UserDefaults.standard.bool(forKey: "white_theme") {
+                mainView.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0)
+                timeView.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0)
+                
+                mainView2.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0)
+                timeView2.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1.0)
             } else {
-                //if lesson?.name != nil {
-//                    navigationController.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: id, inSection: 0)], withRowAnimation: .None)
-                //}
+                mainView.backgroundColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
+                timeView.backgroundColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
+                
+                mainView2.backgroundColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
+                timeView2.backgroundColor = UIColor(red: 251/255, green: 251/255, blue: 251/255, alpha: 1.0)
             }
         }
     }
@@ -217,7 +230,7 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
                 cardView2.isHidden = false
                 self.cardView2.alpha = 0.2
                 cardViewTrailingConstraint.constant = 35
-
+                
                 if lesson2?.notes != nil && lesson2?.notes != "" {
                     notificationImageView2.isHidden = false
                 } else {
@@ -246,7 +259,7 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
         lessonNameField2.delegate = self
         audienceNumberField2.delegate = self
         professorNameTextField2.delegate = self
-
+        
         leftSwipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(leftSwiped))
         leftSwipeGesture.direction = .left
         self.addGestureRecognizer(leftSwipeGesture)
@@ -276,6 +289,31 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
             }
         }
         
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if Time.isEvenWeek() && lesson2 != nil {
+            hideCardViewItems()
+            self.cardViewTrailingConstraint.isActive = false
+            self.cardViewLeadingConstraint.isActive = false
+            self.cardViewWidthConstraint.constant = self.superview!.frame.width-35-35
+            self.cardView2WidthConstraint.constant = self.superview!.frame.width-35-35
+            self.cardViewWidthConstraint.isActive = true
+            self.cardView2WidthConstraint.isActive = true
+            self.cardViewLeadingToTrailingConstraint.isActive = true
+            cardView.setNeedsLayout()
+            cardView2.setNeedsLayout()
+            
+            timeView2.isHidden = false
+            placeLabel2.isHidden = false
+            professorNameTextField2.isHidden = false
+            lessonNameField2.isHidden = false
+            audienceNumberField2.isHidden = false
+            lessonTypeButton2.isHidden = false
+            
+            self.leftSwipeGesture.direction = .right
+        }
     }
     
     internal func updateCards() {
@@ -413,7 +451,7 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
         self.audienceNumberField.isHidden = true
         self.lessonTypeButton.isHidden = true
     }
-
+    
     override func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         return true
     }
@@ -460,9 +498,8 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
             navigationController.tableView.beginUpdates()
             navigationController.tableView.endUpdates()
             
-        //}
-        
-        //if lessonNameField.text != "" && audienceNumberField.text != "" && professorNameTextField.text != "" {
+            
+            //if lessonNameField.text != "" && audienceNumberField.text != "" && professorNameTextField.text != "" {
             if sender as! NSObject == lessonNameField {
                 lesson?.name = lessonNameField.text
             } else if sender as! NSObject == audienceNumberField {
@@ -496,7 +533,7 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
             navigationController.customNavigationItem.rightBarButtonItem?.isEnabled = false
             if lesson2 == nil {
                 cardView2.isHidden = true
-//                cardViewTrailingConstraint.constant = 8
+                //                cardViewTrailingConstraint.constant = 8
             }
         }
     }
@@ -539,19 +576,19 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-//        if textField == lessonNameField || textField == audienceNumberField || textField == professorNameTextField {
+        //        if textField == lessonNameField || textField == audienceNumberField || textField == professorNameTextField {
         if textField == lessonNameField || textField == lessonNameField2 {
             textField.text = ""
             navigationController.customNavigationItem.rightBarButtonItem?.isEnabled = false
             navigationController.tableView.tableFooterView = nil
         }
-//        }
+        //        }
         if lesson2 == nil {
             cardView2.isHidden = true
             cardViewTrailingConstraint.constant = 8
         }
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -588,21 +625,6 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
             roomTrailingToProfessorConstraint.isActive = true
             room2TrailingToSuperViewConstraint.isActive = false
             room2TrailingToProfessorConstraint.isActive = true
-           
-/*            numberOfLessonContainerView.isHidden = false
-            //if navigationController.title == "Четная неделя"{
-                
-//                self.cardView2WidthConstraint.active = false
-                self.cardViewWidthConstraint.isActive = false
-                self.cardViewLeadingToTrailingConstraint.isActive = false
-                self.cardViewTrailingConstraint.isActive = true
-                self.cardViewLeadingConstraint.isActive = true
-//                self.cardViewWidthConstraint.active = true
-                
-                self.cardView.alpha = 1.0
-                self.cardView2.alpha = 0.2
-                navigationController.title = "Нечетная неделя"
-                self.leftSwipeGesture.direction = .left*/
             
             timeView.isHidden = false
             placeLabel.isHidden = false
@@ -610,7 +632,6 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
             lessonNameField.isHidden = false
             audienceNumberField.isHidden = false
             lessonTypeButton.isHidden = false
-            //}
             
             numberOfLessonButton.isEnabled = false
             
@@ -671,27 +692,6 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
                 
             } else {
                 if Time.isEvenWeek() {
-                    hideCardViewItems()
-                    
-                    self.cardsEqualWidth.isActive = false
-                    
-                    self.cardViewTrailingConstraint.isActive = false
-                    self.cardViewLeadingConstraint.isActive = false
-                    self.cardViewWidthConstraint.constant = (self.window?.frame.width)!-35-35
-                    self.cardView2WidthConstraint.constant = (self.window?.frame.width)!-35-35
-                    self.cardViewWidthConstraint.isActive = true
-                    self.cardView2WidthConstraint.isActive = true
-                    self.cardViewLeadingToTrailingConstraint.isActive = true
-                    navigationController.title = "Четная неделя"
-                    navigationController.tableView.tableFooterView = nil
-                    timeView2.isHidden = false
-                    placeLabel2.isHidden = false
-                    professorNameTextField2.isHidden = false
-                    lessonNameField2.isHidden = false
-                    audienceNumberField2.isHidden = false
-                    lessonTypeButton2.isHidden = false
-                    
-                    self.leftSwipeGesture.direction = .right
                     return
                 } else {
                     cardView2.isHidden = false
@@ -791,9 +791,9 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
             visualView.isHidden = true
         }
         
-//        if lesson?.audience == "" {
-//            audienceNumberField.text = ""
-//        }
+        //        if lesson?.audience == "" {
+        //            audienceNumberField.text = ""
+        //        }
     }
     
     func getBakColorForTextFieldWhileEditing() -> UIColor {
@@ -808,7 +808,7 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
     @IBAction func lessonTypePressed(_ sender: UIButton) {
         navigationController.editingLessonTypeID = id
         let pickerVC = navigationController.storyboard?.instantiateViewController(withIdentifier: "PickerVC") as? PickerViewController
-
+        
         pickerVC?.modalPresentationStyle = .popover
         pickerVC?.delegate = self
         pickerVC?.controller = "Subject"
@@ -822,7 +822,7 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
             popoverPC.sourceView = lessonTypeButton
             
             popoverPC.sourceRect = CGRect(x: self.lessonTypeButton.bounds.midX, y: self.lessonTypeButton.bounds.height,width: 0,height: 0)
-
+            
             popoverPC.delegate = self
             pickerVC!.preferredContentSize = CGSize(width: 280, height: 250)
         }
@@ -840,12 +840,12 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
     
     @IBAction func numberOfLessonPressed(_ sender: AnyObject) {
         UIView.animate(withDuration: 0.2, animations: {
-                self.numberOfLesson.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+            self.numberOfLesson.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
             }, completion: { b->Void in
                 UIView.animate(withDuration: 0.2, animations: {
                     self.numberOfLesson.transform = CGAffineTransform(scaleX: 1, y: 1)
                     }, completion: { b->Void in
-                       
+                        
                         let previousLesson = self.navigationController.currentDay.getNotEvenLesson(Int((self.lesson?.id)!)-1)
                         let nextLesson = self.navigationController.currentDay.getNotEvenLesson(Int((self.lesson?.id)!)+1)
                         
@@ -878,10 +878,10 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
                         self.setupLessonTime()
                         CoreDataHelper.instance.save()
                 })
-
+                
         })
-
-
+        
+        
     }
     
     func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
@@ -895,7 +895,7 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
         lesson?.type = type
         CoreDataHelper.instance.save()
     }
-
+    
     
     override func resignFirstResponder() -> Bool {
         return true

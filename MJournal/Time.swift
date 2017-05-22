@@ -34,16 +34,53 @@ class Time {
         return getComponent(NSCalendar.Unit.year)
     }
     
+    static func yesterDay(daysToAdd: Int, sinceDay: Date) -> Int {
+        let yesterday = NSCalendar.current.date(byAdding: .day, value: daysToAdd, to: sinceDay)
+        
+        let components = NSCalendar.current.dateComponents([.day], from: yesterday! as Date)
+        
+        return components.day!
+    }
+    
+    static func getYesterDay(daysToAdd: Int) -> Date {
+        let yesterday = NSCalendar.current.date(byAdding: .day, value: daysToAdd, to: Date())
+        
+        return yesterday!
+    }
+    
+    static func getYesterDayMonth(daysToAdd: Int, sinceDate: Date) -> Int {
+        let yesterday = NSCalendar.current.date(byAdding: .day, value: daysToAdd, to: sinceDate)
+        let components = NSCalendar.current.dateComponents([.month], from: yesterday! as Date)
+        
+        return components.month!
+    }
+    
+    static func getFirstSchoolWeek() -> Int {
+        let userCalendar = Calendar.current
+        
+        var dateComps = DateComponents()
+        dateComps.year = Time.getYear()
+        dateComps.month = 8
+        dateComps.day = 1
+        let date = userCalendar.date(from: dateComps)!
+        var components = userCalendar.dateComponents([.weekOfYear], from: date)
+        
+        return components.weekOfYear!
+    }
+    
     static func getWeekNumber() -> Int {
         return getComponent(NSCalendar.Unit.weekOfMonth)
     }
     
+    static func getWeekYearNumber() -> Int {
+        return getComponent(NSCalendar.Unit.weekOfYear)-1
+    }
+    
     static func isEvenWeek() -> Bool {
-        if getComponent(NSCalendar.Unit.weekOfMonth) % 2 == 0 {
-            return true
+        if (Time.getWeekYearNumber() - Time.getFirstSchoolWeek()) % 2 == 0 {
+            return false //Правильно true
         }
-        
-        return false
+        return true //Правильно false
     }
     
     static func daysForTheWeek() -> [NSMutableDictionary] {
@@ -53,7 +90,6 @@ class Time {
         let formatter        = DateFormatter()
         formatter.dateFormat = "YYYY-MM-dd"
         let currDate         = formatter.date(from: dateStr)
-        print(Time.getFirstDay(weekNumber: Time.getWeekNumber()))
         var dates = [NSMutableDictionary]()
         
         for i in 1...7
@@ -64,7 +100,7 @@ class Time {
         
         return dates
     }
-
+    
     static func getFirstDay(weekNumber:Int)->Int{
         let calendar = Calendar.current
         var components = calendar.dateComponents([.year], from: Date())//(.CalendarUnitYear | .CalendarUnitWeekOfYear | .CalendarUnitWeekday, fromDate: NSDate())

@@ -17,18 +17,10 @@ class MainOnboardingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
         titleLabel.font = UIFont.appMediumFont(20)
         detailLabel.font = UIFont.appMediumFont()
         mainButton.titleLabel?.font = UIFont.appSemiBoldFont()
         detailLabel.text = "Для начала настройте время занятий\nЭто не займет много времени"
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func mainButtonPressed(_ sender: AnyObject) {
@@ -42,15 +34,4 @@ class MainOnboardingViewController: UIViewController {
                 })
         })
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

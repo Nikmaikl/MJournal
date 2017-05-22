@@ -71,7 +71,7 @@ class MoreSettingsTableViewController: UITableViewController, PickerDelegate {
     }
     
     @IBAction func footerButtonPressed(_ sender: AnyObject) {
-        FIRAnalytics.logEvent(withName: "didPassWelcome", parameters: nil)
+        Analytics.logEvent("didPassWelcome", parameters: nil)
         UserDefaults.standard.set(true, forKey: "PassedOnboarding")
         UserDefaults.standard.synchronize()
         performSegue(withIdentifier: "GoToShedule", sender: nil)
@@ -107,7 +107,6 @@ class MoreSettingsTableViewController: UITableViewController, PickerDelegate {
         timeTable.append(["23:50", "23:55"])
         UserDefaults.standard.set(timeTable, forKey: "Timetable")
         UserDefaults.standard.synchronize()
-        print(UserDefaults.standard.value(forKey: "Timetable") as! [[String]])
         tableView.reloadData()
         if tableView.numberOfRows(inSection: 0)+1 > 7 {
             navigationItem.rightBarButtonItem = nil

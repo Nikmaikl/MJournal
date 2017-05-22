@@ -241,7 +241,6 @@ class SheduleTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewD
                 self.saveTimetable(sourceText, typeOfButton: 1, id: self.id)
             }
         })
-        //        print(id)
         
         if component == 0 {
             let newRow = pickerViewMiddleHours + (row % hours.count)

@@ -129,7 +129,7 @@
 "ljq-UQ-Da4.text" = "524";
 
 /* Class = "UIButton"; normalTitle = "Убрать рекламу за 69,00 ₽"; ObjectID = "m8Y-y7-Lv5"; */
-"m8Y-y7-Lv5.normalTitle" = "Remove ads for $2";
+"m8Y-y7-Lv5.normalTitle" = "Доступ ко всем функциям за 149 ₽";// "Remove ads for $2";
 
 /* Class = "UIButton"; normalTitle = "Приступить"; ObjectID = "mIc-PM-2mR"; */
 "mIc-PM-2mR.normalTitle" = "Start";

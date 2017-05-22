@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="subjectCell" id="czv-2c-uYT" customClass="iMSubjectTableViewCell" customModule="MJournal" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="czv-2c-uYT" id="ZdR-0L-u1V">
+                <frame key="frameInset" width="300" height="49"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G85-1x-Zyh">
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09:00" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pHX-86-UUB">
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:20" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTI-bJ-bwE">
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="pHX-86-UUB" firstAttribute="top" secondItem="G85-1x-Zyh" secondAttribute="top" constant="8" id="0B2-5G-Urw"/>
+                            <constraint firstItem="pHX-86-UUB" firstAttribute="centerX" secondItem="G85-1x-Zyh" secondAttribute="centerX" id="0NW-hR-nV3"/>
+                            <constraint firstItem="wTI-bJ-bwE" firstAttribute="top" secondItem="pHX-86-UUB" secondAttribute="bottom" id="ChD-hV-DMe"/>
+                            <constraint firstAttribute="width" constant="66" id="gjf-du-h5U"/>
+                            <constraint firstItem="wTI-bJ-bwE" firstAttribute="leading" secondItem="pHX-86-UUB" secondAttribute="leading" id="s1I-Wp-WoK"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Физика" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0VF-80-yL1">
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="G85-1x-Zyh" firstAttribute="top" secondItem="ZdR-0L-u1V" secondAttribute="top" id="cMT-0G-yeW"/>
+                    <constraint firstItem="G85-1x-Zyh" firstAttribute="leading" secondItem="ZdR-0L-u1V" secondAttribute="leading" constant="8" id="dvc-wd-JBv"/>
+                    <constraint firstItem="0VF-80-yL1" firstAttribute="leading" secondItem="G85-1x-Zyh" secondAttribute="trailing" constant="8" id="iPE-cI-5yW"/>
+                    <constraint firstAttribute="bottom" secondItem="G85-1x-Zyh" secondAttribute="bottom" id="v6b-Fh-8CT"/>
+                    <constraint firstItem="0VF-80-yL1" firstAttribute="centerY" secondItem="ZdR-0L-u1V" secondAttribute="centerY" id="voK-2J-r2L"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.46274509800000002" green="0.65490196079999996" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+            <connections>
+                <outlet property="endTimeLabel" destination="wTI-bJ-bwE" id="z5F-ya-KHO"/>
+                <outlet property="startTimeLabel" destination="pHX-86-UUB" id="qhd-hw-DSv"/>
+                <outlet property="subjectTitle" destination="0VF-80-yL1" id="VWx-er-gou"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

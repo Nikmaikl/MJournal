@@ -23,17 +23,13 @@ class SubjectInfoTableViewController: UIViewController, UITextViewDelegate, UIPo
     
     weak var refreshDelegate: RefreshLessonsDelegate!
     
-    var lesson: Lesson? {
-        didSet {
-            //self.title = lesson?.name
-        }
-    }
+    var lesson: Lesson?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         trashBarButton = UIBarButtonItem(image: UIImage(named: "Trash_can"), style: .plain, target: self, action: #selector(trashIt))
-        doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneIt))//(image: 
+        doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneIt))
         
         noteTextField.delegate = self
         noteTextField.font = UIFont.appMediumFont(17)
@@ -80,7 +76,7 @@ class SubjectInfoTableViewController: UIViewController, UITextViewDelegate, UIPo
     }
     
     func doneIt() {
-        FIRAnalytics.logEvent(withName: "savedNote", parameters: ["text": noteTextField.text as NSObject])
+        Analytics.logEvent("savedNote", parameters: ["text": noteTextField.text as NSObject])
         noteTextField.resignFirstResponder()
         navigationItem.rightBarButtonItems?.removeFirst()
     }
@@ -90,8 +86,28 @@ class SubjectInfoTableViewController: UIViewController, UITextViewDelegate, UIPo
         CoreDataHelper.instance.save()
     }
     
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
+        self.animateTextView(true)
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        self.animateTextView(false)
         navigationItem.rightBarButtonItems = [doneBarButton, trashBarButton]
+    }
+    
+    func animateTextView(_ up: Bool) {
+        let movementDistance = 80
+        // tweak as needed
+        let movementDuration: Float = 0.3
+        // tweak as needed
+        var movement = (up ? -movementDistance : movementDistance)
+        print("\(movement)")
+        UIView.beginAnimations("anim", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(0.4)
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: CGFloat(movement))
+        UIView.commitAnimations()
     }
     
     @IBAction func rightBarButtonPressed(_ sender: AnyObject) {

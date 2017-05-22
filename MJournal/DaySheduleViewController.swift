@@ -10,18 +10,21 @@ import UIKit
 import CoreData
 import Firebase
 import FirebaseAnalytics
-import WatchConnectivity
 
 @objc protocol LessonDelegate: class {
     @objc optional func shouldSaveLesson(_ id: Int)
 }
 
 
-class DaySheduleViewController: UITableViewController, WCSessionDelegate, LessonDelegate, RefreshLessonsDelegate {
+class DaySheduleViewController: UITableViewController, LessonDelegate, RefreshLessonsDelegate {
 
     var dayNumber: Int = 0
     
     @IBOutlet var timeForWeekHeaderView: UIView!
+    
+    @IBOutlet weak var noLessonslbl1: UILabel!
+    @IBOutlet weak var noLessons2Lbl: UILabel!
+    
     
     @IBOutlet weak var addSubjectButton: UIButton!
     @IBOutlet weak var addSubjectView: UIView!
@@ -38,6 +41,7 @@ class DaySheduleViewController: UITableViewController, WCSessionDelegate, Lesson
     
     var colorForBar = UIColor(red: 76/255, green: 86/255, blue: 108/225, alpha: 1.0)
     
+    @IBOutlet weak var bedIconView: UIImageView!
     
     var leftButtonItemCancel: UIBarButtonItem!
     var leftButtonItemCalendar: UIBarButtonItem!
@@ -57,7 +61,8 @@ class DaySheduleViewController: UITableViewController, WCSessionDelegate, Lesson
         super.viewDidLoad()
         
         timeTable = UserDefaults.standard.value(forKey: "Timetable") as! [[String]]
-
+        
+        
         leftButtonItemCancel = UIBarButtonItem(image: UIImage(named: "Cancel_icon"), style: .plain, target: self, action: #selector(cancelEditing))
         leftButtonItemCalendar = UIBarButtonItem(image: UIImage(named: "Calendar_icon"), style: .plain, target: self, action: #selector(backToCalendar))
         rightButtonItemOk = UIBarButtonItem(image: UIImage(named: "Ok_icon"), style: .plain, target: self, action: #selector(saveLesson))
@@ -73,87 +78,32 @@ class DaySheduleViewController: UITableViewController, WCSessionDelegate, Lesson
         
         leftButtonItemCancel.setTitleTextAttributes(["NSFontAttributeName": UIFont.appMediumFont()], for: UIControlState())
         
-        self.navigationController?.navigationBar.tintColor = UIColor.white//UIColor(red: 105/255, green: 141/255, blue: 169/225, alpha: 1.0)//colorForBar
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         self.clearsSelectionOnViewWillAppear = true
         
         self.customNavigationItem.rightBarButtonItem = standartRightItem
         if tableView.numberOfRows(inSection: 0) == 0 { self.customNavigationItem.rightBarButtonItem = nil}
         lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
         lpgr.minimumPressDuration = 0.1
-//        self.tableView.addGestureRecognizer(lpgr)
         
         customNavigationItem.leftBarButtonItem = leftButtonItemCalendar
         
         tableView.rowHeight = UITableViewAutomaticDimension
-        
-//        if #available(iOS 9.0, *) {
-//            if WCSession.isSupported() {
-//                let session = WCSession.default()
-//                session.delegate = self
-//                session.activate()
-//            }
-//        }
-    }
-    
-    @available(iOS 9.0, *)
-    private func session(_ session: WCSession, didReceiveMessage message: [String : AnyObject], replyHandler: ([String : AnyObject]) -> Void) {
-        
-        var notEvenLessons = [String]()
-        var evenLessons = [String]()
-        if Time.getDay() == -1 {
-            replyHandler(["notEvenLessons": notEvenLessons as AnyObject, "evenLessons": evenLessons as AnyObject])
-            return
-        }
-        
-        let sourceEvenLessons = Day.allDays()[Time.getDay()].allEvenLessons()
-        
-        for (i, lesson) in Day.allDays()[Time.getDay()].allNotEvenLessons().enumerated() {
-            notEvenLessons.append(lesson.name!)
-            if i < sourceEvenLessons.count {
-                for evenLesson in sourceEvenLessons {
-                    if Int(evenLesson.id!) == i {
-                        evenLessons.append(evenLesson.name!)
-                        break
-                    } else {
-                        evenLessons.append(lesson.name!)
-                    }
-                }
-            } else {
-                evenLessons.append(lesson.name!)
-            }
-        }
-        
-        replyHandler(["notEvenLessons": notEvenLessons as AnyObject, "evenLessons": evenLessons as AnyObject])
-    }
-    
-    /** Called when the session can no longer be used to modify or add any new transfers and, all interactive messages will be cancelled, but delegate callbacks for background transfers can still occur. This will happen when the selected watch is being changed. */
-    @available(iOS 9.3, *)
-    public func sessionDidBecomeInactive(_ session: WCSession) {
-        
-    }
-    
-    @available(iOS 9.3, *)
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        
-    }
-    
-    /** Called when all delegate callbacks for the previously selected watch has occurred. The session can be re-activated for the now selected watch using activateSession. */
-    @available(iOS 9.3, *)
-    public func sessionDidDeactivate(_ session: WCSession) {
-        
-    }
 
+        self.tableView.backgroundColor = UIColor.darkBackground()
+        if UserDefaults.standard.bool(forKey: "white_theme") {
+            navigationController?.navigationBar.barStyle = .default
+        } else {
+            navigationController?.navigationBar.barStyle = .black
+        }
+        
+        navigationController?.navigationBar.barTintColor = UIColor.darkBackground()
+        self.navigationController?.navigationBar.tintColor = UIColor.navigationBarTintColor()
+    }
     
     func saveLesson() {
         setEditing(false, animated: true)
         customNavigationItem.rightBarButtonItem = rightbarItemEdit
-        
-        if #available(iOS 9.0, *) {
-            if WCSession.default().isReachable {
-                let notEvenLessons = getNotEvenLessonsInString()
-                WCSession.default().sendMessage(["notEvenLessons": notEvenLessons], replyHandler: nil, errorHandler: nil)
-            }
-        }
     }
     
     func backToCalendar() {
@@ -221,6 +171,10 @@ class DaySheduleViewController: UITableViewController, WCSessionDelegate, Lesson
             tableView.tableFooterView = addSubjectView
             addSubjectButton.setTitle("+ Добавить", for: UIControlState())
             tableView.tableHeaderView = blankListOfLessonsView
+            
+            bedIconView.tintColor = UIColor.navigationBarTintColor()
+            noLessons2Lbl.textColor = UIColor.navigationBarTintColor()
+            noLessonslbl1.textColor = UIColor.navigationBarTintColor()
         } else {
             tableView.reloadData()
             tableView.beginUpdates()
@@ -247,7 +201,6 @@ class DaySheduleViewController: UITableViewController, WCSessionDelegate, Lesson
                     customNavigationItem.rightBarButtonItem?.isEnabled = false
                 }
             } else {
-//                tableView.tableFooterView = addSubjectView
                 UIView.performWithoutAnimation({
                     self.addSubjectButton.setTitle("+ Добавить еще", for: UIControlState())
                     self.addSubjectButton.layoutIfNeeded()
@@ -364,9 +317,6 @@ class DaySheduleViewController: UITableViewController, WCSessionDelegate, Lesson
     
     func addNewSubject() {
         shouldExpandCell = false
-        //        if tableView.numberOfRowsInSection(0)+1 >= Int((currentDay.allNotEvenLessons().last?.number)!)-1 {
-        //            tableView.tableFooterView = nil
-        //        }
         
         let lesson = Lesson()
         lesson.startTime = String(timeTable[currentDay.allNotEvenLessons().count][0])
@@ -391,12 +341,7 @@ class DaySheduleViewController: UITableViewController, WCSessionDelegate, Lesson
         CoreDataHelper.instance.save()
         self.tableView.reloadSections(IndexSet(integer: 0), with: .none)
         
-        
-        //if tableView.numberOfRowsInSection(0) == 1 && !tableView.editing {
         setEditing(true, animated: true)
-        //}
-        
-        
         
         let cell = tableView.cellForRow(at: IndexPath(row: Int(lesson.id!), section: 0)) as? SubjectTableViewCell
         cell?.lessonNameField.becomeFirstResponder()

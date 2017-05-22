@@ -21,6 +21,8 @@ class DaySheduleContainerViewController: UIViewController {
     @IBOutlet weak var leftArrowButton: UIButton!
     @IBOutlet weak var rightArrowButton: UIButton!
     
+    var actualDay: Date!
+    
     var weekDayNumber: Int!
     
     @IBOutlet weak var timeHeaderView: UIView!
@@ -41,8 +43,19 @@ class DaySheduleContainerViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = UIColor.darkBackground()
         navigationController?.navigationBar.isTranslucent = false
         
-        self.navigationController?.navigationBar.tintColor = UIColor.white
-        self.navigationController?.navigationBar.barStyle = .black
+        if UserDefaults.standard.bool(forKey: "white_theme") {
+            self.navigationController?.navigationBar.barStyle = UIBarStyle.default
+            self.navigationController?.navigationBar.tintColor = UIColor.black
+        } else {
+            self.navigationController?.navigationBar.barStyle = .black
+            self.navigationController?.navigationBar.tintColor = UIColor.white
+        }
+        
+        dayLabel.textColor = UIColor.navigationBarTintColor()
+        rightArrowButton.setTitleColor(UIColor.navigationBarTintColor(), for: UIControlState())
+        leftArrowButton.setTitleColor(UIColor.navigationBarTintColor(), for: UIControlState())
+        leftArrowButton.titleLabel?.textColor = UIColor.navigationBarTintColor()
+        
         
         dayLabel.font = UIFont.appSemiBoldFont()
         dayLabel.text = createTimeForDay()
@@ -69,6 +82,8 @@ class DaySheduleContainerViewController: UIViewController {
         return months[week-1]
     }
 
+    var rightClicks = 0
+    
     func createTimeForDay() -> String {
         var textForDayLabel = ""
         if Time.getDay() > dayNumber {
@@ -79,13 +94,13 @@ class DaySheduleContainerViewController: UIViewController {
         
         textForDayLabel = "\(weekDayNumber!)"
         
-        textForDayLabel += " " + getTitleForWeek(week: Time.daysForTheWeek()[dayNumber]["month"] as! Int)
+        textForDayLabel += " " + getTitleForWeek(week: Time.getYesterDayMonth(daysToAdd: rightClicks, sinceDate: actualDay))
         
         return textForDayLabel
     }
     
     @IBAction func leftArrowButtonPressed(_ sender: AnyObject) {
-
+        rightClicks -= 1
         UIView.animate(withDuration: 0.2, animations: {
             self.leftArrowButton.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
             }, completion: { b->Void in
@@ -96,8 +111,8 @@ class DaySheduleContainerViewController: UIViewController {
                             self.rightArrowButton.isHidden = false
                             self.dayNumber = self.dayNumber - 1
                             
-                            self.weekDayNumber = self.weekDayNumber - 1
-                            vc.dayNumber = Time.daysForTheWeek()[self.dayNumber]["day"] as! Int
+                            self.weekDayNumber = Time.yesterDay(daysToAdd: self.rightClicks, sinceDay: self.actualDay)
+                            vc.dayNumber = self.dayNumber
                             vc.currentDay = Day.allDays()[self.dayNumber]
                             vc.colorForBar = UIColor.getColorForCell(withRow: self.dayNumber, alpha: 1.0)
                             vc.customNavigationItem = self.navigationItem
@@ -120,7 +135,7 @@ class DaySheduleContainerViewController: UIViewController {
     }
     
     @IBAction func rightArrowButtonPressed(_ sender: AnyObject) {
-
+        rightClicks += 1
         UIView.animate(withDuration: 0.2, animations: {
             self.rightArrowButton.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
             }, completion: { b->Void in
@@ -131,8 +146,8 @@ class DaySheduleContainerViewController: UIViewController {
         if let vc = self.storyboard?.instantiateViewController(withIdentifier: "DaySheduleVC") as? DaySheduleViewController {
             self.leftArrowButton.isHidden = false
             self.dayNumber = self.dayNumber + 1
-            self.weekDayNumber = self.weekDayNumber + 1
-            vc.dayNumber = Time.daysForTheWeek()[self.dayNumber]["day"] as! Int
+            self.weekDayNumber = Time.yesterDay(daysToAdd: self.rightClicks, sinceDay: self.actualDay)
+            vc.dayNumber = self.dayNumber
             vc.currentDay = Day.allDays()[self.dayNumber]
             vc.colorForBar = UIColor.getColorForCell(withRow: self.dayNumber, alpha: 1.0)
             vc.customNavigationItem = self.navigationItem
@@ -157,8 +172,6 @@ class DaySheduleContainerViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         if let sheduleVC = segue.destination as? DaySheduleViewController {
             sheduleVC.dayNumber = self.dayNumber
             sheduleVC.currentDay = currentDay

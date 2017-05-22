@@ -18,18 +18,4 @@ class Lesson: NSManagedObject {
     convenience init() {
         self.init(entity: Lesson.entityDescr, insertInto: CoreDataHelper.instance.context)
     }
-    
-//    class func allLessons() -> [Lesson] {
-//        let request = NSFetchRequest(entityName: "Lesson")
-//        
-//        
-//        var results: [AnyObject]?
-//        do {
-//            results = try CoreDataHelper.instance.context.executeFetchRequest(request)
-//        } catch _ {
-//            results = nil
-//        }
-//        
-//        return results as! [Lesson]
-//    }
 }

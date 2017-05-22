@@ -29,7 +29,17 @@ extension UIColor {
     }
     
     class func darkBackground() -> UIColor {
+        if UserDefaults.standard.bool(forKey: "white_theme") {
+            return UIColor.white//UIColor(red: 243/255, green: 243/255, blue: 243/225, alpha: 1.0)
+        }
         return UIColor(red: 31/255, green: 31/255, blue: 31/225, alpha: 1.0)
+    }
+    
+    class func navigationBarTintColor() -> UIColor {
+        if UserDefaults.standard.bool(forKey: "white_theme") {
+            return UIColor(red: 31/255, green: 31/255, blue: 31/225, alpha: 1.0)
+        }
+        return UIColor.white//UIColor(red: 243/255, green: 243/255, blue: 243/225, alpha: 1.0)
     }
     
     class func darkBackgroundSelectionCell() -> UIColor {

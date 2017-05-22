@@ -23,11 +23,12 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        currentShedule.sizeToFit()
         
         if #available(iOS 10.0, *) {
-            nowLabel.textColor = UIColor.black
-            noCurrentShedule.textColor = UIColor.black
-            currentShedule.textColor = UIColor.black
+            nowLabel.textColor = UIColor(red: 96/255, green: 99/255, blue: 98/255, alpha: 1.0)
+            noCurrentShedule.textColor = UIColor(red: 96/255, green: 99/255, blue: 98/255, alpha: 1.0)
+            currentShedule.textColor = UIColor(red: 96/255, green: 99/255, blue: 98/255, alpha: 1.0)
         } else {
             // or use some work around
         }
@@ -48,7 +49,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         nowLabel.font = UIFont.appSemiBoldFont(17)
         currentShedule.font = UIFont.appMediumFont()
         leadingLine.backgroundColor = UIColor.getColorForCell(withRow: Time.getDay(), alpha: 1.0)
-        
+        //96	99	98
         noCurrentShedule.isHidden = true
         currentShedule.isHidden = false
         leadingLine.isHidden = false

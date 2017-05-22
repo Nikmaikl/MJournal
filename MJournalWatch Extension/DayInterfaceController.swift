@@ -26,23 +26,16 @@ class DayInterfaceController: WKInterfaceController, WCSessionDelegate {
     
     var evenLessons: [String]?
     var notEvenlessons: [String]?
+    
+    var session: WCSession!
 
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
 
         noLessonsLabel.setAttributedText(NSAttributedString(string: "Нет занятий!\nМожно поспать.", attributes: [NSFontAttributeName:UIFont.appSemiBoldFont()]))
-
-    }
-    
-    public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        
-    }
-    
-    override func didAppear() {
-        super.didAppear()
         
         if WCSession.isSupported() {
-            let session = WCSession.default()
+            session = WCSession.default()
             
             session.delegate = self
             session.activate()
@@ -50,32 +43,53 @@ class DayInterfaceController: WKInterfaceController, WCSessionDelegate {
             noLessonsGroup.setHidden(true)
             errorLabel.setHidden(true)
             
-            if session.isReachable {
-                                    session.sendMessage([:], replyHandler: {(response: [String:Any]) -> Void in
-                
-                                        if let lessons = response["lessons"] as? [String] {
-                                            if lessons.count != 0 {
-                                                self.updateWithLessons(lessons)
-                                                UserDefaults.standard.setValue(lessons, forKey: "lessons")
-                                                UserDefaults.standard.synchronize()
-                                            } else {
-                                                
-                                                self.noLessonsGroup.setHidden(false)
-                                            }
-                                        }
-                                        
-                                        }, errorHandler: nil)
-            } else {
-                errorLabel.setHidden(false)
-            }
         }
+        print("Watch app awake")
+    }
+    @IBAction func refreshMenuItemPressed() {
+        updateLessonInfo(WCSession.default())
+    }
+    
+    public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        //if activationState == .activated {
+            print("Watch app did complete Activate")
+            updateLessonInfo(session)
+        //}
+    }
+    
+    func updateLessonInfo(_ session: WCSession) {
+        if session.isReachable {
+            session.sendMessage([:], replyHandler: {(response: [String:Any]) -> Void in
+                if let lessons = response["lessons"] as? [String] {
+                    if let rooms = response["rooms"] as? [String] {
+                        if lessons.count != 0 {
+                            self.updateWithLessons(lessons, rooms: rooms)
+                            UserDefaults.standard.setValue(lessons, forKey: "lessons")
+                            UserDefaults.standard.synchronize()
+                        } else {
+                            self.noLessonsGroup.setHidden(false)
+                        }
+                    }
+                }
+            }, errorHandler: nil)
+        } else {
+            errorLabel.setHidden(false)
+        }
+    }
+    
+    override func didAppear() {
+        super.didAppear()
+    
+        print("Watch app appeared")
     }
     
     override func willActivate() {
         super.willActivate()
+        print("Watch app will Activate")
+        print(WCSession.default())
     }
     
-    func updateWithLessons(_ lessons: [String]) {
+    func updateWithLessons(_ lessons: [String], rooms: [String]) {
         if lessons.count == 0 {
             self.noLessonsGroup.setHidden(false)
         }
@@ -83,15 +97,10 @@ class DayInterfaceController: WKInterfaceController, WCSessionDelegate {
         for (i, subj) in lessons.enumerated() {
             let controller = self.table.rowController(at: i) as? SubjectRowController
             controller?.lessonName = subj
+            controller?.roomNumber = rooms[i]
         }
 
     }
-    
-//    private func session(_ session: WCSession, didReceiveMessage message: [String : AnyObject]) {
-//        if let notEvenLessons = message["notEvenLessons"] as? [String] {
-//            updateWithLessons(notEvenLessons)
-//        }
-//    }
     
     override func contextForSegue(withIdentifier segueIdentifier: String) -> Any? {
         
@@ -111,6 +120,9 @@ class SubjectRowController: NSObject {
         didSet {
         }
     }
+    
+    @IBOutlet var roomLabel: WKInterfaceLabel!
+    
     @IBOutlet var subjectGroup: WKInterfaceGroup! {
         didSet {
             subjectGroup.setBackgroundColor(UIColor.getColorForCell(withRow: Time.getDay(), alpha: 1.0))
@@ -120,6 +132,12 @@ class SubjectRowController: NSObject {
     var lessonName: String! {
         didSet {
             label.setAttributedText(NSAttributedString(string: (lessonName), attributes: [NSFontAttributeName:UIFont.appMediumFont()]))
+        }
+    }
+    
+    var roomNumber: String! {
+        didSet {
+            roomLabel.setAttributedText(NSAttributedString(string: (roomNumber), attributes: [NSFontAttributeName:UIFont.appMediumFont()]))
         }
     }
 }

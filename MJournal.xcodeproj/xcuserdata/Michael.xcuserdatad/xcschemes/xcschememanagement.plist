@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>MJournal-iMessage.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>MJournal.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -32,6 +37,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>4C606DEF1D8CA12200BDDDE4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>CE43E3131C10D45C006F1D95</key>
 		<dict>
 			<key>primary</key>
