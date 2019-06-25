@@ -76,7 +76,7 @@ class DaySheduleViewController: UITableViewController, LessonDelegate, RefreshLe
         standartLeftItem = navigationItem.leftBarButtonItem
         standartRightItem = rightbarItemEdit
         
-        leftButtonItemCancel.setTitleTextAttributes(["NSFontAttributeName": UIFont.appMediumFont()], for: UIControlState())
+        leftButtonItemCancel.setTitleTextAttributes([NSAttributedString.Key(rawValue: "NSFontAttributeName"): UIFont.appMediumFont()], for: UIControl.State())
         
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.clearsSelectionOnViewWillAppear = true
@@ -88,7 +88,7 @@ class DaySheduleViewController: UITableViewController, LessonDelegate, RefreshLe
         
         customNavigationItem.leftBarButtonItem = leftButtonItemCalendar
         
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
 
         self.tableView.backgroundColor = UIColor.darkBackground()
         if UserDefaults.standard.bool(forKey: "white_theme") {
@@ -101,12 +101,12 @@ class DaySheduleViewController: UITableViewController, LessonDelegate, RefreshLe
         self.navigationController?.navigationBar.tintColor = UIColor.navigationBarTintColor()
     }
     
-    func saveLesson() {
+    @objc func saveLesson() {
         setEditing(false, animated: true)
         customNavigationItem.rightBarButtonItem = rightbarItemEdit
     }
     
-    func backToCalendar() {
+    @objc func backToCalendar() {
         dismiss(animated: true, completion: nil)
     }
     
@@ -128,14 +128,14 @@ class DaySheduleViewController: UITableViewController, LessonDelegate, RefreshLe
     
     
     
-    func editButtonTapped() {
+    @objc func editButtonTapped() {
         setEditing(!tableView.isEditing, animated: true)
         if isEditing {
         } else {
         }
     }
     
-    func handleLongPress(_ lgr: UILongPressGestureRecognizer) {
+    @objc func handleLongPress(_ lgr: UILongPressGestureRecognizer) {
         let p = lgr.location(in: self.tableView)
         let indexPath = tableView.indexPathForRow(at: p)
         
@@ -169,7 +169,7 @@ class DaySheduleViewController: UITableViewController, LessonDelegate, RefreshLe
         
         if tableView.numberOfRows(inSection: 0) == 0 {
             tableView.tableFooterView = addSubjectView
-            addSubjectButton.setTitle("+ Добавить", for: UIControlState())
+            addSubjectButton.setTitle("+ Добавить", for: UIControl.State())
             tableView.tableHeaderView = blankListOfLessonsView
             
             bedIconView.tintColor = UIColor.navigationBarTintColor()
@@ -202,7 +202,7 @@ class DaySheduleViewController: UITableViewController, LessonDelegate, RefreshLe
                 }
             } else {
                 UIView.performWithoutAnimation({
-                    self.addSubjectButton.setTitle("+ Добавить еще", for: UIControlState())
+                    self.addSubjectButton.setTitle("+ Добавить еще", for: UIControl.State())
                     self.addSubjectButton.layoutIfNeeded()
                 })
                 self.customNavigationItem.setHidesBackButton(true, animated: true)
@@ -211,7 +211,7 @@ class DaySheduleViewController: UITableViewController, LessonDelegate, RefreshLe
             if currentDay.allNotEvenLessons().last?.name != nil {
                 tableView.tableFooterView = addSubjectView
                 UIView.performWithoutAnimation({
-                    self.addSubjectButton.setTitle("+ Добавить еще", for: UIControlState())
+                    self.addSubjectButton.setTitle("+ Добавить еще", for: UIControl.State())
                     self.addSubjectButton.layoutIfNeeded()
                 })
             }
@@ -231,7 +231,7 @@ class DaySheduleViewController: UITableViewController, LessonDelegate, RefreshLe
         }
     }
     
-    func cancelEditing() {
+    @objc func cancelEditing() {
         setEditing(false, animated: true)
         CoreDataHelper.instance.context.delete(currentDay.allNotEvenLessons().last!)
         CoreDataHelper.instance.save()
@@ -272,7 +272,7 @@ class DaySheduleViewController: UITableViewController, LessonDelegate, RefreshLe
         return false
     }
     
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .none
     }
     
@@ -280,7 +280,7 @@ class DaySheduleViewController: UITableViewController, LessonDelegate, RefreshLe
         return false
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
             CoreDataHelper.instance.context.delete(currentDay.allNotEvenLessons()[(indexPath as NSIndexPath).row])
@@ -294,7 +294,7 @@ class DaySheduleViewController: UITableViewController, LessonDelegate, RefreshLe
                 self.customNavigationItem.rightBarButtonItem = nil
                 tableView.tableHeaderView = blankListOfLessonsView
                 tableView.tableFooterView = addSubjectView
-                addSubjectButton.setTitle("+ Добавить", for: UIControlState())
+                addSubjectButton.setTitle("+ Добавить", for: UIControl.State())
             } else {
                 self.customNavigationItem.rightBarButtonItem = rightButtonItemOk
             }

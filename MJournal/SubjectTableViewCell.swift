@@ -179,8 +179,8 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
                 //                audienceNumberField.text = "нет."
             }
             professorNameTextField.text = lesson?.professor
-            lessonTypeButton.setTitle(lesson?.type?.uppercased(), for: UIControlState())
-            lessonTypeButton2.setTitle(lessonTypeButton.titleLabel!.text, for: UIControlState())
+            lessonTypeButton.setTitle(lesson?.type?.uppercased(), for: UIControl.State())
+            lessonTypeButton2.setTitle(lessonTypeButton.titleLabel!.text, for: UIControl.State())
             
             numberOfLesson.backgroundColor = getBakColorForTextFieldWhileEditing()
             numberOfLessonLabel.textColor = UIColor.white
@@ -336,8 +336,8 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
     func setupLessonTime() {
         var hour = lesson!.startTime!
         var min = lesson!.startTime!
-        hour.removeSubrange(lesson!.startTime!.characters.index(lesson!.startTime!.endIndex, offsetBy: -3)..<lesson!.startTime!.endIndex)
-        min.removeSubrange(lesson!.startTime!.startIndex..<lesson!.startTime!.characters.index(lesson!.startTime!.startIndex, offsetBy: 3))
+        hour.removeSubrange(lesson!.startTime!.index(lesson!.startTime!.endIndex, offsetBy: -3)..<lesson!.startTime!.endIndex)
+        min.removeSubrange(lesson!.startTime!.startIndex..<lesson!.startTime!.index(lesson!.startTime!.startIndex, offsetBy: 3))
         startTimeHour.text = hour
         startTimeHour2.text = hour
         startTimeMin.text = min
@@ -349,10 +349,10 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
     func saveTypeLesson(_ type: String) {
         if navigationController.title == "Четная неделя" {
             lesson2?.type = type
-            lessonTypeButton2.setTitle(type.uppercased(), for: UIControlState())
+            lessonTypeButton2.setTitle(type.uppercased(), for: UIControl.State())
         } else {
             lesson?.type = type
-            lessonTypeButton.setTitle(type.uppercased(), for: UIControlState())
+            lessonTypeButton.setTitle(type.uppercased(), for: UIControl.State())
         }
         CoreDataHelper.instance.save()
     }
@@ -377,7 +377,7 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
         lessonTypeButton2.isHidden = false
     }
     
-    func leftSwiped(_ swipe: UISwipeGestureRecognizer) {
+    @objc func leftSwiped(_ swipe: UISwipeGestureRecognizer) {
         if lesson2 == nil && !isEditing { return }
         if leftSwipeGesture.direction == .left {
             showCardView2()
@@ -490,7 +490,7 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
     
     
     @IBAction func editingTextFieldChanged(_ sender: AnyObject) {
-        if lessonNameField.text?.characters.count != 0 {
+        if lessonNameField.text?.count != 0 {
             
             mainView.isHidden = false
             headerView.layer.cornerRadius = 0
@@ -524,7 +524,7 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
                 navigationController.tableView.tableFooterView = nil
             } else {
                 UIView.performWithoutAnimation({
-                    self.navigationController.addSubjectButton.setTitle("+ Добавить еще", for: UIControlState())
+                    self.navigationController.addSubjectButton.setTitle("+ Добавить еще", for: UIControl.State())
                     self.navigationController.addSubjectButton.layoutIfNeeded()
                 })
                 navigationController.tableView.tableFooterView = navigationController.addSubjectView
@@ -551,7 +551,7 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField.text?.characters.count == 0 { return false }
+        if textField.text?.count == 0 { return false }
         
         textField.resignFirstResponder()
         
@@ -651,8 +651,8 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
             lessonTypeButton2.isEnabled = false
             lessonTypeButton.backgroundColor = UIColor(red: 237/255, green: 168/255, blue: 84/255, alpha: 1.0)
             lessonTypeButton2.backgroundColor = UIColor(red: 237/255, green: 168/255, blue: 84/255, alpha: 1.0)
-            lessonTypeButton.setTitleColor(UIColor.white, for: UIControlState())
-            lessonTypeButton2.setTitleColor(UIColor.white, for: UIControlState())
+            lessonTypeButton.setTitleColor(UIColor.white, for: UIControl.State())
+            lessonTypeButton2.setTitleColor(UIColor.white, for: UIControl.State())
             lessonTypeButton.layer.borderWidth = 0
             lessonTypeButton2.layer.borderWidth = 0
             lessonTypeButton.layer.cornerRadius = 0
@@ -739,8 +739,8 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
         lessonTypeButton2.isEnabled = true
         lessonTypeButton.backgroundColor = UIColor.white
         lessonTypeButton2.backgroundColor = UIColor.white
-        lessonTypeButton.setTitleColor(UIColor.black, for: UIControlState())
-        lessonTypeButton2.setTitleColor(UIColor.black, for: UIControlState())
+        lessonTypeButton.setTitleColor(UIColor.black, for: UIControl.State())
+        lessonTypeButton2.setTitleColor(UIColor.black, for: UIControl.State())
         lessonTypeButton.layer.borderWidth = 0.5
         lessonTypeButton2.layer.borderWidth = 0.5
         lessonTypeButton.layer.borderColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.2).cgColor
@@ -891,7 +891,7 @@ class SubjectTableViewCell: UITableViewCell, UITextFieldDelegate, UIPopoverPrese
     
     func shouldChangeLessonTyoe(_ notification: Notification) {
         let type = (notification as NSNotification).userInfo!["Type"] as? String
-        lessonTypeButton.setTitle((type)?.uppercased(), for: UIControlState())
+        lessonTypeButton.setTitle((type)?.uppercased(), for: UIControl.State())
         lesson?.type = type
         CoreDataHelper.instance.save()
     }

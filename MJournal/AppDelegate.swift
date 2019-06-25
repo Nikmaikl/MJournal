@@ -8,9 +8,9 @@
 
 import UIKit
 import CoreData
-import Firebase
-import FirebaseAnalytics
-import FirebaseDatabase
+//import Firebase
+//import FirebaseAnalytics
+//import FirebaseDatabase
 
 import WatchConnectivity
 
@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        FirebaseApp.configure()
+    internal func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+//        FirebaseApp.configure()
         
 //        var databaseRef: FIRDatabaseReference! = FIRDatabase.database().reference()
 

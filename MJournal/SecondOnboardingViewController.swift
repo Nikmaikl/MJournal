@@ -63,7 +63,7 @@ class SecondOnboardingViewController: UIViewController, UIPickerViewDelegate, UI
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let myTitle = NSAttributedString(string: "\(timeArray[row]) минут", attributes: [NSFontAttributeName:UIFont.appMediumFont(),NSForegroundColorAttributeName:UIColor.white])
+        let myTitle = NSAttributedString(string: "\(timeArray[row]) минут", attributes: [NSAttributedString.Key.font:UIFont.appMediumFont(),NSAttributedString.Key.foregroundColor:UIColor.white])
         return myTitle
     }
     

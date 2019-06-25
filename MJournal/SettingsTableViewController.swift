@@ -78,8 +78,8 @@ class SettingsTableViewController: UITableViewController, SwitchedColorDelegate 
         navigationController?.navigationBar.barTintColor = UIColor.darkBackground()
         self.navigationController?.navigationBar.tintColor = UIColor.navigationBarTintColor()
         self.headerView.backgroundColor = UIColor.darkBackground()
-        self.moreInfoButton.setTitleColor(UIColor.navigationBarTintColor(), for: UIControlState.normal)
-        self.restoreAdButton.setTitleColor(UIColor.navigationBarTintColor(), for: UIControlState.normal)
+        self.moreInfoButton.setTitleColor(UIColor.navigationBarTintColor(), for: UIControl.State.normal)
+        self.restoreAdButton.setTitleColor(UIColor.navigationBarTintColor(), for: UIControl.State.normal)
     }
     
     

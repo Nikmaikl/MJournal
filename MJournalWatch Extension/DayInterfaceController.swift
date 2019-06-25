@@ -32,10 +32,10 @@ class DayInterfaceController: WKInterfaceController, WCSessionDelegate {
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
 
-        noLessonsLabel.setAttributedText(NSAttributedString(string: "Нет занятий!\nМожно поспать.", attributes: [NSFontAttributeName:UIFont.appSemiBoldFont()]))
+//        noLessonsLabel.setAttributedText(NSAttributedString(string: "Нет занятий!\nМожно поспать.", attributes: [NSAttributedString.Key.font:UIFont.appSemiBoldFont()]))
         
         if WCSession.isSupported() {
-            session = WCSession.default()
+//            session = WCSession.default
             
             session.delegate = self
             session.activate()
@@ -47,7 +47,7 @@ class DayInterfaceController: WKInterfaceController, WCSessionDelegate {
         print("Watch app awake")
     }
     @IBAction func refreshMenuItemPressed() {
-        updateLessonInfo(WCSession.default())
+//        updateLessonInfo(WCSession.default)
     }
     
     public func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
@@ -86,7 +86,7 @@ class DayInterfaceController: WKInterfaceController, WCSessionDelegate {
     override func willActivate() {
         super.willActivate()
         print("Watch app will Activate")
-        print(WCSession.default())
+//        print(WCSession.default)
     }
     
     func updateWithLessons(_ lessons: [String], rooms: [String]) {
@@ -131,13 +131,13 @@ class SubjectRowController: NSObject {
     
     var lessonName: String! {
         didSet {
-            label.setAttributedText(NSAttributedString(string: (lessonName), attributes: [NSFontAttributeName:UIFont.appMediumFont()]))
+//            label.setAttributedText(NSAttributedString(string: (lessonName), attributes: [NSAttributedString.Key.font:UIFont.appMediumFont()]))
         }
     }
     
     var roomNumber: String! {
         didSet {
-            roomLabel.setAttributedText(NSAttributedString(string: (roomNumber), attributes: [NSFontAttributeName:UIFont.appMediumFont()]))
+//            roomLabel.setAttributedText(NSAttributedString(string: (roomNumber), attributes: [NSFontAttributeName:UIFont.appMediumFont()]))
         }
     }
 }

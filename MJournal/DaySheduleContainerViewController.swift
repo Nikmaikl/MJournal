@@ -32,7 +32,7 @@ class DaySheduleContainerViewController: UIViewController {
         
         timeHeaderView.backgroundColor = UIColor.darkBackground()
         
-        navigationController?.navigationBar.titleTextAttributes = ["NSFontAttributeName": UIFont.appBoldFont()]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.appBoldFont()]
         
         navigationController?.navigationBar.setBackgroundImage(
             UIImage(),
@@ -52,8 +52,8 @@ class DaySheduleContainerViewController: UIViewController {
         }
         
         dayLabel.textColor = UIColor.navigationBarTintColor()
-        rightArrowButton.setTitleColor(UIColor.navigationBarTintColor(), for: UIControlState())
-        leftArrowButton.setTitleColor(UIColor.navigationBarTintColor(), for: UIControlState())
+        rightArrowButton.setTitleColor(UIColor.navigationBarTintColor(), for: UIControl.State())
+        leftArrowButton.setTitleColor(UIColor.navigationBarTintColor(), for: UIControl.State())
         leftArrowButton.titleLabel?.textColor = UIColor.navigationBarTintColor()
         
         
@@ -120,10 +120,10 @@ class DaySheduleContainerViewController: UIViewController {
                             self.dayLabel.text = self.createTimeForDay()
                             self.title = NSLocalizedString(WeekDays.days[self.dayNumber], comment: "Day")
                             
-                            vc.willMove(toParentViewController: self)
+                            vc.willMove(toParent: self)
                             self.daySheduleTableVC.addSubview(vc.view)
-                            self.addChildViewController(vc)
-                            vc.didMove(toParentViewController: self)
+                            self.addChild(vc)
+                            vc.didMove(toParent: self)
                             if self.dayNumber-1 < 0 {
                                 self.leftArrowButton.isHidden = true
                             }
@@ -155,10 +155,10 @@ class DaySheduleContainerViewController: UIViewController {
             self.dayLabel.text = self.createTimeForDay()
             self.title = NSLocalizedString(WeekDays.days[self.dayNumber], comment: "Day")
             
-            vc.willMove(toParentViewController: self)
+            vc.willMove(toParent: self)
             self.daySheduleTableVC.addSubview(vc.view)
-            self.addChildViewController(vc)
-            vc.didMove(toParentViewController: self)
+            self.addChild(vc)
+            vc.didMove(toParent: self)
             
             if self.dayNumber+1 >= Day.allDays().count {
                 self.rightArrowButton.isHidden = true

@@ -2,24 +2,26 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-3940256099942544~1458002511</string>
 	<key>UIApplicationShortcutItems</key>
-    <array>
-        <dict>
-            <key>UIApplicationShortcutItemIconType</key>
-            <string>UIApplicationShortcutIconTypeSearch</string>
-            <key>UIApplicationShortcutItemSubtitle</key>
-            <string>localizedShortcutSubtitle</string>
-            <key>UIApplicationShortcutItemTitle</key>
-            <string>localizedShortcutTitle</string>
-            <key>UIApplicationShortcutItemType</key>
-            <string>my_app_static_basic_shortcut</string>
-            <key>UIApplicationShortcutItemUserInfo</key>
-            <dict>
-                <key>TabIndex</key>
-                <integer>1</integer>
-            </dict>
-        </dict>
-    </array>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeSearch</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>localizedShortcutSubtitle</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>localizedShortcutTitle</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>my_app_static_basic_shortcut</string>
+			<key>UIApplicationShortcutItemUserInfo</key>
+			<dict>
+				<key>TabIndex</key>
+				<integer>1</integer>
+			</dict>
+		</dict>
+	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>

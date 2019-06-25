@@ -32,13 +32,13 @@ class SheduleTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewD
     
     var startTime: String! {
         didSet {
-            startTimeButton.setTitle(startTime, for: UIControlState())
+            startTimeButton.setTitle(startTime, for: UIControl.State())
         }
     }
     
     var endTime: String! {
         didSet {
-            endTimeButtom.setTitle(endTime, for: UIControlState())
+            endTimeButtom.setTitle(endTime, for: UIControl.State())
         }
     }
     
@@ -111,24 +111,24 @@ class SheduleTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewD
                         pickerVC?.controller = "Shedule"
                         
                         let buttonText = sender.titleLabel!.text!
-                        let buttonTimeHours = buttonText.substring(with: buttonText.startIndex..<buttonText.characters.index(buttonText.startIndex, offsetBy: 2))
-                        let buttonTimeMinutes = buttonText.substring(with: buttonText.characters.index(buttonText.startIndex, offsetBy: 3)..<buttonText.characters.index(buttonText.startIndex, offsetBy: 5))
+                        let buttonTimeHours = buttonText.substring(with: buttonText.startIndex..<buttonText.index(buttonText.startIndex, offsetBy: 2))
+                        let buttonTimeMinutes = buttonText.substring(with: buttonText.index(buttonText.startIndex, offsetBy: 3)..<buttonText.index(buttonText.startIndex, offsetBy: 5))
                         
-                        if buttonTimeHours.characters.count == 2 {
-                            if buttonTimeHours.substring(with: buttonText.startIndex..<buttonText.characters.index(buttonText.startIndex, offsetBy: 1)) == "0" {
-                                pickerVC?.shouldSelectRows.append(self.rowForValue(Int(buttonText.substring(with: buttonText.characters.index(buttonText.startIndex, offsetBy: 1)..<buttonText.characters.index(buttonText.startIndex, offsetBy: 2)))!-1, component: 0))
+                        if buttonTimeHours.count == 2 {
+                            if buttonTimeHours.substring(with: buttonText.startIndex..<buttonText.index(buttonText.startIndex, offsetBy: 1)) == "0" {
+                                pickerVC?.shouldSelectRows.append(self.rowForValue(Int(buttonText.substring(with: buttonText.index(buttonText.startIndex, offsetBy: 1)..<buttonText.index(buttonText.startIndex, offsetBy: 2)))!-1, component: 0))
                             } else {
-                                pickerVC?.shouldSelectRows.append(self.rowForValue(Int(buttonText.substring(with: buttonText.startIndex..<buttonText.characters.index(buttonText.startIndex, offsetBy: 2)))!-1, component: 0))
+                                pickerVC?.shouldSelectRows.append(self.rowForValue(Int(buttonText.substring(with: buttonText.startIndex..<buttonText.index(buttonText.startIndex, offsetBy: 2)))!-1, component: 0))
                             }
                         } else {
-                            pickerVC?.shouldSelectRows.append(self.rowForValue(Int(buttonText.substring(with: buttonText.startIndex..<buttonText.characters.index(buttonText.startIndex, offsetBy: 1)))!-1, component: 0))
+                            pickerVC?.shouldSelectRows.append(self.rowForValue(Int(buttonText.substring(with: buttonText.startIndex..<buttonText.index(buttonText.startIndex, offsetBy: 1)))!-1, component: 0))
                         }
                         
-                        if buttonTimeMinutes.substring(with: buttonTimeMinutes.startIndex..<buttonTimeMinutes.characters.index(buttonTimeMinutes.startIndex, offsetBy: 1)) == "0" {
-                            if buttonTimeMinutes.substring(with: buttonTimeMinutes.characters.index(buttonTimeMinutes.startIndex, offsetBy: 1)..<buttonTimeMinutes.characters.index(buttonTimeMinutes.startIndex, offsetBy: 2)) == "0" {
+                        if buttonTimeMinutes.substring(with: buttonTimeMinutes.startIndex..<buttonTimeMinutes.index(buttonTimeMinutes.startIndex, offsetBy: 1)) == "0" {
+                            if buttonTimeMinutes.substring(with: buttonTimeMinutes.index(buttonTimeMinutes.startIndex, offsetBy: 1)..<buttonTimeMinutes.index(buttonTimeMinutes.startIndex, offsetBy: 2)) == "0" {
                                 pickerVC?.shouldSelectRows.append(self.rowForValue(0, component: 1))
                             } else {
-                                pickerVC?.shouldSelectRows.append(self.rowForValue((Int(buttonTimeMinutes.substring(with: buttonTimeMinutes.characters.index(buttonTimeMinutes.startIndex, offsetBy: 1)..<buttonTimeMinutes.characters.index(buttonTimeMinutes.startIndex, offsetBy: 2)))!%5)+1, component: 1))
+                                pickerVC?.shouldSelectRows.append(self.rowForValue((Int(buttonTimeMinutes.substring(with: buttonTimeMinutes.index(buttonTimeMinutes.startIndex, offsetBy: 1)..<buttonTimeMinutes.index(buttonTimeMinutes.startIndex, offsetBy: 2)))!%5)+1, component: 1))
                             }
                             
                         } else {
@@ -195,31 +195,31 @@ class SheduleTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewD
         var sourceText = pressedButton.titleLabel!.text!
         if component == 0 {
             var hour = hours[row%hours.count]
-            if hour.characters.count == 1 {
+            if hour.count == 1 {
                 hour = "0"+hour
             }
-            sourceText.replaceSubrange(sourceText.startIndex..<sourceText.characters.index(sourceText.startIndex, offsetBy: 2), with: hour)
+            sourceText.replaceSubrange(sourceText.startIndex..<sourceText.index(sourceText.startIndex, offsetBy: 2), with: hour)
         } else {
             let minute = minutes[row%minutes.count]
 
-            sourceText.replaceSubrange(sourceText.characters.index(sourceText.startIndex, offsetBy: 3)..<sourceText.characters.index(sourceText.startIndex, offsetBy: 3+2), with: minute)
+            sourceText.replaceSubrange(sourceText.index(sourceText.startIndex, offsetBy: 3)..<sourceText.index(sourceText.startIndex, offsetBy: 3+2), with: minute)
         }
         
         UIView.performWithoutAnimation({
-            self.pressedButton.setTitle(sourceText, for: UIControlState())
+            self.pressedButton.setTitle(sourceText, for: UIControl.State())
             self.pressedButton.layoutIfNeeded()
             
             if self.pressedButton == self.startTimeButton {
                 
                 self.saveTimetable(sourceText, typeOfButton: 0, id: self.id)
                 
-                var buttonTimeHours = sourceText.substring(with: sourceText.startIndex..<sourceText.characters.index(sourceText.startIndex, offsetBy: 2))
-                var buttonTimeMinutes = sourceText.substring(with: sourceText.characters.index(sourceText.startIndex, offsetBy: 3)..<sourceText.characters.index(sourceText.startIndex, offsetBy: 5))
-                if buttonTimeHours.characters.count == 2 && buttonTimeHours.substring(with: buttonTimeHours.characters.index(buttonTimeHours.startIndex, offsetBy: 0)..<buttonTimeHours.characters.index(buttonTimeHours.startIndex, offsetBy: 1)) == "0"{
-                    buttonTimeHours = buttonTimeHours.substring(with: buttonTimeHours.characters.index(buttonTimeHours.startIndex, offsetBy: 1)..<buttonTimeHours.characters.index(buttonTimeHours.startIndex, offsetBy: 2))
+                var buttonTimeHours = sourceText.substring(with: sourceText.startIndex..<sourceText.index(sourceText.startIndex, offsetBy: 2))
+                var buttonTimeMinutes = sourceText.substring(with: sourceText.index(sourceText.startIndex, offsetBy: 3)..<sourceText.index(sourceText.startIndex, offsetBy: 5))
+                if buttonTimeHours.count == 2 && buttonTimeHours.substring(with: buttonTimeHours.index(buttonTimeHours.startIndex, offsetBy: 0)..<buttonTimeHours.index(buttonTimeHours.startIndex, offsetBy: 1)) == "0"{
+                    buttonTimeHours = buttonTimeHours.substring(with: buttonTimeHours.index(buttonTimeHours.startIndex, offsetBy: 1)..<buttonTimeHours.index(buttonTimeHours.startIndex, offsetBy: 2))
                 }
-                if buttonTimeMinutes.characters.count == 2 && buttonTimeMinutes.substring(with: buttonTimeMinutes.characters.index(buttonTimeMinutes.startIndex, offsetBy: 0)..<buttonTimeMinutes.characters.index(buttonTimeMinutes.startIndex, offsetBy: 1)) == "0"{
-                    buttonTimeHours = buttonTimeMinutes.substring(with: buttonTimeMinutes.characters.index(buttonTimeMinutes.startIndex, offsetBy: 1)..<buttonTimeMinutes.characters.index(buttonTimeMinutes.startIndex, offsetBy: 2))
+                if buttonTimeMinutes.count == 2 && buttonTimeMinutes.substring(with: buttonTimeMinutes.index(buttonTimeMinutes.startIndex, offsetBy: 0)..<buttonTimeMinutes.index(buttonTimeMinutes.startIndex, offsetBy: 1)) == "0"{
+                    buttonTimeHours = buttonTimeMinutes.substring(with: buttonTimeMinutes.index(buttonTimeMinutes.startIndex, offsetBy: 1)..<buttonTimeMinutes.index(buttonTimeMinutes.startIndex, offsetBy: 2))
                 }
                 
                 var finalEndTime = Int(buttonTimeHours)! * 60 + Int(buttonTimeMinutes)!
@@ -228,10 +228,10 @@ class SheduleTableViewCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewD
                 buttonTimeHours = "\(finalEndTime/60)"
                 buttonTimeMinutes = "\(finalEndTime%60)"
                 
-                if buttonTimeHours.characters.count == 1 {
+                if buttonTimeHours.count == 1 {
                     buttonTimeHours = "0" + buttonTimeHours
                 }
-                if buttonTimeMinutes.characters.count == 1 {
+                if buttonTimeMinutes.count == 1 {
                     buttonTimeMinutes = "0" + buttonTimeMinutes
                 }
                 endTime = buttonTimeHours+":"+buttonTimeMinutes

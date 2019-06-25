@@ -46,7 +46,7 @@ class SubjectInfoTableViewController: UIViewController, UITextViewDelegate, UIPo
         noteTextField.becomeFirstResponder()
     }
     
-    func trashIt() {
+    @objc func trashIt() {
         let deleteVC = navigationController!.storyboard?.instantiateViewController(withIdentifier: "DeleteVC") as? DeleteViewController
         
         deleteVC?.modalPresentationStyle = .popover
@@ -75,7 +75,7 @@ class SubjectInfoTableViewController: UIViewController, UITextViewDelegate, UIPo
         })
     }
     
-    func doneIt() {
+    @objc func doneIt() {
         Analytics.logEvent("savedNote", parameters: ["text": noteTextField.text as NSObject])
         noteTextField.resignFirstResponder()
         navigationItem.rightBarButtonItems?.removeFirst()

@@ -24,7 +24,7 @@ class MoreSettingsTableViewController: UITableViewController, PickerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.titleTextAttributes = ["NSFontAttributeName": UIFont.appBoldFont(), "NSForegroundColorAttributeName": UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.appBoldFont(), NSAttributedString.Key.foregroundColor: UIColor.white]
         
         navigationItem.rightBarButtonItem = nil
         
@@ -44,14 +44,14 @@ class MoreSettingsTableViewController: UITableViewController, PickerDelegate {
         } else {
             for _ in 0 ..< 7 {
                 var startHour = "\(startTime/60)"
-                if startHour.characters.count < 2 { startHour = "0"+startHour }
+                if startHour.count < 2 { startHour = "0"+startHour }
                 var startMin = "\(startTime%60)"
-                if startMin.characters.count < 2 { startMin = "0"+startMin }
+                if startMin.count < 2 { startMin = "0"+startMin }
                 
                 var endHour = "\(endTime/60)"
-                if endHour.characters.count < 2 { endHour = "0"+endHour }
+                if endHour.count < 2 { endHour = "0"+endHour }
                 var endMin = "\(endTime%60)"
-                if endMin.characters.count < 2 { endMin = "0"+endMin }
+                if endMin.count < 2 { endMin = "0"+endMin }
                 
                 timeTable.append(["\(startHour):\(startMin)", "\(endHour):\(endMin)"])
                 startTime = endTime
@@ -64,7 +64,7 @@ class MoreSettingsTableViewController: UITableViewController, PickerDelegate {
         tableView.register(UINib(nibName: "SheduleTableViewCell", bundle: nil), forCellReuseIdentifier: "SheduleCell")
     }
     
-    func nextStep() {
+    @objc func nextStep() {
         UserDefaults.standard.set(true, forKey: "PassedOnboarding")
         UserDefaults.standard.synchronize()
         performSegue(withIdentifier: "GoToShedule", sender: nil)

@@ -55,7 +55,7 @@ class WeekCollectionViewController: UICollectionViewController {
         
         print(Time.isEvenWeek())
         
-        navigationController?.navigationBar.titleTextAttributes = ["NSFontAttributeName": UIFont.appBoldFont()]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.appBoldFont()]
         
         navigationController?.navigationBar.setBackgroundImage(
             UIImage(),
@@ -125,12 +125,12 @@ class WeekCollectionViewController: UICollectionViewController {
         banner.load(request)
     }
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "bannerView", for: indexPath)
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "bannerView", for: indexPath)
         // configure footer view
         return view
     }
     
-    func handleLongPress(_ lgr: UILongPressGestureRecognizer) {
+    @objc func handleLongPress(_ lgr: UILongPressGestureRecognizer) {
         let p = lgr.location(in: self.collectionView)
         let indexPath = self.collectionView?.indexPathForItem(at: p)
         
@@ -182,7 +182,7 @@ class WeekCollectionViewController: UICollectionViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let navVC = segue.destination as? UINavigationController {
-            if let moreInfo = navVC.childViewControllers[0] as? DaySheduleContainerViewController {
+            if let moreInfo = navVC.children[0] as? DaySheduleContainerViewController {
                 moreInfo.dayNumber = dayNumberSelected
                 if dayNumberSelected < Time.getDay() {
                     moreInfo.actualDay = Time.getYesterDay(daysToAdd: -(Time.getDay()-dayNumberSelected))
@@ -290,7 +290,7 @@ extension WeekCollectionViewController: WCSessionDelegate {
     
     func setupSession() {
         if WCSession.isSupported() {
-            let session = WCSession.default()
+            let session = WCSession.default
             session.delegate = self
             session.activate()
         }
